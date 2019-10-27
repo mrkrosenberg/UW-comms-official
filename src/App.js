@@ -1,24 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+// Stylesheet
+import './App.scss';
+
+// Components
+import Header from '../src/Components/Header/Header';
+import Footer from '../src/Components/Footer/Footer';
+import Gym from './Views/Gym/Gym';
+import Maintenance from './Views/Maintenance/Maintenance';
+import Misc from './Views/Misc/Misc';
+import Park from './Views/Park/Park';
+import Parking from './Views/Parking/Parking';
+import Pool from './Views/Pool/Pool';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="main">
+        <Gym />
+        <Maintenance />
+        <Misc />
+        <Park />
+        <Parking />
+        <Pool />
+      </div>
+      <Footer />
     </div>
   );
 }
