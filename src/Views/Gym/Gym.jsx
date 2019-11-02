@@ -14,6 +14,8 @@ export class Gym extends Component {
     constructor() {
         super();
 
+        this.viewTitle = 'Gym';
+
         this.app = Firebase;
         this.db = this.app.firestore().collection('Gym');
 
@@ -33,15 +35,14 @@ export class Gym extends Component {
                     id: doc.id,
                     title: doc.data().title,
                     body: doc.data().body
-                })
-            })
+                });
+            });
 
             this.setState({
                 posts: this.currentPosts
-            })
-        })
-
-    }
+            });
+        });
+    };
 
 
 
