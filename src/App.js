@@ -1,12 +1,17 @@
 import React from 'react';
+
+// Routing & Authentication
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { AuthProvider } from './Authentication/Auth';
+import ProtectedRoute from './Authentication/ProtectedRoutes';
 
 // Stylesheet
 import './App.scss';
 
 // Components
 import Home from './Views/Home/Home';
-import Header from '../src/Components/Header/Header';
+import LogIn from './Views/LogIn/LogIn';
+import SignUp from './Views/SignUp/SignUp'
 import Footer from '../src/Components/Footer/Footer';
 import Gym from './Views/Gym/Gym';
 import Maintenance from './Views/Maintenance/Maintenance';
@@ -17,24 +22,27 @@ import Pool from './Views/Pool/Pool';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <div className="main">
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/gym" component={Gym} />
-            <Route path="/maintenance" component={Maintenance} />
-            <Route path="/misc" component={Misc} />
-            <Route path="/park" component={Park} />
-            <Route path="/parking" component={Parking} />
-            <Route path="/pool" component={Pool} />
-          </Switch>
-
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <div className="main">
+            <Switch>
+              <Route path="/login" component={LogIn} />
+              <Route path="/signup" component={SignUp} />
+              <ProtectedRoute path="/" exact component={Home} />
+              <ProtectedRoute path="/gym" component={Gym} />
+              <ProtectedRoute path="/maintenance" component={Maintenance} />
+              <ProtectedRoute path="/misc" component={Misc} />
+              <ProtectedRoute path="/park" component={Park} />
+              <ProtectedRoute path="/parking" component={Parking} />
+              <ProtectedRoute path="/pool" component={Pool} />
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </AuthProvider>
+
 
   );
 }

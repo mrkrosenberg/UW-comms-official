@@ -8,13 +8,15 @@ import '../View-Styles/views.scss';
 
 // Componenents
 import Post from '../../Components/Post/Post';
+import EntryForm from '../../Components/EntryForm/EntryForm';
 
 export class Gym extends Component {
 
     constructor() {
         super();
 
-        this.viewTitle = 'Gym';
+        this.collection = 'Gym';
+        this.addNote = this.addNote.bind(this);
 
         this.app = Firebase;
         this.db = this.app.firestore().collection('Gym');
@@ -26,7 +28,6 @@ export class Gym extends Component {
 
 
     componentDidMount() {
-
         this.currentPosts = this.state.posts;
 
         this.db.onSnapshot((snapshot) => {
@@ -44,21 +45,33 @@ export class Gym extends Component {
         });
     };
 
+    addNote(post) {
+        console.log('post content:', post )
+    }
+
 
 
     render() {
         return (
-            <div>
-                {
-                    this.state.posts.map((post) => {
-                        return(
-                            <Post key={post.id} postId={post.id} postTitle={post.title} postBody={post.body} />
-                        )
-                    })
-                }
+            <div className="view-body">
+                <div>
+                    {
+                        this.state.posts.map((post) => {
+                            return(
+                                <div className="post">
+                                    <Post key={post.id} postId={post.id} postTitle={post.title} postBody={post.body} />
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <div className="entry-form">
+                    <EntryForm addNote={this.addNote} collection={this.collection} />
+                </div>
             </div>
-        )
-    }
-}
 
-export default Gym
+        )
+    };
+};
+
+export default Gym;
