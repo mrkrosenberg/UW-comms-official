@@ -13,27 +13,13 @@ export class EntryForm extends Component {
         this.db = Firebase.firestore().collection(props.collection);
 
         this.state = {
-            // postContent: {
-            //     title: '',
-            //     body: ''
-            // }
             postContent: ''
         };
 
         this.handleUserInput = this.handleUserInput.bind(this);
+        this.submitPost = this.submitPost.bind(this);
     };
 
-    // handleUserInput(e) {  
-    //     e.preventDefault();
-    //     const { title, body } = e.target.elements;
-    //     this.setState({
-    //         postContent: {
-    //             title: title.value,
-    //             body: body.value
-    //         }
-    //     });
-    //     this.props.addNote(this.state.postContent);
-    // };
 
     handleUserInput(e) {
         console.log(e.target.value);
@@ -44,6 +30,8 @@ export class EntryForm extends Component {
 
     submitPost() {
 
+        this.props.addNote(this.state.postContent);
+
         this.setState({
             postContent: ''
         })
@@ -52,12 +40,8 @@ export class EntryForm extends Component {
     render() {
         return (
             <div className="formWrapper">
-                {/* <form onSubmit={this.handleUserInput}> */}
-                <input name="title" type="text" placeholder="title" value={this.state.postContent.title} onChange={this.handleUserInput}/>
-                <button></button>
-                {/* <input name="body" type="text" placeholder="enter text" value={this.state.postContent.body} onChange={this.handleInput}/> */}
-                {/* <button type="submit">Submit</button> */}
-                {/* </form> */}
+                <input name="title" type="text" placeholder="text" value={this.state.postContent.title} onChange={this.handleUserInput}/>
+                <button onClick={this.submitPost}>Post</button>
             </div>
         )
     };

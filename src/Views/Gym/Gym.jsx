@@ -16,7 +16,6 @@ export class Gym extends Component {
         super();
 
         this.collection = 'Gym';
-        this.addNote = this.addNote.bind(this);
 
         this.app = Firebase;
         this.db = this.app.firestore().collection('Gym');
@@ -24,17 +23,20 @@ export class Gym extends Component {
         this.state = {
             posts: []
         };
+
+        this.addNote = this.addNote.bind(this);
     };
 
 
     componentDidMount() {
+        
         this.currentPosts = this.state.posts;
 
         this.db.onSnapshot((snapshot) => {
             snapshot.docs.forEach((doc) => {
                 this.currentPosts.push({
                     id: doc.id,
-                    title: doc.data().title,
+                    // title: doc.data().title,
                     body: doc.data().body
                 });
             });
@@ -46,7 +48,10 @@ export class Gym extends Component {
     };
 
     addNote(post) {
-        console.log('post content:', post )
+        // console.log('post content:', post );
+        this.db.add({
+            body: post
+        })
     }
 
 
