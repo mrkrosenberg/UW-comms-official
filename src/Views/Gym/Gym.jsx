@@ -18,7 +18,7 @@ export class Gym extends Component {
         this.collection = 'Gym';
 
         this.app = Firebase;
-        this.db = this.app.firestore().collection('Gym');
+        this.db = this.app.firestore().collection(this.collection);
 
         this.state = {
             posts: []
@@ -29,22 +29,36 @@ export class Gym extends Component {
 
 
     componentDidMount() {
-        
-        this.currentPosts = this.state.posts;
 
-        this.db.onSnapshot((snapshot) => {
-            snapshot.docs.forEach((doc) => {
-                this.currentPosts.push({
+        this.stopChangeListener = this.db.onSnapshot((snapshot) => {
+            var postsArray = snapshot.docs.map((doc) => {
+                return {
                     id: doc.id,
-                    // title: doc.data().title,
                     body: doc.data().body
-                });
+                };
             });
 
+            this.currentPosts = postsArray;
             this.setState({
-                posts: this.currentPosts
+                posts: postsArray
             });
         });
+        
+        // this.currentPosts = this.state.posts;
+
+        // this.db.onSnapshot((snapshot) => {
+        //     snapshot.docs.forEach((doc) => {
+        //         this.currentPosts.push({
+        //             id: doc.id,
+        //             // title: doc.data().title,
+        //             body: doc.data().body
+        //         });
+        //     });
+
+        //     this.setState({
+        //         posts: this.currentPosts
+        //     });
+        // });
     };
 
     addNote(post) {
