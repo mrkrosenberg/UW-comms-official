@@ -10,7 +10,10 @@ export class Post extends Component {
             title: props.postTitle,
             body: props.postBody
         }
+        console.log(props.user)
     };
+
+
 
     render() {
         return (
@@ -23,4 +26,4 @@ export class Post extends Component {
     }
 };
 
-export default Post
+export default Post;

@@ -19,12 +19,13 @@ export class Gym extends Component {
 
         this.app = Firebase;
         this.db = this.app.firestore().collection(this.collection);
+        this.user = this.app.auth().currentUser.uid;
 
         this.state = {
             posts: []
         };
 
-        this.addNote = this.addNote.bind(this);
+        this.addPost = this.addPost.bind(this);
     };
 
 
@@ -34,7 +35,8 @@ export class Gym extends Component {
             var postsArray = snapshot.docs.map((doc) => {
                 return {
                     id: doc.id,
-                    body: doc.data().body
+                    body: doc.data().body,
+                    user: doc.data().uid
                 };
             });
 
@@ -61,8 +63,7 @@ export class Gym extends Component {
         // });
     };
 
-    addNote(post) {
-        // console.log('post content:', post );
+    addPost(post) {
         this.db.add({
             body: post
         })
@@ -78,7 +79,7 @@ export class Gym extends Component {
                         this.state.posts.map((post) => {
                             return(
                                 <div className="post">
-                                    <Post key={post.id} postId={post.id} postTitle={post.title} postBody={post.body} />
+                                    <Post key={post.id} postId={post.id} postTitle={post.title} postBody={post.body} user={post.user} />
                                 </div>
                             )
                         })

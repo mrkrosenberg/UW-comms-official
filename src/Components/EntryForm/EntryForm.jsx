@@ -22,7 +22,7 @@ export class EntryForm extends Component {
 
 
     handleUserInput(e) {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         this.setState({
             postContent: e.target.value
         })
@@ -30,7 +30,7 @@ export class EntryForm extends Component {
 
     submitPost() {
 
-        this.props.addNote(this.state.postContent);
+        this.props.addPost(this.state.postContent);
 
         this.setState({
             postContent: ''
@@ -40,7 +40,7 @@ export class EntryForm extends Component {
     render() {
         return (
             <div className="formWrapper">
-                <input name="title" type="text" placeholder="text" value={this.state.postContent.title} onChange={this.handleUserInput}/>
+                <input name="title" type="text" placeholder="text" value={this.state.postContent} onChange={this.handleUserInput}/>
                 <button onClick={this.submitPost}>Post</button>
             </div>
         )
