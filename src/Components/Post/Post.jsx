@@ -10,7 +10,6 @@ export class Post extends Component {
             title: props.postTitle,
             body: props.postBody
         }
-        console.log(props.user)
     };
 
 

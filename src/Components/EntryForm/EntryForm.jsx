@@ -26,7 +26,7 @@ export class EntryForm extends Component {
         this.setState({
             postContent: e.target.value
         })
-    }
+    };
 
     submitPost() {
 
@@ -36,6 +36,7 @@ export class EntryForm extends Component {
             postContent: ''
         })
     };
+
 
     render() {
         return (

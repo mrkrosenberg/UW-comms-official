@@ -8,7 +8,7 @@ import '../View-Styles/views.scss';
 
 // Componenents
 import Post from '../../Components/Post/Post';
-import EntryForm from '../../Components/EntryForm/EntryForm';
+import EntryForm1 from '../../Components/EntryForm/EntryForm1';
 
 export class Gym extends Component {
 
@@ -65,10 +65,10 @@ export class Gym extends Component {
 
     addPost(post) {
         this.db.add({
-            body: post
+            title: post.title,
+            body: post.body
         })
-    }
-
+    };
 
 
     render() {
@@ -86,7 +86,7 @@ export class Gym extends Component {
                     }
                 </div>
                 <div className="entry-form">
-                    <EntryForm addNote={this.addNote} collection={this.collection} />
+                    <EntryForm1 addPost={this.addPost} />
                 </div>
             </div>
 
