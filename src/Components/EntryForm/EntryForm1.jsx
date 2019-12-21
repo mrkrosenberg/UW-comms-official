@@ -1,24 +1,19 @@
 import React, { useState } from 'react';
 import useForm from 'react-hook-form';
+import './EntryForm.scss';
 
 export default function EntryForm1 (props) {
-    
     
 
     const { register, handleSubmit, errors } = useForm();
     const [ title, setTitle ] = useState('');
     const [ body, setBody ] = useState('');
 
-    // const onSubmit = (data) => {
-    //     console.log(data);
-    //     setTitle('');
-    //     setBody('');
-    // };
 
     const onSubmit = (data) => {
         props.addPost(data);
         setTitle('');
-        setBody('');
+        setBody(''); 
      };
 
     return (
@@ -36,7 +31,7 @@ export default function EntryForm1 (props) {
                 type="text" 
                 placeholder="Body" 
                 name="body" 
-                ref={register} />
+                ref={register} />            
             <input type="submit" value="Post" />
         </form>
     );

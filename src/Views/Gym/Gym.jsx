@@ -31,7 +31,7 @@ export class Gym extends Component {
 
     componentDidMount() {
 
-        this.stopChangeListener = this.db.onSnapshot((snapshot) => {
+      this.unsubscribe = this.db.onSnapshot((snapshot) => {
             var postsArray = snapshot.docs.map((doc) => {
                 return {
                     id: doc.id,
@@ -45,22 +45,10 @@ export class Gym extends Component {
                 posts: postsArray
             });
         });
-        
-        // this.currentPosts = this.state.posts;
+    };
 
-        // this.db.onSnapshot((snapshot) => {
-        //     snapshot.docs.forEach((doc) => {
-        //         this.currentPosts.push({
-        //             id: doc.id,
-        //             // title: doc.data().title,
-        //             body: doc.data().body
-        //         });
-        //     });
-
-        //     this.setState({
-        //         posts: this.currentPosts
-        //     });
-        // });
+    componentWillUnmount() {
+        this.unsubscribe();
     };
 
     addPost(post) {
