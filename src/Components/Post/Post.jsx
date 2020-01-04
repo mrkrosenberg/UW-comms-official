@@ -6,7 +6,9 @@ export class Post extends Component {
         super(props)
 
         this.post = {
+            currentUser: props.currentUser,
             id: props.postId,
+            postUser: props.postUser,
             title: props.postTitle,
             body: props.postBody
         }

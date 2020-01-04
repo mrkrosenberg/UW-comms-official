@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Database Ref
-// import Firebase from '../../Config/Firebase';
+import Firebase from '../../Config/Firebase';
 
 // Components
 import Header from '../../Components/Header/Header';
@@ -9,9 +9,6 @@ import Header from '../../Components/Header/Header';
 
 export class Home extends Component {
 
-    // componentDidMount() {
-    //     console.log(Firebase.auth().currentUser.uid)
-    // }
     
     render() {
         return (
@@ -24,7 +21,7 @@ export class Home extends Component {
                 </div>
             </div>
         )
-    }
-}
+    };
+};
 
-export default Home
+export default Home;

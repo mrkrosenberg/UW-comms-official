@@ -7,6 +7,7 @@ import Firebase from '../../Config/Firebase';
 import '../View-Styles/views.scss';
 
 // Componenents
+import Header from '../../Components/Header/Header';
 import Post from '../../Components/Post/Post';
 import EntryForm1 from '../../Components/EntryForm/EntryForm1';
 
@@ -19,24 +20,28 @@ export class Gym extends Component {
 
         this.app = Firebase;
         this.db = this.app.firestore().collection(this.collection);
-        this.user = this.app.auth().currentUser.uid;
+        this.currentUser = this.app.auth().currentUser.uid;
 
         this.state = {
             posts: []
         };
 
         this.addPost = this.addPost.bind(this);
+        this.signOut = this.signOut.bind(this);
     };
 
 
     componentDidMount() {
 
+        console.log('current user: ', this.currentUser)
+
       this.unsubscribe = this.db.onSnapshot((snapshot) => {
             var postsArray = snapshot.docs.map((doc) => {
                 return {
                     id: doc.id,
-                    body: doc.data().body,
-                    user: doc.data().uid
+                    user: doc.data().user,
+                    title: doc.data().title,
+                    body: doc.data().body
                 };
             });
 
@@ -53,21 +58,36 @@ export class Gym extends Component {
 
     addPost(post) {
         this.db.add({
+            user: this. currentUser,
             title: post.title,
             body: post.body
         })
     };
 
+    signOut() {
+        this.app.auth().signOut();
+    };
+
 
     render() {
         return (
+            // <div>
+            //     <Header />
+            // </div>
             <div className="view-body">
                 <div>
                     {
                         this.state.posts.map((post) => {
+                            console.log(post);
                             return(
                                 <div className="post">
-                                    <Post key={post.id} postId={post.id} postTitle={post.title} postBody={post.body} user={post.user} />
+                                    <Post 
+                                        key={post.id} 
+                                        postId={post.id} 
+                                        postTitle={post.title} 
+                                        postBody={post.body} 
+                                        postUser={post.user}
+                                        currentUser={this.currentUser} />
                                 </div>
                             )
                         })
@@ -75,6 +95,11 @@ export class Gym extends Component {
                 </div>
                 <div className="entry-form">
                     <EntryForm1 addPost={this.addPost} />
+                </div>
+                <div className="signOut">
+                    <div className="signout">
+                        <button onClick={this.signOut}>SignOut</button>
+                    </div>
                 </div>
             </div>
 
