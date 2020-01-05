@@ -4,7 +4,9 @@ import Firebase from '../../Config/Firebase';
 
 const SignUp = ({ history }) => {
 
-  const handleSignUp = useCallback(async event => {
+  const handleSignUp = useCallback(
+    async event => {
+
     event.preventDefault();
     const { email, password } = event.target.elements;
     try {
@@ -16,13 +18,12 @@ const SignUp = ({ history }) => {
       alert(error);
     }
   }, [history]
-  
 );
 
   return (
     <div>
       <h1>Sign up</h1>
-      <form onSubmit={handleSignUp}>
+      <form onSubmit={ handleSignUp }>
         <label>
           Email
           <input name="email" type="email" placeholder="Email" />

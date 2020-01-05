@@ -10,6 +10,7 @@ import '../View-Styles/views.scss';
 import Header from '../../Components/Header/Header';
 import Post from '../../Components/Post/Post';
 import EntryForm1 from '../../Components/EntryForm/EntryForm1';
+import Button from '../../Components/Button/Button';
 
 export class Gym extends Component {
 
@@ -30,7 +31,7 @@ export class Gym extends Component {
         this.signOut = this.signOut.bind(this);
     };
 
-
+    // Lifecycle Methods
     componentDidMount() {
 
         console.log('current user: ', this.currentUser)
@@ -45,7 +46,7 @@ export class Gym extends Component {
                 };
             });
 
-            this.currentPosts = postsArray;
+            // this.currentPosts = postsArray;
             this.setState({
                 posts: postsArray
             });
@@ -56,12 +57,18 @@ export class Gym extends Component {
         this.unsubscribe();
     };
 
+    // CRUD Methods
     addPost = (post) => {
         this.db.add({
             user: this. currentUser,
             title: post.title,
             body: post.body
         })
+    };
+
+    deletePost = (post) => {
+        console.log(post);
+        // this.db.
     };
 
     signOut = () => {
@@ -74,8 +81,7 @@ export class Gym extends Component {
             <div className="view-body">
                 <Header />
                 <div>
-                    {
-                        this.state.posts.map((post) => {
+                    { this.state.posts.map((post) => {
                             console.log(post);
                             return(
                                 <div className="post">
@@ -86,6 +92,10 @@ export class Gym extends Component {
                                         postBody={post.body} 
                                         postUser={post.user}
                                         currentUser={this.currentUser} />
+                                        { this.currentUser === post.user && <Button 
+                                                                                postId={post.id}
+                                                                                deletePost={this.deletePost}
+                                                                            /> }
                                 </div>
                             )
                         })

@@ -22,6 +22,7 @@ export class Post extends Component {
                 <h3>{ this.post.title }</h3>
                 <p>{ this.post.body }</p>
                 <p>{ this.post.id }</p>
+                <p>{ this.post.postUser }</p>
             </div>
         )
     }

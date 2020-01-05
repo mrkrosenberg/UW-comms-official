@@ -12,6 +12,7 @@ const LogIn = ({ history }) => {
   
   const handleLogin = useCallback(
     async event => {
+      
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
@@ -35,7 +36,7 @@ const LogIn = ({ history }) => {
   return (
     <div>
       <h1>Log in</h1>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={ handleLogin }>
         <label>
           Email
           <input name="email" type="email" placeholder="Email" />

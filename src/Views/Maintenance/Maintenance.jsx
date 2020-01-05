@@ -29,6 +29,7 @@ export class Maintenance extends Component {
     };
 
 
+    // Lifecycle Methods
     componentDidMount() {
 
       this.unsubscribe = this.db.onSnapshot((snapshot) => {
@@ -40,7 +41,7 @@ export class Maintenance extends Component {
                 };
             });
 
-            this.currentPosts = postsArray;
+            // this.currentPosts = postsArray;
             this.setState({
                 posts: postsArray
             });

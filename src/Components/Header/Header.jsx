@@ -2,10 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Stylesheet
-import './Header.scss'
+import './Header.scss';
 
 function Header() {
-
 
         return (
             <div>
