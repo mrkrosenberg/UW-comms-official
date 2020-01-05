@@ -56,7 +56,7 @@ export class Gym extends Component {
         this.unsubscribe();
     };
 
-    addPost(post) {
+    addPost = (post) => {
         this.db.add({
             user: this. currentUser,
             title: post.title,
@@ -64,17 +64,15 @@ export class Gym extends Component {
         })
     };
 
-    signOut() {
+    signOut = () => {
         this.app.auth().signOut();
     };
 
 
     render() {
         return (
-            // <div>
-            //     <Header />
-            // </div>
             <div className="view-body">
+                <Header />
                 <div>
                     {
                         this.state.posts.map((post) => {

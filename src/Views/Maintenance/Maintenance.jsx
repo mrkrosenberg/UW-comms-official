@@ -51,7 +51,7 @@ export class Maintenance extends Component {
         this.unsubscribe();
     };
 
-    addPost(post) {
+    addPost = (post) => {
         this.db.add({
             title: post.title,
             body: post.body

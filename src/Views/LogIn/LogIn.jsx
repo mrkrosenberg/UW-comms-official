@@ -9,6 +9,7 @@ import Firebase from '../../Config/Firebase';
 import { AuthContext } from '../../Authentication/Auth';
 
 const LogIn = ({ history }) => {
+  
   const handleLogin = useCallback(
     async event => {
       event.preventDefault();

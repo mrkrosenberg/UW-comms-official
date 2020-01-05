@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import Firebase from '../../Config/Firebase';
 
 const SignUp = ({ history }) => {
+
   const handleSignUp = useCallback(async event => {
     event.preventDefault();
     const { email, password } = event.target.elements;
@@ -14,7 +15,9 @@ const SignUp = ({ history }) => {
     } catch (error) {
       alert(error);
     }
-  }, [history]);
+  }, [history]
+  
+);
 
   return (
     <div>
