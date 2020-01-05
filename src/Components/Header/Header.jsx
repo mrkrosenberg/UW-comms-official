@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Database Ref
+import Firebase from '../../Config/Firebase';
+
 // Components
 // import 
 
 // Stylesheet
 import './Header.scss';
 
-function Header(props) {
+function Header() {
 
-    const app = props.firebase;
+    const app = Firebase;
 
     const signOut = () => {
         app.auth().signOut();
