@@ -79,7 +79,7 @@ export class Gym extends Component {
     render() {
         return (
             <div className="view-body">
-                <Header />
+                <Header firebase={Firebase}/>
                 <div>
                     { this.state.posts.map((post) => {
                             console.log(post);

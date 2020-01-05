@@ -7,6 +7,7 @@ import Firebase from '../../Config/Firebase';
 import '../View-Styles/views.scss';
 
 // Componenents
+import Header from '../../Components/Header/Header';
 import Post from '../../Components/Post/Post';
 import EntryForm1 from '../../Components/EntryForm/EntryForm1';
 
@@ -63,6 +64,7 @@ export class Pool extends Component {
     render() {
         return (
             <div className="view-body">
+                <Header firebase={Firebase}/>
                 <div>
                     {
                         this.state.posts.map((post) => {

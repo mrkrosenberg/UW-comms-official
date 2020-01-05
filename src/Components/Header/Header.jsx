@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Components
+// import 
+
 // Stylesheet
 import './Header.scss';
 
-function Header() {
+function Header(props) {
+
+    const app = props.firebase;
+
+    const signOut = () => {
+        app.auth().signOut();
+    };
 
         return (
             <div>
@@ -22,9 +31,9 @@ function Header() {
                         <Link to="/misc">
                             <li>Misc</li>
                         </Link>
-                        <Link to="/park">
+                        {/* <Link to="/park">
                             <li>Park</li>
-                        </Link>
+                        </Link> */}
                         <Link to="/parking">
                             <li>Parking</li>
                         </Link>
@@ -32,6 +41,9 @@ function Header() {
                             <li>Pool/Rec</li>
                         </Link>
                     </ul>
+                </div>
+                <div className="auth-container">
+                    <button onClick={signOut} >SignOut</button>
                 </div>
             </div>
 
