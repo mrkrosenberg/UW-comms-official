@@ -5,18 +5,18 @@ import Firebase from '../../Config/Firebase';
 const SignUp = ({ history }) => {
 
   const handleSignUp = useCallback(
-    async event => {
 
-    event.preventDefault();
-    const { email, password } = event.target.elements;
-    try {
-      await Firebase
-        .auth()
-        .createUserWithEmailAndPassword(email.value, password.value);
-      history.push("/");
-    } catch (error) {
-      alert(error);
-    }
+    async event => {
+      event.preventDefault();
+      const { email, password } = event.target.elements;
+      try {
+        await Firebase
+          .auth()
+          .createUserWithEmailAndPassword(email.value, password.value);
+        history.push("/");
+      } catch (error) {
+        alert(error);
+      }
   }, [history]
 );
 

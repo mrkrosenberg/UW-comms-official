@@ -39,7 +39,6 @@ export class PostList extends Component {
                     };
                 });
     
-                // this.currentPosts = postsArray;
                 this.setState({
                     posts: postsArray
                 });
@@ -53,7 +52,7 @@ export class PostList extends Component {
         // CRUD Methods
         addPost = (post) => {
             this.db.add({
-                user: this. currentUser,
+                user: this.currentUser,
                 title: post.title,
                 body: post.body
             })
@@ -69,7 +68,7 @@ export class PostList extends Component {
             <div className="view-body">
                 <div>
                     { this.state.posts.map((post) => {
-                            console.log(post);
+                            // console.log(post);
                             return(
                                 <div className="post">
                                     <Post 

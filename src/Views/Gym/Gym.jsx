@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-// Database Ref
-// import Firebase from '../../Config/Firebase';
-
 // Stylesheet
 import '../View-Styles/views.scss';
 
