@@ -11,7 +11,30 @@ export class Landing extends Component {
 
     constructor() {
         super();
-        console.log(AuthContext);
+        // console.log(AuthContext);
+
+        this.state = {
+            userStatus: ''
+        };
+
+        this.logIn = this.logIn.bind(this);
+        this.signUp = this.signUp.bind(this);
+    };
+
+   
+// Refactor these functions
+    logIn() {
+
+        this.setState({
+            userStatus: 'login'
+        });
+    };
+
+    signUp() {
+
+        this.setState({
+            userStatus: 'signup'
+        });
     };
 
     render() {
@@ -20,8 +43,12 @@ export class Landing extends Component {
 
         return (
             <div className="landing-view">
-                <LogIn />
-                <SignUp />
+                <div className="auth-options">
+                    <button onClick={this.logIn}>Log In</button>
+                    <button onClick={this.signUp}>Sign Up</button>
+                </div>
+                { this.state.userStatus === 'login' && <LogIn />}
+                { this.state.userStatus === 'signup' && <SignUp />}
             </div>
         )
     };

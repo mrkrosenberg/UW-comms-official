@@ -9,6 +9,7 @@ import ProtectedRoute from './Authentication/ProtectedRoutes';
 import './App.scss';
 
 // Components
+import Landing from './Views/Landing/Landing';
 import Home from './Views/Home/Home';
 import LogIn from './Views/LogIn/LogIn';
 import SignUp from './Views/SignUp/SignUp'
@@ -27,6 +28,7 @@ function App() {
         <div className="App">
           <div className="main">
             <Switch>
+              <Route path="/landing" component={Landing} />
               <Route path="/login" component={LogIn} />
               <Route path="/signup" component={SignUp} />
               <ProtectedRoute path="/" exact component={Home} />

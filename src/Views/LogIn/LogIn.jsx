@@ -4,8 +4,6 @@ import React, { useCallback, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter, Redirect } from 'react-router';
 
-import Landing from '../Landing/Landing';
-
 // Auth Config
 import Firebase from '../../Config/Firebase';
 import { AuthContext } from '../../Authentication/Auth';
@@ -37,7 +35,6 @@ const LogIn = ({ history }) => {
 
   return (
     <div>
-      <Landing />
       <h1>Log in</h1>
       <form onSubmit={ handleLogin }>
         <label>
