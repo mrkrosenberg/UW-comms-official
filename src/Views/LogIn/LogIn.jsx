@@ -47,9 +47,9 @@ const LogIn = ({ history }) => {
         </label>
         <button type="submit">Log in</button>
       </form>
-      <div className="signup">
+      {/* <div className="signup">
           <h6>New User? <Link to="/signup">SignUp</Link> </h6>
-      </div>
+      </div> */}
     </div>
   );
 };

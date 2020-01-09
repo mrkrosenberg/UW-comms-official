@@ -81,8 +81,11 @@ export class Landing extends Component {
                 </header>
                     
                 <Modal show={this.state.showModal} onHide={this.closeModal}>
-                    { this.state.userStatus === 'login' && <LogIn />}
-                    { this.state.userStatus === 'signup' && <SignUp />}
+                    <Modal.Header closeButton>
+                        { this.state.userStatus === 'login' && <LogIn />}
+                        { this.state.userStatus === 'signup' && <SignUp />}
+                    </Modal.Header>
+                    
                 </Modal>
             </div>
         )
