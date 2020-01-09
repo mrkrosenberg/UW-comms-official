@@ -20,25 +20,30 @@ export class Landing extends Component {
             userStatus: ''
         };
 
-        this.logIn = this.logIn.bind(this);
-        this.signUp = this.signUp.bind(this);
     };
 
    
 // Refactor these functions
-    logIn() {
+    logIn = () => {
 
         this.setState({
             userStatus: 'login'
         });
     };
 
-    signUp() {
+    signUp =() => {
 
         this.setState({
             userStatus: 'signup'
         });
     };
+
+    componentWillUnmount() {
+        
+        this.setState({
+            userStatus: ''
+        })
+    }
 
     render() {
 
