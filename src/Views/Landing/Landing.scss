@@ -1,0 +1,21 @@
+// SCSS imports
+@import 'src/Styles/variables.scss';
+
+.landing-view {
+    height: 100vh;
+    width: 100vw;
+    background-color: $secondary-color;
+}
+
+.auth-options {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    height: 10vh;
+    background-color: rgba(241,241,241, 0.6);
+}
+
+.option-button {
+    background-color: $accent-color;
+}
