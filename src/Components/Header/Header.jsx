@@ -19,8 +19,8 @@ function Header() {
     };
 
         return (
-            <div>
-                <div className="header">
+            <header>
+                <nav className="header">
                     <Link to="/">
                         <h3>Logo</h3>
                     </Link>
@@ -44,11 +44,11 @@ function Header() {
                             <li>Pool/Rec</li>
                         </Link>
                     </ul>
-                </div>
+                </nav>
                 <div className="auth-container">
                     <button onClick={signOut} >SignOut</button>
                 </div>
-            </div>
+            </header>
 
         );
 };

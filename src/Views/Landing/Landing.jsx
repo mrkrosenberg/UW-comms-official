@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
 // Auth Shtuff
-import { AuthContext } from '../../Authentication/Auth';
+// import { AuthContext } from '../../Authentication/Auth';
 
 // Components
 import LogIn from '../LogIn/LogIn';
 import SignUp from '../SignUp/SignUp';
+
+// Bootstrap Imports
+import Navbar from 'react-bootstrap/Navbar';
 
 export class Landing extends Component {
 
@@ -43,10 +46,13 @@ export class Landing extends Component {
 
         return (
             <div className="landing-view">
-                <div className="auth-options">
-                    <button onClick={this.logIn}>Log In</button>
-                    <button onClick={this.signUp}>Sign Up</button>
-                </div>
+                <Navbar bg="dark">
+                    <div className="auth-options">
+                        <button onClick={this.logIn}>Log In</button>
+                        <button onClick={this.signUp}>Sign Up</button>
+                    </div>
+                </Navbar>
+                
                 { this.state.userStatus === 'login' && <LogIn />}
                 { this.state.userStatus === 'signup' && <SignUp />}
             </div>
