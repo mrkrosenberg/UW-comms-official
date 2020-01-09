@@ -65,12 +65,12 @@ export class PostList extends Component {
 
     render() {
         return (
-            <div className="view-body">
-                <div>
+            <section className="view-body">
+                {/* <div> */}
                     { this.state.posts.map((post) => {
                             // console.log(post);
                             return(
-                                <section className="post">
+                                <div className="post">
                                     <Post 
                                         key={post.id} 
                                         postId={post.id} 
@@ -82,15 +82,15 @@ export class PostList extends Component {
                                                                                 postId={post.id}
                                                                                 deletePost={this.deletePost}
                                                                             /> }
-                                </section>
+                                </div>
                             )
                         })
                     }
-                </div>
+                {/* </div> */}
                 <div className="entry-form">
                     <EntryForm1 addPost={this.addPost} />
                 </div>
-            </div>
+            </section>
         )
     };
 };
