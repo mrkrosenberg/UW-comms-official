@@ -7,13 +7,21 @@
     background-color: $secondary-color;
 }
 
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+}
+
 .auth-options {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 
     height: 10vh;
-    background-color: rgba(241,241,241, 0.6);
+    // background-color: rgba(241,241,241, 0.6);
 }
 
 .option-button {

@@ -12,6 +12,7 @@ import './Landing.scss';
 
 // Bootstrap Imports
 // import Navbar from 'react-bootstrap/Navbar';
+import Modal from 'react-bootstrap/Modal';
 
 export class Landing extends Component {
 
@@ -20,33 +21,51 @@ export class Landing extends Component {
         // console.log(AuthContext);
 
         this.state = {
-            userStatus: ''
+            userStatus: '',
+            showModal: false
         };
 
+    };
+
+    openModal = () => {
+
+        this.setState({
+            showModal: true
+        });
+    };
+
+    closeModal = () => {
+
+        this.setState({
+            showModal: false
+        });
     };
 
    
 // Refactor these functions
     logIn = () => {
 
+        this.openModal();
         this.setState({
             userStatus: 'login'
         });
     };
 
-    signUp =() => {
+    signUp = () => {
 
+        this.openModal();
         this.setState({
             userStatus: 'signup'
         });
     };
+
 
     componentWillUnmount() {
         
         this.setState({
             userStatus: ''
         })
-    }
+    };
 
     render() {
 
@@ -54,12 +73,17 @@ export class Landing extends Component {
 
         return (
             <div className="landing-view">
-                    <header className="auth-options">
+                <header>
+                    <div className="auth-options">
                         <button className="option-button" onClick={this.logIn}>Log In</button>
                         <button className="option-button" onClick={this.signUp}>Sign Up</button>
-                    </header>
-                { this.state.userStatus === 'login' && <LogIn />}
-                { this.state.userStatus === 'signup' && <SignUp />}
+                    </div>
+                </header>
+                    
+                <Modal show={this.state.showModal} onHide={this.closeModal}>
+                    { this.state.userStatus === 'login' && <LogIn />}
+                    { this.state.userStatus === 'signup' && <SignUp />}
+                </Modal>
             </div>
         )
     };
