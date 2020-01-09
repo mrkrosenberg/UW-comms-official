@@ -18,12 +18,12 @@ export class Post extends Component {
 
     render() {
         return (
-            <div className="post">
+            <article className="post">
                 <h3>{ this.post.title }</h3>
                 <p>{ this.post.body }</p>
                 <p>{ this.post.id }</p>
                 <p>{ this.post.postUser }</p>
-            </div>
+            </article>
         )
     }
 };
