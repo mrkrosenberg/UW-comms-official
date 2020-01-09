@@ -70,7 +70,7 @@ export class PostList extends Component {
                     { this.state.posts.map((post) => {
                             // console.log(post);
                             return(
-                                <div className="post">
+                                <section className="post">
                                     <Post 
                                         key={post.id} 
                                         postId={post.id} 
@@ -82,7 +82,7 @@ export class PostList extends Component {
                                                                                 postId={post.id}
                                                                                 deletePost={this.deletePost}
                                                                             /> }
-                                </div>
+                                </section>
                             )
                         })
                     }
