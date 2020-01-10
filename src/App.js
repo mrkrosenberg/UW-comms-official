@@ -13,7 +13,7 @@ import Landing from './Views/Landing/Landing';
 import Home from './Views/Home/Home';
 import LogIn from './Views/LogIn/LogIn';
 import SignUp from './Views/SignUp/SignUp'
-import Footer from '../src/Components/Footer/Footer';
+// import Footer from '../src/Components/Footer/Footer';
 import Gym from './Views/Gym/Gym';
 import Maintenance from './Views/Maintenance/Maintenance';
 import Misc from './Views/Misc/Misc';
@@ -40,7 +40,7 @@ function App() {
               <ProtectedRoute path="/pool" component={Pool} />
             </Switch>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Router>
     </AuthProvider>

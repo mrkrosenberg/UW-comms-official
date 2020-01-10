@@ -21,7 +21,7 @@ const SignUp = ({ history }) => {
 );
 
   return (
-    <div>
+    <div className="auth-form">
       <h1>Sign up</h1>
       <form onSubmit={ handleSignUp }>
         <label>

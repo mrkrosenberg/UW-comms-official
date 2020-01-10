@@ -78,6 +78,7 @@ export class PostList extends Component {
                                         postBody={post.body} 
                                         postUser={post.user}
                                         currentUser={this.currentUser} />
+                                        {/* move this into post component */}
                                         { this.currentUser === post.user && <Button 
                                                                                 postId={post.id}
                                                                                 deletePost={this.deletePost}

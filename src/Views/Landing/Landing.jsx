@@ -14,12 +14,15 @@ import './Landing.scss';
 // import Navbar from 'react-bootstrap/Navbar';
 import Modal from 'react-bootstrap/Modal';
 
+// change to functional component for authContext stuff
 export class Landing extends Component {
+// const Landing = () => {
 
     constructor() {
         super();
         // console.log(AuthContext);
 
+        // will have to refactor to use hooks for state in functional component
         this.state = {
             userStatus: '',
             showModal: false
@@ -43,6 +46,7 @@ export class Landing extends Component {
 
    
 // Refactor these functions
+// flip order of callbacks
     logIn = () => {
 
         this.openModal();
@@ -69,24 +73,42 @@ export class Landing extends Component {
 
     render() {
 
-        // if()
+    // const { currentUser } = useContext(AuthContext);
+
+    // if (currentUser) {
+    //     return <Redirect to="/" />;
+    // }
 
         return (
             <div className="landing-view">
-                <header>
-                    <div className="auth-options">
-                        <button className="option-button" onClick={this.logIn}>Log In</button>
-                        <button className="option-button" onClick={this.signUp}>Sign Up</button>
+                <section className="top">
+                    <header>
+                        <div className="auth-options">
+                            <button className="option-button" onClick={this.logIn}>Log In</button>
+                            <button className="option-button" onClick={this.signUp}>Sign Up</button>
+                        </div>
+                    </header>
+                    <div className="welcome-text">
+                        <h3>Welcome</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, facilis?</p>
                     </div>
-                </header>
-                    
-                <Modal show={this.state.showModal} onHide={this.closeModal}>
-                    <Modal.Header closeButton>
-                        { this.state.userStatus === 'login' && <LogIn />}
-                        { this.state.userStatus === 'signup' && <SignUp />}
-                    </Modal.Header>
-                    
-                </Modal>
+                     <Modal 
+                        className="modal"
+                        show={this.state.showModal} 
+                        onHide={this.closeModal}
+                        size="lg"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered>
+                        <Modal.Header closeButton>
+                            { this.state.userStatus === 'login' && <LogIn />}
+                            { this.state.userStatus === 'signup' && <SignUp />}
+                        </Modal.Header>
+                        
+                    </Modal>
+                </section>
+                <section className="middle">
+
+                </section>
             </div>
         )
     };

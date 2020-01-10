@@ -1,7 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 
 // Routing Stuff
-import { Link } from 'react-router-dom';
 import { withRouter, Redirect } from 'react-router';
 
 // Auth Config
@@ -34,7 +33,7 @@ const LogIn = ({ history }) => {
   }
 
   return (
-    <div>
+    <div className="auth-form">
       <h1>Log in</h1>
       <form onSubmit={ handleLogin }>
         <label>

@@ -2,17 +2,33 @@
 @import 'src/Styles/variables.scss';
 
 .landing-view {
-    height: 100vh;
+    // height: 100vh;
     width: 100vw;
+    // background-color: $secondary-color;
+}
+
+.top {
+    height: 80vh;
+    background-image: url('../../Static/main-bg.jpg');
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    border-bottom: 1px solid $accent-color;
+}
+
+.welcome-text {
+    height: 20vh;
+    width: 20vw;
+}
+
+.middle {
+    height: 80vh;
     background-color: $secondary-color;
 }
 
 header {
     position: fixed;
-    top: 0;
-    left: 0;
-    margin: auto;
-    width: 100%;
+    width: 90%;
 }
 
 .auth-options {
@@ -26,4 +42,14 @@ header {
 
 .option-button {
     background-color: $accent-color;
+    padding: 5px 30px;
+    border: 1.5px solid $primary-color;
+    border-radius: 50px;
+    &:first-child {
+        margin-right: 30px;
+    }
+}
+
+.auth-form {
+    padding: 40px;
 }
