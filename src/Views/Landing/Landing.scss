@@ -16,11 +16,6 @@
     border-bottom: 1px solid $accent-color;
 }
 
-.welcome-text {
-    height: 20vh;
-    width: 20vw;
-}
-
 .middle {
     height: 80vh;
     background-color: $secondary-color;
@@ -52,4 +47,30 @@ header {
 
 .auth-form {
     padding: 40px;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: $accent-color;
+}
+
+.modal {
+    border: 2px solid $accent-color;
+    padding: 0;
+}
+
+.welcome-text {
+    // height: 20vh;
+    width: 400px;
+    display: inline-block;
+    padding: 30px;
+    background-color: rgba(74, 126, 165, 0.5);
+    border: 2px outset $accent-color;
+    color: $tertiary-color;
+}
+
+@media(max-width: 700px) {
+    .welcome-text {
+        display: block;
+        width: 100vw;
+    }
 }

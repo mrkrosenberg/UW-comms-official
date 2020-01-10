@@ -7,7 +7,7 @@ import { withRouter, Redirect } from 'react-router';
 import Firebase from '../../Config/Firebase';
 import { AuthContext } from '../../Authentication/Auth';
 
-const LogIn = ({ history }) => {
+const LogIn = ({ history }, props) => {
   
   const handleLogin = useCallback(
 

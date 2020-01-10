@@ -100,8 +100,8 @@ export class Landing extends Component {
                         aria-labelledby="contained-modal-title-vcenter"
                         centered>
                         <Modal.Header closeButton>
-                            { this.state.userStatus === 'login' && <LogIn />}
-                            { this.state.userStatus === 'signup' && <SignUp />}
+                            { this.state.userStatus === 'login' && <LogIn closeModal={this.closeModal}/>}
+                            { this.state.userStatus === 'signup' && <SignUp closeModal={this.closeModal}/>}
                         </Modal.Header>
                         
                     </Modal>
