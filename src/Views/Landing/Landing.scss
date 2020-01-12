@@ -43,6 +43,9 @@ header {
     &:first-child {
         margin-right: 30px;
     }
+    &:focus {
+        outline: none;
+    }
 }
 
 .auth-form {
@@ -54,8 +57,7 @@ header {
 }
 
 .modal {
-    border: 2px solid $accent-color;
-    padding: 0;
+    // padding: 0;
 }
 
 .welcome-text {

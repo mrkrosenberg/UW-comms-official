@@ -93,7 +93,8 @@ export class Landing extends Component {
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, facilis?</p>
                     </div>
                      <Modal 
-                        className="modal"
+                        variant="variant"
+                        // className="modal"
                         show={this.state.showModal} 
                         onHide={this.closeModal}
                         size="lg"
