@@ -32,14 +32,15 @@ header {
     justify-content: flex-end;
 
     height: 10vh;
+    z-index: 10;
     // background-color: rgba(241,241,241, 0.6);
 }
 
 .option-button {
-    background-color: $accent-color;
     padding: 5px 30px;
     border: 1.5px solid $primary-color;
     border-radius: 50px;
+    background-color: $accent-color;
     &:first-child {
         margin-right: 30px;
     }
@@ -56,23 +57,26 @@ header {
     background-color: $accent-color;
 }
 
-.modal {
-    // padding: 0;
-}
-
 .welcome-text {
     // height: 20vh;
     width: 400px;
     display: inline-block;
     padding: 30px;
+    margin: 20vh auto auto 10vw;
     background-color: rgba(74, 126, 165, 0.5);
     border: 2px outset $accent-color;
     color: $tertiary-color;
 }
 
+// p, h3 {
+//     width: 100%;
+//     display: inline-block;
+// }
+
 @media(max-width: 700px) {
     .welcome-text {
-        display: block;
+        display: inline-block;
         width: 100vw;
+        margin: 20vh auto auto auto
     }
 }

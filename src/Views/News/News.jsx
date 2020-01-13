@@ -13,6 +13,7 @@ export class News extends Component {
         super();
 
         this.collection = 'News';
+        this.showEntryForm = false;
 
     };
 
@@ -21,7 +22,8 @@ export class News extends Component {
         return (
             <div className="view-body">
                 <Header />
-                <PostList collection={this.collection} />
+                <PostList collection={this.collection}
+                        showEntryForm={this.showEntryForm} />
             </div>
 
         )

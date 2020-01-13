@@ -14,6 +14,7 @@ export class PostList extends Component {
         super(props);
 
         this.collection = props.collection;
+        this.showEntryForm = props.showEntryForm;
 
         this.app = Firebase;
         this.db = this.app.firestore().collection(this.collection);
@@ -89,7 +90,7 @@ export class PostList extends Component {
                     }
                 {/* </div> */}
                 <div className="entry-form">
-                    <EntryForm1 addPost={this.addPost} />
+                    {this.showEntryForm && <EntryForm1 addPost={this.addPost} />}
                 </div>
             </section>
         )

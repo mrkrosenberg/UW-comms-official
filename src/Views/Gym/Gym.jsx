@@ -13,6 +13,7 @@ export class Gym extends Component {
         super();
 
         this.collection = 'Gym';
+        this.showEntryForm = true;
 
     };
 
@@ -21,7 +22,8 @@ export class Gym extends Component {
         return (
             <div className="view-body">
                 <Header />
-                <PostList collection={this.collection} />
+                <PostList collection={this.collection}
+                        showEntryForm={this.showEntryForm} />
             </div>
 
         )
