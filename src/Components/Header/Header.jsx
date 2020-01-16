@@ -4,11 +4,19 @@ import { Link } from 'react-router-dom';
 // Database Ref
 import Firebase from '../../Config/Firebase';
 
+// Stylesheet
+import './Header.scss';
+
+// Bootstrap Components
+import Dropdown from 'react-bootstrap/Dropdown';
+
+
 // Components
 // import 
 
-// Stylesheet
-import './Header.scss';
+// Images
+import hamburgerIcon from '../../Static/hamburgericon.png';
+import homeIcon from '../../Static/homeicon.png';
 
 function Header() {
 
@@ -19,37 +27,37 @@ function Header() {
     };
 
         return (
-            <header>
-                <nav className="header">
-                    <Link to="/">
-                        <h3>Logo</h3>
-                    </Link>
-                    <ul>
-                        <Link to="/gym">
-                            <li>Gym</li>
-                        </Link>
-                        <Link to="/maintenance">
-                            <li>Maintenance</li>
-                        </Link>
-                        <Link to="/misc">
-                            <li>Misc</li>
-                        </Link>
-                        {/* <Link to="/park">
-                            <li>Park</li>
-                        </Link> */}
-                        <Link to="/parking">
-                            <li>Parking</li>
-                        </Link>
-                        <Link to="/pool">
-                            <li>Pool/Rec</li>
-                        </Link>
-                    </ul>
-                </nav>
-                <div className="auth-container">
-                    <button onClick={signOut} >SignOut</button>
-                </div>
-            </header>
-
+            <nav className="nav-links">
+                <Dropdown>
+                    <Dropdown.Toggle>
+                        <img src={hamburgerIcon} alt="" className="dropdown-icon"/>
+                    </Dropdown.Toggle> 
+                    <Dropdown.Menu>
+                        <ul className="navbar-nav">
+                            <Link to="/">
+                                <li>Home</li>
+                            </Link>
+                            <Link to="/gym">
+                                <li>Gym</li>
+                            </Link>
+                            <Link to="/maintenance">
+                                <li>Maintenance</li>
+                            </Link>
+                            <Link to="/misc">
+                                <li>Misc</li>
+                            </Link>
+                            <Link to="/parking">
+                                <li>Parking</li>
+                            </Link>
+                            <Link to="/pool">
+                                <li>Pool/Rec</li>
+                            </Link> 
+                        </ul>
+                        
+                    </Dropdown.Menu>
+                </Dropdown>
+                
+            </nav>
         );
 };
 

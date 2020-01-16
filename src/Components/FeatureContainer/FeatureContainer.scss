@@ -1,0 +1,33 @@
+// SCSS imports
+@import 'src/Styles/variables.scss';
+
+.connect {
+    height: 30vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    margin-bottom: 20vh;
+    color: $accent-color;
+}
+
+.feature {
+    height: 80vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    margin-bottom: 10vh;
+    color: $accent-color;
+}
+
+.icon-container {
+    margin-bottom: 5vh;
+}
+
+.feature-icon {
+    width: 150px;
+}
+
+@media(max-width: 770px) {
+    .feature {
+        height: 40vh;
+
+    }
+}

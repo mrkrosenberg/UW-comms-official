@@ -1,7 +1,10 @@
 // SCSS imports
 @import 'src/Styles/variables.scss';
 
-.header {
-    height: 20vh;
-    background-color: $primary-color;
+.dropdown-toggle {
+    background-color: red;
+}
+
+.dropdown-icon {
+    width: 40px;
 }

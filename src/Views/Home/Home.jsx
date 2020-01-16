@@ -9,10 +9,8 @@ export class Home extends Component {
     
     render() {
         return (
-            <div className="main">
-                <div className="header">
-                    <Header />
-                </div>
+            <div className="view-body">
+                <Header />
                 <div>
                     <h1>hello</h1>
                 </div>

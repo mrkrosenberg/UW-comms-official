@@ -1,0 +1,10 @@
+// SCSS imports
+@import 'src/Styles/variables.scss';
+
+
+.disclaimer-text {
+    height: 20vh;
+    width: 100%;
+    background-color: $accent-color;
+    color: $primary-color;
+}

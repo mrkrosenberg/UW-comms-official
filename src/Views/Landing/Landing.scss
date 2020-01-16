@@ -17,12 +17,13 @@
 }
 
 .middle {
-    height: 80vh;
+    // height: 80vh;
     background-color: $secondary-color;
 }
 
-header {
+.auth-header {
     position: fixed;
+    z-index: 10;
     width: 90%;
 }
 
@@ -30,10 +31,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-
     height: 10vh;
-    z-index: 10;
-    // background-color: rgba(241,241,241, 0.6);
 }
 
 .option-button {
@@ -63,20 +61,21 @@ header {
     display: inline-block;
     padding: 30px;
     margin: 20vh auto auto 10vw;
-    background-color: rgba(74, 126, 165, 0.5);
+    background-color: $welcome-text-bg;
     border: 2px outset $accent-color;
     color: $tertiary-color;
 }
 
-// p, h3 {
-//     width: 100%;
-//     display: inline-block;
-// }
 
-@media(max-width: 700px) {
+@media(max-width: 770px) {
     .welcome-text {
         display: inline-block;
         width: 100vw;
         margin: 20vh auto auto auto
+    }
+
+    .feature {
+        height: 40vh;
+
     }
 }
