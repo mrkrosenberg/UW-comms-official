@@ -53,10 +53,9 @@ function Header() {
                                 <li>Pool/Rec</li>
                             </Link> 
                         </ul>
-                        
+                        <button onClick={signOut} >Sign Out</button>
                     </Dropdown.Menu>
-                </Dropdown>
-                
+                </Dropdown>    
             </nav>
         );
 };

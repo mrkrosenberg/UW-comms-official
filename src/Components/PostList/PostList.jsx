@@ -3,10 +3,18 @@ import React, { Component } from 'react';
 // Database Ref
 import Firebase from '../../Config/Firebase';
 
+// Stylesheet
+import './PostList.scss'
+
 // Components
 import Post from '../Post/Post';
 import EntryForm1 from '../EntryForm/EntryForm1';
 import Button from '../Button/Button';
+
+// Bootstrap Imports
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export class PostList extends Component {
 
@@ -67,28 +75,37 @@ export class PostList extends Component {
     render() {
         return (
             <section className="view-body">
-                {/* <div> */}
-                    { this.state.posts.map((post) => {
-                            // console.log(post);
-                            return(
-                                <div className="post">
-                                    <Post 
-                                        key={post.id} 
-                                        postId={post.id} 
-                                        postTitle={post.title} 
-                                        postBody={post.body} 
-                                        postUser={post.user}
-                                        currentUser={this.currentUser} />
-                                        {/* move this into post component */}
-                                        { this.currentUser === post.user && <Button 
-                                                                                postId={post.id}
-                                                                                deletePost={this.deletePost}
-                                                                            /> }
-                                </div>
-                            )
-                        })
-                    }
-                {/* </div> */}
+                <div className="posts-container">
+                    <Container>
+                        <Row>
+                            <Col md={2}/>
+                            <Col md={8}>
+                                    { this.state.posts.map((post) => {
+                                        // console.log(post);
+                                        return(
+                                            <div className="post">
+                                                <Post 
+                                                    key={post.id} 
+                                                    postId={post.id} 
+                                                    postTitle={post.title} 
+                                                    postBody={post.body} 
+                                                    postUser={post.user}
+                                                    currentUser={this.currentUser} />
+                                                    {/* move this into post component */}
+                                                    { this.currentUser === post.user && <Button 
+                                                                                            postId={post.id}
+                                                                                            deletePost={this.deletePost}
+                                                                                        /> }
+                                            </div>
+                                        )
+                                    })};
+                            </Col>
+                            <Col md={2}/>
+                        </Row>
+                    </Container>
+                    
+                </div>
+                    
                 <div className="entry-form">
                     {this.showEntryForm && <EntryForm1 addPost={this.addPost} />}
                 </div>

@@ -1,0 +1,11 @@
+// SCSS imports
+@import 'src/Styles/variables.scss';
+
+.posts-container {
+    height: 80vh;
+    // border: 1px solid $accent-color;
+}
+
+.post {
+    background-color: white;
+}

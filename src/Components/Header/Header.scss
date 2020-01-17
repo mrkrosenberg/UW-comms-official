@@ -1,8 +1,15 @@
 // SCSS imports
 @import 'src/Styles/variables.scss';
 
-.dropdown-toggle {
-    background-color: red;
+.dropdown-toggle.btn.btn-primary {
+    background-color: $secondary-color;
+    border: none;
+    &::after {
+        display: none;
+    }
+    &:focus {
+        outline: none;
+    }
 }
 
 .dropdown-icon {

@@ -1,2 +1,7 @@
+// SCSS imports
+@import 'src/Styles/variables.scss';
+
 .view-body {
+    height: 100vh;
+    background-color: $secondary-color;
 }
