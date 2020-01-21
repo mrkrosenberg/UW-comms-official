@@ -53,9 +53,21 @@ function Header() {
                                 <li>Pool/Rec</li>
                             </Link> 
                         </ul>
-                        <button onClick={signOut} >Sign Out</button>
+                        <button onClick={signOut} alt="Menu">Sign Out</button>
                     </Dropdown.Menu>
-                </Dropdown>    
+                </Dropdown> 
+                <Dropdown className="user">
+                    <Dropdown.Toggle>
+                        <img src={homeIcon} alt="User" className="dropdown-icon user-icon"/>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <ul>
+                            <Link to="/account">
+                                <li>Account Settings</li>
+                            </Link>
+                        </ul>
+                    </Dropdown.Menu>
+                </Dropdown>   
             </nav>
         );
 };

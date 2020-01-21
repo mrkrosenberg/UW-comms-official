@@ -28,23 +28,25 @@ const LogIn = ({ history }, props) => {
 
   const { currentUser } = useContext(AuthContext);
 
+
   if (currentUser) {
     return <Redirect to="/" />;
-  }
+  };
 
   return (
     <div className="auth-form">
-      <h1>Log in</h1>
+      {/* <button onClick={closeModal}>X</button> */}
+      <h1 className="auth-title text-center">Log in</h1>
       <form onSubmit={ handleLogin }>
-        <label>
+        <label className="auth-input-label">
           Email
-          <input name="email" type="email" placeholder="Email" />
+          <input className="auth-input" name="email" type="email" placeholder="Email" />
         </label>
-        <label>
+        <label className="auth-input-label">
           Password
-          <input name="password" type="password" placeholder="Password" />
+          <input className="auth-input" name="password" type="password" placeholder="Password" />
         </label>
-        <button type="submit">Log in</button>
+        <button className="auth-submit" type="submit">Log in</button>
       </form>
       {/* <div className="signup">
           <h6>New User? <Link to="/signup">SignUp</Link> </h6>

@@ -59,19 +59,19 @@ export class PostList extends Component {
         this.unsubscribe();
     };
     
-        // CRUD Methods
-        addPost = (post) => {
-            this.db.add({
-                user: this.currentUser,
-                title: post.title,
-                body: post.body
-            })
-        };
-    
-        deletePost = (post) => {
-            console.log(post);
-            // this.db.
-        };
+// CRUD Methods
+    addPost = (post) => {
+        this.db.add({
+            user: this.currentUser,
+            title: post.title,
+            body: post.body
+        })
+    };
+
+    deletePost = (post) => {
+        console.log(post);
+        // this.db.
+    };
 
     render() {
         return (

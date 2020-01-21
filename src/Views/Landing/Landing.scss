@@ -52,7 +52,7 @@
     margin: 0;
     height: 100%;
     width: 100%;
-    background-color: $accent-color;
+    background-color: $tertiary-color;
 }
 
 .welcome-text {
@@ -64,6 +64,10 @@
     background-color: $welcome-text-bg;
     border: 2px outset $accent-color;
     color: $tertiary-color;
+}
+
+.modal-header {
+    background-color: $accent-color;
 }
 
 

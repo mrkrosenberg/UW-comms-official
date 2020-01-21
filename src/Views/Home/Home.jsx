@@ -5,7 +5,6 @@ import Firebase from '../../Config/Firebase';
 
 // Components
 import Header from '../../Components/Header/Header';
-import PostList from '../../Components/PostList/PostList';
 import NewsPost from '../../Components/NewsPost/NewsPost';
 
 
@@ -56,10 +55,10 @@ export class Home extends Component {
             <div className="view-body">
                 <Header />
                 <div>
-                    <h1>hello</h1>
+                    <h1 className="view-title text-center">Community Board</h1>
                 </div>
                 <div className="news-container">
-                    <h1>Announcements/News from Union West Management</h1>
+                    <h1 className="news-title text-center">Happenings at Union West Apartments</h1>
                     {/* <PostList collection={this.collection}/> */}
                     { this.state.posts.map((post) => {
                         return (

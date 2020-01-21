@@ -12,7 +12,8 @@ import './App.scss';
 import Landing from './Views/Landing/Landing';
 import Home from './Views/Home/Home';
 import LogIn from './Views/LogIn/LogIn';
-import SignUp from './Views/SignUp/SignUp'
+import SignUp from './Views/SignUp/SignUp';
+import UserAccount from './Views/UserAccount/UserAccount';
 // import Footer from '../src/Components/Footer/Footer';
 import Gym from './Views/Gym/Gym';
 import Maintenance from './Views/Maintenance/Maintenance';
@@ -38,6 +39,7 @@ function App() {
               <ProtectedRoute path="/park" component={Park} />
               <ProtectedRoute path="/parking" component={Parking} />
               <ProtectedRoute path="/pool" component={Pool} />
+              <ProtectedRoute path="/account" component={UserAccount} />
             </Switch>
           </div>
           {/* <Footer /> */}

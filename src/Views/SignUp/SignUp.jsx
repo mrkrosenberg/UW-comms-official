@@ -22,17 +22,17 @@ const SignUp = ({ history }) => {
 
   return (
     <div className="auth-form">
-      <h1>Sign up</h1>
+      <h1 className="auth-title text-center">Sign up</h1>
       <form onSubmit={ handleSignUp }>
-        <label>
+        <label className="auth-input-label" >
           Email
-          <input name="email" type="email" placeholder="Email" />
+          <input className="auth-input" name="email" type="email" placeholder="Email" />
         </label>
-        <label>
+        <label className="auth-input-label" >
           Password
-          <input name="password" type="password" placeholder="Password" />
+          <input className="auth-input" name="password" type="password" placeholder="Password" />
         </label>
-        <button type="submit">Sign Up</button>
+        <button className="auth-submit" type="submit">Sign Up</button>
       </form>
     </div>
   );

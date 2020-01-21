@@ -1,6 +1,11 @@
 // SCSS imports
 @import 'src/Styles/variables.scss';
 
+.nav-links {
+    position: relative;
+    margin-bottom: 20vh;
+}
+
 .dropdown-toggle.btn.btn-primary {
     background-color: $secondary-color;
     border: none;
@@ -14,4 +19,13 @@
 
 .dropdown-icon {
     width: 40px;
+}
+
+.user {
+    position: absolute;
+    right: auto;
+}
+
+.user-icon {
+    display: inline-block;
 }

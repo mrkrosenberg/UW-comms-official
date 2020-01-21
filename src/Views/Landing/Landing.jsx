@@ -90,7 +90,7 @@ export class Landing extends Component {
                         </div>
                     </header>
                     <Modal 
-                        // className="modal"
+                        // className="text-center"
                         show={this.state.showModal} 
                         onHide={this.closeModal}
                         size="lg"
