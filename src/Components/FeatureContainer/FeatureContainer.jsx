@@ -22,7 +22,7 @@ function FeatureContainer() {
                     <Col md={12} className="connect">
                         <div className="container text-center">
                             <div className="icon-container">
-                                <img class="feature-icon" src={connectIcon} alt=""></img>
+                                <img className="feature-icon" src={connectIcon} alt=""></img>
                             </div>
                             <div className="container feature-text">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -37,7 +37,7 @@ function FeatureContainer() {
                     <Col md={4} className="feature">
                         <div className="container text-center">
                             <div className="icon-container">
-                                <img class="feature-icon" src={noteIcon} alt=""></img>
+                                <img className="feature-icon" src={noteIcon} alt=""></img>
                             </div>
                             <div className="container feature-text">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -50,7 +50,7 @@ function FeatureContainer() {
                     <Col md={4} className="feature">
                         <div className="container text-center">
                             <div className="icon-container">
-                                <img class="feature-icon" src={newsIcon} alt=""></img>
+                                <img className="feature-icon" src={newsIcon} alt=""></img>
                             </div>
                             <div className="container feature-text">
                                 <p>
@@ -64,7 +64,7 @@ function FeatureContainer() {
                     <Col md={4} className="feature">
                         <div className="container text-center">
                             <div className="icon-container">
-                                <img class="feature-icon" src={deviceIcon} alt=""></img>
+                                <img className="feature-icon" src={deviceIcon} alt=""></img>
                             </div>
                             <div className="container feature-text">
                                 <p>

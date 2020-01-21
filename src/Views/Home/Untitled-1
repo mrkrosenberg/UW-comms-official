@@ -1,0 +1,9 @@
+1. add styling to everything that is already built
+2. add a spinner for landing page
+3. add a redirect to landing page so it will render home view if logged in
+4. add news component to stylistically separate news and posts
+5. connect delete button
+6. add account settings view
+    - form to change password
+    - button to delete account
+7. add PWA functionality

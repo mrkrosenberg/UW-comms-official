@@ -33,30 +33,31 @@ export class PostList extends Component {
         };
     };
 
-        // Lifecycle Methods
-        componentDidMount() {
+// Lifecycle Methods
+    componentDidMount() {
 
-            console.log('current user: ', this.currentUser)
-    
-          this.unsubscribe = this.db.onSnapshot((snapshot) => {
-                var postsArray = snapshot.docs.map((doc) => {
-                    return {
-                        id: doc.id,
-                        user: doc.data().user,
-                        title: doc.data().title,
-                        body: doc.data().body
-                    };
-                });
-    
-                this.setState({
-                    posts: postsArray
-                });
+        console.log('current user: ', this.currentUser)
+
+        this.unsubscribe = this.db.onSnapshot((snapshot) => {
+            var postsArray = snapshot.docs.map((doc) => {
+                // console.log(doc.id)
+                return {
+                    id: doc.id,
+                    user: doc.data().user,
+                    title: doc.data().title,
+                    body: doc.data().body
+                };
             });
-        };
-    
-        componentWillUnmount() {
-            this.unsubscribe();
-        };
+
+            this.setState({
+                posts: postsArray
+            });
+        });
+    };
+
+    componentWillUnmount() {
+        this.unsubscribe();
+    };
     
         // CRUD Methods
         addPost = (post) => {
