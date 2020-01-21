@@ -22,7 +22,7 @@ export class PostList extends Component {
         super(props);
 
         this.collection = props.collection;
-        this.showEntryForm = props.showEntryForm;
+        // this.showEntryForm = props.showEntryForm;
 
         this.app = Firebase;
         this.db = this.app.firestore().collection(this.collection);
@@ -36,7 +36,7 @@ export class PostList extends Component {
 // Lifecycle Methods
     componentDidMount() {
 
-        console.log('current user: ', this.currentUser)
+        // console.log('current user: ', this.currentUser)
 
         this.unsubscribe = this.db.onSnapshot((snapshot) => {
             var postsArray = snapshot.docs.map((doc) => {
@@ -108,7 +108,7 @@ export class PostList extends Component {
                 </div>
                     
                 <div className="entry-form">
-                    {this.showEntryForm && <EntryForm1 addPost={this.addPost} />}
+                    <EntryForm1 addPost={this.addPost} />
                 </div>
             </section>
         )

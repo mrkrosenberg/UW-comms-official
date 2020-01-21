@@ -64,6 +64,7 @@ export class Home extends Component {
                     { this.state.posts.map((post) => {
                         return (
                             <NewsPost
+                                    key={post.id}
                                     postTitle={post.title}
                                     postBody={post.body}
                                     eventTime={post.time}
