@@ -23,11 +23,20 @@ export class UserAccount extends Component {
         console.log(this.currentUser)
     };
 
+    deleteAccount = () => {
+        this.currentUser.delete().then(function() {
+            alert('user has been deleted')
+        }).catch(function(error) {
+            console.log('error: ', error)
+        })
+    }
+
     render() {
         return (
             <div className="view-body">
                 <Header />
                 <h1>user account settings</h1>
+                <button onClick={this.deleteAccount}>Delete Account</button>
             </div>
         )
     }
