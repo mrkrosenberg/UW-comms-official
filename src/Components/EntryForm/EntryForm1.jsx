@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import useForm from 'react-hook-form';
+
+// Stylesheet
 import './EntryForm.scss';
 
 export default function EntryForm1 (props) {
     
 
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit } = useForm();
     const [ title, setTitle ] = useState('');
     const [ body, setBody ] = useState('');
 
 
-    const onSubmit = (data) => {
-        props.addPost(data);
+    const onSubmit = (post) => {
+        props.addPost(post);
         setTitle('');
         setBody(''); 
      };
 
     return (
-        <form onSubmit={ handleSubmit(onSubmit) }>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <input 
                 value={title}
                 onChange={e => setTitle(e.target.value)}
@@ -32,7 +34,9 @@ export default function EntryForm1 (props) {
                 placeholder="Body" 
                 name="body" 
                 ref={register} />            
-            <input type="submit" value="Post" />
+            <input 
+                type="submit" 
+                value="Post" />
         </form>
     );
 
