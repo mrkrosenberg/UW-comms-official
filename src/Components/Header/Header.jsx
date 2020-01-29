@@ -53,7 +53,6 @@ function Header() {
                                 <li>Pool/Rec</li>
                             </Link> 
                         </ul>
-                        <button onClick={signOut} alt="Menu">Sign Out</button>
                     </Dropdown.Menu>
                 </Dropdown> 
                 <Dropdown className="user">
@@ -65,6 +64,9 @@ function Header() {
                             <Link to="/account">
                                 <li>Account Settings</li>
                             </Link>
+                            <li>
+                                <button onClick={signOut} alt="Menu">Sign Out</button>
+                            </li>
                         </ul>
                     </Dropdown.Menu>
                 </Dropdown>   
