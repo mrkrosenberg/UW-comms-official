@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { auth as FirebaseAuth } from 'firebase/app';
 
 // Database Ref
 import Firebase from '../../Config/Firebase';
@@ -37,16 +38,16 @@ export class UserAccount extends Component {
 
     reAuthUser = (data) => {
         console.log('email: ', data.userEmail, 'password: ', data.password);
-        // const userCredential = this.app.auth.EmailAuthProvider.credential(
-        //     data.email,
-        //     data.password
-        // )
-        // this.currentUser.reauthenticateWithCredential(data.userEmail, data.password)
-        //     .then(function() {
-        //         alert('user has been reauthenticated')
-        //     }).catch(function(error) {
-        //         console.log('reauth error: ', error)
-        //     })
+        const userCredential = FirebaseAuth.EmailAuthProvider.credential(
+            data.userEmail,
+            data.password
+        );
+        this.currentUser.reauthenticateWithCredential(userCredential)
+            .then(function() {
+                alert('user has been reauthenticated')
+            }).catch(function(error) {
+                console.log('reauth error: ', error)
+            })
     };
 
     render() {
