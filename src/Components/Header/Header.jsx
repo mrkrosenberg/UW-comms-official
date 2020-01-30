@@ -52,15 +52,7 @@ function Header() {
                             <Link to="/pool">
                                 <li>Pool/Rec</li>
                             </Link> 
-                        </ul>
-                    </Dropdown.Menu>
-                </Dropdown> 
-                <Dropdown className="user">
-                    <Dropdown.Toggle>
-                        <img src={homeIcon} alt="User" className="dropdown-icon user-icon"/>
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <ul>
+                            <hr></hr>
                             <Link to="/account">
                                 <li>Account Settings</li>
                             </Link>

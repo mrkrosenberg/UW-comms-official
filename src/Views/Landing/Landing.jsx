@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-// Auth Shtuff
-// import { AuthContext } from '../../Authentication/Auth';
 
 // Components
 import LogIn from '../LogIn/LogIn';
@@ -70,15 +68,10 @@ export class Landing extends Component {
         this.setState({
             userStatus: ''
         })
+
     };
 
     render() {
-
-    // const { currentUser } = useContext(AuthContext);
-
-    // if (currentUser) {
-    //     return <Redirect to="/" />;
-    // }
 
         return (
             <div className="landing-view">
