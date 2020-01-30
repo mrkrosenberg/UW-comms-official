@@ -17,8 +17,8 @@ const SignUp = ({ history }) => {
       } catch (error) {
         alert(error);
       }
-  }, [history]
-);
+    }, [history]
+  );
 
   return (
     <div className="auth-form">

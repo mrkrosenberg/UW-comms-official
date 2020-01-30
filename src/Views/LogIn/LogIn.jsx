@@ -22,8 +22,7 @@ const LogIn = ({ history }, props) => {
       } catch (error) {
         alert(error);
       }
-    },
-    [history]
+    }, [history]
   );
 
   const { currentUser } = useContext(AuthContext);
