@@ -10,6 +10,7 @@ import '../View-Styles/views.scss';
 // Components
 import Header from '../../Components/Header/Header';
 import ReAuthForm from '../../Components/ReAuthForm/ReAuthForm';
+import Modal from 'react-bootstrap/Modal';
 
 export class UserAccount extends Component {
 
@@ -18,13 +19,26 @@ export class UserAccount extends Component {
 
         this.app = Firebase;
         this.currentUser = this.app.auth().currentUser;
+        this.deleteAccount = this.deleteAccount.bind(this);
+        this.showModal = this.showModal.bind(this);
+
+        this.state = {
+            showModal: false
+        };
+
 
     };
 
-// Lifecycle methods
+
     componentDidMount() {
         console.log(this.currentUser)
     };
+
+    showModal = () => {
+        this.setState({
+            showModal: !this.state.showModal
+        });
+    }
 
     deleteAccount = () => {
         this.currentUser.delete()
@@ -44,10 +58,11 @@ export class UserAccount extends Component {
         );
         this.currentUser.reauthenticateWithCredential(userCredential)
             .then(function() {
-                alert('user has been reauthenticated')
+                alert('user has been reauthenticated');
+                // this.showModal();
             }).catch(function(error) {
                 console.log('reauth error: ', error)
-            })
+            });
     };
 
     render() {
@@ -58,6 +73,11 @@ export class UserAccount extends Component {
                 <ReAuthForm 
                     reAuthUser={this.reAuthUser}
                     firebase={this.app}/>
+                <Modal
+                    show={this.state.showModal}
+                    onHide={this.showModal}>
+
+                </Modal>
                 <button onClick={this.deleteAccount}>Delete Account</button>
             </div>
         )

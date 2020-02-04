@@ -6,12 +6,10 @@ import LogIn from '../LogIn/LogIn';
 import SignUp from '../SignUp/SignUp';
 import FeatureContainer from '../../Components/FeatureContainer/FeatureContainer';
 import Disclaimer from '../../Components/Disclaimer/Disclaimer';
+import Modal from 'react-bootstrap/Modal';
 
 // StyleSheet
 import './Landing.scss';
-
-// Bootstrap Components
-import Modal from 'react-bootstrap/Modal';
 
 // change to functional component for authContext stuff
 export class Landing extends Component {
@@ -29,26 +27,17 @@ export class Landing extends Component {
 
     };
 
-    openModal = () => {
+
+    showModal = () => {
 
         this.setState({
-            showModal: true
-        });
+            showModal: !this.state.showModal
+        })
     };
 
-    closeModal = () => {
-
-        this.setState({
-            showModal: false
-        });
-    };
-
-   
-// Refactor these functions
-// flip order of callbacks
     logIn = () => {
 
-        this.openModal();
+        this.showModal();
         this.setState({
             userStatus: 'login'
         });
@@ -56,7 +45,7 @@ export class Landing extends Component {
 
     signUp = () => {
 
-        this.openModal();
+        this.showModal();
         this.setState({
             userStatus: 'signup'
         });
@@ -85,13 +74,13 @@ export class Landing extends Component {
                     <Modal 
                         // className="text-center"
                         show={this.state.showModal} 
-                        onHide={this.closeModal}
+                        onHide={this.showModal}
                         size="lg"
                         aria-labelledby="contained-modal-title-vcenter"
                         centered>
                             <Modal.Header closeButton>
-                                { this.state.userStatus === 'login' && <LogIn closeModal={this.closeModal}/>}
-                                { this.state.userStatus === 'signup' && <SignUp closeModal={this.closeModal}/>}
+                                { this.state.userStatus === 'login' && <LogIn closeModal={this.showModal}/>}
+                                { this.state.userStatus === 'signup' && <SignUp closeModal={this.showModal}/>}
                             </Modal.Header>
                         
                     </Modal>

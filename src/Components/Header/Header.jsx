@@ -16,7 +16,6 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 // Images
 import hamburgerIcon from '../../Static/hamburgericon.png';
-import homeIcon from '../../Static/homeicon.png';
 
 function Header() {
 
