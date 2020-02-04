@@ -33,9 +33,11 @@ export class Post extends Component {
             <div>
                 <article className="post" onClick={this.showModal}>
                     <h3>{this.post.title}</h3>
-                    {/* <p>{this.post.body}</p>
-                    <p>{this.post.id}</p>
-                    <p>{this.post.postUser}</p> */}
+                    <p>
+                       {
+                        this.post.body.substring(0, 10)
+                       }... 
+                    </p>
                 </article>
                 <Modal
                     show={this.state.showModal}
