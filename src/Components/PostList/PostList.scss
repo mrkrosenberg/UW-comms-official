@@ -3,7 +3,8 @@
 
 .posts-container {
     height: 80vh;
-    // border: 1px solid $accent-color;
+    background-color: rgba(256, 256, 256, 0.3);
+    border: 1px solid $accent-color;
 }
 
 .post {

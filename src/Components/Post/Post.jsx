@@ -21,29 +21,17 @@ export class Post extends Component {
         }
     };
 
-    openModal = () => {
-
+    showModal = () => {
         this.setState({
-            showModal: true
-        });
+            showModal: !this.state.showModal
+        })
     };
 
-    closeModal = () => {
-
-        this.setState({
-            showModal: false
-        });
-    };
-
-    showPost = () => {
-
-        this.openModal();
-    };
 
     render() {
         return (
             <div>
-                <article className="post" onClick={this.openModal}>
+                <article className="post" onClick={this.showModal}>
                     <h3>{this.post.title}</h3>
                     {/* <p>{this.post.body}</p>
                     <p>{this.post.id}</p>
@@ -51,7 +39,7 @@ export class Post extends Component {
                 </article>
                 <Modal
                     show={this.state.showModal}
-                    onHide={this.closeModal}>
+                    onHide={this.showModal}>
                     <Modal.Header closeButton>
                         <h3>{this.post.title}</h3>
                     </Modal.Header>

@@ -76,32 +76,33 @@ export class PostList extends Component {
     render() {
         return (
             <section className="view-body">
-                <div className="posts-container">
+                <div >
                     <Container>
                         <Row>
-                            <Col md={2}/>
-                            <Col md={8}>
-                                    { this.state.posts.map((post) => {
-                                        // console.log(post);
-                                        return(
-                                            <div className="post">
-                                                <Post 
-                                                    key={post.id} 
-                                                    postId={post.id} 
-                                                    postTitle={post.title} 
-                                                    postBody={post.body} 
-                                                    postUser={post.user}
-                                                    currentUser={this.currentUser} />
-                                                    {/* move this into post component */}
-                                                    { this.currentUser === post.user && <Button 
-                                                                                            postId={post.id}
-                                                                                            deletePost={this.deletePost}
-                                                                                        /> }
-                                            </div>
-                                        )
-                                    })};
+                            <Col md={1}/>
+                            <Col className="posts-container" md={10}>
+                                { this.state.posts.map((post) => {
+                                    // console.log(post);
+                                    return(
+                                        <div className="post">
+                                            <Post 
+                                                key={post.id} 
+                                                postId={post.id} 
+                                                postTitle={post.title} 
+                                                postBody={post.body} 
+                                                postUser={post.user}
+                                                currentUser={this.currentUser} />
+                                                {/* move this into post component */}
+                                                { this.currentUser === post.user && <Button 
+                                                                                        postId={post.id}
+                                                                                        deletePost={this.deletePost}
+                                                                                    /> }
+                                        </div>
+                                    )
+                                    })
+                                };
                             </Col>
-                            <Col md={2}/>
+                            <Col md={1}/>
                         </Row>
                     </Container>
                     
