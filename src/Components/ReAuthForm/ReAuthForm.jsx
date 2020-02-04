@@ -35,7 +35,7 @@ function ReAuthForm(props) {
                     ref={register}/>
                 <input 
                     type="submit"
-                    value="Authenticate"/>
+                    value="Delete Account"/>
             </form>
             
         </div>

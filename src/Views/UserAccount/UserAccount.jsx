@@ -20,7 +20,7 @@ export class UserAccount extends Component {
         this.app = Firebase;
         this.currentUser = this.app.auth().currentUser;
         this.deleteAccount = this.deleteAccount.bind(this);
-        this.showModal = this.showModal.bind(this);
+        // this.showModal = this.showModal.bind(this);
 
         this.state = {
             showModal: false
@@ -57,9 +57,8 @@ export class UserAccount extends Component {
             data.password
         );
         this.currentUser.reauthenticateWithCredential(userCredential)
-            .then(function() {
-                alert('user has been reauthenticated');
-                // this.showModal();
+            .then(this.showModal(), {
+                
             }).catch(function(error) {
                 console.log('reauth error: ', error)
             });
@@ -75,10 +74,12 @@ export class UserAccount extends Component {
                     firebase={this.app}/>
                 <Modal
                     show={this.state.showModal}
-                    onHide={this.showModal}>
-
+                    onHide={this.showModal}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered>
+                        <button onClick={this.deleteAccount}>Confirm</button>
                 </Modal>
-                <button onClick={this.deleteAccount}>Delete Account</button>
             </div>
         )
     }
