@@ -11,7 +11,7 @@ function ReAuthForm(props) {
     const [ password, setPassword ] = useState('');
 
     const onSubmit = (data) => {
-        console.log('form submitted: ', data);
+        // console.log('form submitted: ', data);
         props.reAuthUser(data);
         setPassword('');
     };
@@ -23,14 +23,14 @@ function ReAuthForm(props) {
                     value={userEmail}
                     onChange={e => setUserEmail(e.target.value)}
                     type="email"
-                    placeholder="email"
+                    placeholder="re-enter email"
                     name="userEmail"
                     ref={register}/>
                 <input
                     value={password} 
                     onChange={e => setPassword(e.target.value)}
                     type="password"
-                    placeholder="password"
+                    placeholder="re-enter password"
                     name="password"
                     ref={register}/>
                 <input 

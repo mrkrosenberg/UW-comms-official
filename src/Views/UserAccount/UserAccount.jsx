@@ -20,19 +20,13 @@ export class UserAccount extends Component {
         this.app = Firebase;
         this.currentUser = this.app.auth().currentUser;
         this.deleteAccount = this.deleteAccount.bind(this);
-        // this.showModal = this.showModal.bind(this);
 
         this.state = {
             showModal: false
         };
 
-
     };
 
-
-    componentDidMount() {
-        console.log(this.currentUser)
-    };
 
     showModal = () => {
         this.setState({
@@ -51,15 +45,14 @@ export class UserAccount extends Component {
     }
 
     reAuthUser = (data) => {
-        console.log('email: ', data.userEmail, 'password: ', data.password);
+        // console.log('email: ', data.userEmail, 'password: ', data.password);
         const userCredential = FirebaseAuth.EmailAuthProvider.credential(
             data.userEmail,
             data.password
         );
         this.currentUser.reauthenticateWithCredential(userCredential)
-            .then(this.showModal(), {
-                
-            }).catch(function(error) {
+            .then(this.deleteAccount)
+            .catch(function(error) {
                 console.log('reauth error: ', error)
             });
     };
@@ -69,16 +62,24 @@ export class UserAccount extends Component {
             <div className="view-body">
                 <Header />
                 <h1>user account settings</h1>
-                <ReAuthForm 
-                    reAuthUser={this.reAuthUser}
-                    firebase={this.app}/>
+                <button onClick={this.showModal}>Delete Account</button>
                 <Modal
                     show={this.state.showModal}
                     onHide={this.showModal}
                     size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
                     centered>
-                        <button onClick={this.deleteAccount}>Confirm</button>
+                        <Modal.Header closeButton>
+                            <h3>
+                                Please Re-enter Credentials to Confirm
+                            </h3>
+                            <ReAuthForm 
+                                reAuthUser={this.reAuthUser}
+                                firebase={this.app}
+                            />
+                        </Modal.Header>
+                        
+                        <button onClick={this.deleteAccount}>More Confirm</button>
                 </Modal>
             </div>
         )
