@@ -1,6 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "UW Community Board",
+  "name": "UW Community Board",
+  "description": "Unofficial Union West Community Board App",
+  "lang": "en-US",
+  "start_url": ".",
+  "scope": ".",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +22,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#B5D555",
+  "background_color": "#203748",
+  "orientation": "any"
 }

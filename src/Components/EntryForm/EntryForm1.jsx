@@ -29,15 +29,6 @@ export default function EntryForm1 (props) {
                 name="title" 
                 ref={register} 
             />
-            {/* <input
-                required 
-                value={body}
-                onChange={e => setBody(e.target.value)}
-                type="text" 
-                placeholder="Body" 
-                name="body" 
-                ref={register} 
-            /> */}
             <textarea 
                 required
                 value={body}
