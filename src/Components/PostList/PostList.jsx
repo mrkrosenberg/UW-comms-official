@@ -36,8 +36,6 @@ export class PostList extends Component {
 // Lifecycle Methods
     componentDidMount() {
 
-        // console.log('current user: ', this.currentUser)
-
         this.unsubscribe = this.db.onSnapshot((snapshot) => {
             var postsArray = snapshot.docs.map((doc) => {
                 // console.log(doc.id)
@@ -70,7 +68,12 @@ export class PostList extends Component {
 
     deletePost = (post) => {
         console.log(post);
-        // this.db.
+        this.db.doc(post).delete()
+            .then(function() {
+                alert('post deleted')
+            }).catch(function(error) {
+                alert('there was an error deleting your post: ', error)
+            });
     };
 
     render() {
@@ -100,7 +103,7 @@ export class PostList extends Component {
                                         </div>
                                     )
                                     })
-                                };
+                                }
                             </Col>
                             <Col md={1}/>
                         </Row>
