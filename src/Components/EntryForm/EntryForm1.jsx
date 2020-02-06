@@ -20,23 +20,37 @@ export default function EntryForm1 (props) {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <input 
+            <input
+                required 
                 value={title}
                 onChange={e => setTitle(e.target.value)}
                 type="text" 
                 placeholder="Title" 
                 name="title" 
-                ref={register} />
-            <input 
+                ref={register} 
+            />
+            {/* <input
+                required 
                 value={body}
                 onChange={e => setBody(e.target.value)}
                 type="text" 
                 placeholder="Body" 
                 name="body" 
-                ref={register} />            
+                ref={register} 
+            /> */}
+            <textarea 
+                required
+                value={body}
+                onChange={e => setBody(e.target.value)}
+                type="text"
+                placeholder="body"
+                name="body"
+                ref={register} 
+            />          
             <input 
                 type="submit" 
-                value="Post" />
+                value="Post" 
+            />
         </form>
     );
 

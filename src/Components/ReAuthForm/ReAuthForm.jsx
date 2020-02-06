@@ -27,6 +27,7 @@ function ReAuthForm(props) {
                     name="userEmail"
                     ref={register}/> */}
                 <input
+                    required
                     value={password} 
                     onChange={e => setPassword(e.target.value)}
                     type="password"

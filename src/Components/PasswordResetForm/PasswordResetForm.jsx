@@ -27,6 +27,7 @@ function PasswordResetForm(props) {
         <div className="password-form-container">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input
+                    required
                     value={password}
                     onChange={e => setPassword(e.target.value)} 
                     type="password"
@@ -35,6 +36,7 @@ function PasswordResetForm(props) {
                     ref={register}
                 />
                 <input
+                    required
                     value={newPassword}
                     onChange={e => setNewPassword(e.target.value)} 
                     type="password"
@@ -43,6 +45,7 @@ function PasswordResetForm(props) {
                     ref={register}
                 />
                 <input
+                    required
                     value={confirmPassword}
                     onChange={e => setConfirmPassword(e.target.value)}
                     type="password"
