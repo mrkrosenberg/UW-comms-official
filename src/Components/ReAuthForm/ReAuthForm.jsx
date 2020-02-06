@@ -7,7 +7,7 @@ import './ReAuthForm.scss';
 function ReAuthForm(props) {
 
     const { register, handleSubmit } = useForm();
-    const [ userEmail, setUserEmail ] = useState('');
+    // const [ userEmail, setUserEmail ] = useState('');
     const [ password, setPassword ] = useState('');
 
     const onSubmit = (data) => {
@@ -19,13 +19,13 @@ function ReAuthForm(props) {
     return (
         <div className="form-container">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input
+                {/* <input
                     value={userEmail}
                     onChange={e => setUserEmail(e.target.value)}
                     type="email"
                     placeholder="re-enter email"
                     name="userEmail"
-                    ref={register}/>
+                    ref={register}/> */}
                 <input
                     value={password} 
                     onChange={e => setPassword(e.target.value)}

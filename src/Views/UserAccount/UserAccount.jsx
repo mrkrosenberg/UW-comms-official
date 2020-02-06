@@ -27,12 +27,11 @@ export class UserAccount extends Component {
 
     };
 
-
     showModal = () => {
         this.setState({
             showModal: !this.state.showModal
         });
-    }
+    };
 
     deleteAccount = () => {
         this.currentUser.delete()
@@ -42,12 +41,12 @@ export class UserAccount extends Component {
                 alert('There has been an error deleting your account. Please sign out and sign back in to delete account')
                 console.log('error: ', error)
             });
-    }
+    };
 
     reAuthUser = (data) => {
         // console.log('email: ', data.userEmail, 'password: ', data.password);
         const userCredential = FirebaseAuth.EmailAuthProvider.credential(
-            data.userEmail,
+            this.currentUser.email,
             data.password
         );
         this.currentUser.reauthenticateWithCredential(userCredential)
@@ -71,15 +70,13 @@ export class UserAccount extends Component {
                     centered>
                         <Modal.Header closeButton>
                             <h3>
-                                Please Re-enter Credentials to Confirm
+                                Please Re-enter Password
                             </h3>
                             <ReAuthForm 
                                 reAuthUser={this.reAuthUser}
                                 firebase={this.app}
                             />
-                        </Modal.Header>
-                        
-                        <button onClick={this.deleteAccount}>More Confirm</button>
+                        </Modal.Header>     
                 </Modal>
             </div>
         )
