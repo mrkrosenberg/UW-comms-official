@@ -12,7 +12,7 @@ function ReAuthForm(props) {
 
     const onSubmit = (data) => {
         // console.log('form submitted: ', data);
-        props.reAuthUser(data);
+        props.reauthDelete(data);
         setPassword('');
     };
 
@@ -32,10 +32,12 @@ function ReAuthForm(props) {
                     type="password"
                     placeholder="re-enter password"
                     name="password"
-                    ref={register}/>
+                    ref={register}
+                />
                 <input 
                     type="submit"
-                    value="Delete Account"/>
+                    value="Delete Account"
+                />
             </form>
             
         </div>

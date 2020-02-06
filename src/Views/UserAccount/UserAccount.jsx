@@ -10,6 +10,7 @@ import '../View-Styles/views.scss';
 // Components
 import Header from '../../Components/Header/Header';
 import ReAuthForm from '../../Components/ReAuthForm/ReAuthForm';
+import PasswordResetForm from '../../Components/PasswordResetForm/PasswordResetForm';
 import Modal from 'react-bootstrap/Modal';
 
 export class UserAccount extends Component {
@@ -18,11 +19,14 @@ export class UserAccount extends Component {
         super(props);
 
         this.app = Firebase;
+        this.auth = this.app.auth();
         this.currentUser = this.app.auth().currentUser;
         this.deleteAccount = this.deleteAccount.bind(this);
 
         this.state = {
-            showModal: false
+            showModal: false,
+            resetPassword: '',
+            userEmail: this.currentUser.email
         };
 
     };
@@ -43,7 +47,25 @@ export class UserAccount extends Component {
             });
     };
 
-    reAuthUser = (data) => {
+    resetPassword = () => {
+        this.currentUser.updatePassword(this.state.resetPassword)
+            .then(function() {
+                console.log('password reset successful')
+            }).catch(function(error) {
+                console.log('reset error: ', error)
+            });
+    };
+
+    sendResetEmail = () => {
+        this.auth.sendPasswordResetEmail(this.state.userEmail)
+            .then(function() {
+                console.log('email sent')
+            }).catch(function(error) {
+                alert('email error: ', error)
+            })
+    }
+
+    reauthDelete = (data) => {
         // console.log('email: ', data.userEmail, 'password: ', data.password);
         const userCredential = FirebaseAuth.EmailAuthProvider.credential(
             this.currentUser.email,
@@ -56,11 +78,32 @@ export class UserAccount extends Component {
             });
     };
 
+    reauthPassword = (data) => {
+        const userCredential = FirebaseAuth.EmailAuthProvider.credential(
+            this.currentUser.email,
+            data.password
+        );
+        console.log(data)
+        this.setState({
+            resetPassword: data.newPassword
+        })
+        console.log(this.state.resetPassword)
+        this.currentUser.reauthenticateWithCredential(userCredential)
+            .then(this.resetPassword)
+            .catch(function(error) {
+                console.log('reauth error: ', error)
+            })
+            .finally(this.sendResetEmail);
+    };
+
     render() {
         return (
             <div className="view-body">
                 <Header />
                 <h1>user account settings</h1>
+                <PasswordResetForm 
+                    reauthPassword={this.reauthPassword}
+                />
                 <button onClick={this.showModal}>Delete Account</button>
                 <Modal
                     show={this.state.showModal}
@@ -73,7 +116,7 @@ export class UserAccount extends Component {
                                 Please Re-enter Password
                             </h3>
                             <ReAuthForm 
-                                reAuthUser={this.reAuthUser}
+                                reauthDelete={this.reauthDelete}
                                 firebase={this.app}
                             />
                         </Modal.Header>     
