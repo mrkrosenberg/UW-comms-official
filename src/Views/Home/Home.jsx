@@ -6,6 +6,7 @@ import Firebase from '../../Config/Firebase';
 // Components
 import Header from '../../Components/Header/Header';
 import NewsPost from '../../Components/NewsPost/NewsPost';
+import Weather from '../../Components/Weather/Weather';
 
 
 export class Home extends Component {
@@ -59,7 +60,7 @@ export class Home extends Component {
                 </div>
                 <div className="news-container">
                     <h1 className="news-title text-center">Happenings at Union West Apartments</h1>
-                    {/* <PostList collection={this.collection}/> */}
+                    <Weather />
                     { this.state.posts.map((post) => {
                         return (
                             <NewsPost
@@ -70,7 +71,7 @@ export class Home extends Component {
                                     eventDate={post.date}        
                             />
                         )
-                    })};
+                    })}
                 </div>
             </div>
         )
