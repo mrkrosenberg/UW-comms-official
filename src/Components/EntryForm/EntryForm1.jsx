@@ -4,7 +4,7 @@ import useForm from 'react-hook-form';
 // Stylesheet
 import './EntryForm.scss';
 
-export default function EntryForm1 (props) {
+function EntryForm1 (props) {
     
 
     const { register, handleSubmit } = useForm();
@@ -46,3 +46,5 @@ export default function EntryForm1 (props) {
     );
 
 };
+
+export default EntryForm1;

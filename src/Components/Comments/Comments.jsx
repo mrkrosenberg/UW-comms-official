@@ -7,6 +7,7 @@ import Firebase from '../../Config/Firebase';
 import './Comments.scss';
 
 // Components 
+import CommentForm from '../CommentForm/CommentForm';
 import Comment from '../Comment/Comment';
 
 export class Comments extends Component {
@@ -15,17 +16,20 @@ export class Comments extends Component {
         super(props)
 
         this.app = Firebase;
-        this.db = this.app.firestore().collection('Comments').where('postId', '==', props.postId);
+        this.db = this.app.firestore().collection('Comments');
+        this.dbCollection = this.db.where('postId', '==', props.postId);
+        this.currentUser = this.app.auth().currentUser.email;
 
         this.state = {
             comments: [],
+            postId: ''
         };
 
     };
 
     componentDidMount() {
 
-        this.unsubscribe = this.db.onSnapshot((snapshot) => {
+        this.unsubscribe = this.dbCollection.onSnapshot((snapshot) => {
             var commentsArray = snapshot.docs.map((doc) => {
                 return {
                     // id: doc.data().postId,
@@ -36,6 +40,7 @@ export class Comments extends Component {
 
             this.setState({
                 comments: commentsArray,
+                postId: this.props.postId
             });
         });
     };
@@ -44,16 +49,31 @@ export class Comments extends Component {
         this.unsubscribe();
     };
 
+    addComment = (comment) => {
+        console.log('comment: ', comment)
+        this.db.add({
+            body: comment.comment,
+            user: this.currentUser,
+            postId: this.state.postId
+        })
+    };
+
     render() {
         return (
             <div>
-                <h1>Comments!</h1>
+                <h6>Comment: </h6>
+                <CommentForm
+                    addComment={this.addComment} 
+                />
                 { this.state.comments.map((comment) => {
                     return (
-                        <Comment 
-                            user={comment.user}
-                            body={comment.body}
-                        />
+                        <div className="comment">
+                            <Comment 
+                                user={comment.user}
+                                body={comment.body}
+                            />
+                        </div>
+                        
                     )
                 }) 
                 }
