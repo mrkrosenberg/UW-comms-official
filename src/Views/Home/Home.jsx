@@ -58,9 +58,9 @@ export class Home extends Component {
                 <div>
                     <h1 className="view-title text-center">Community Board</h1>
                 </div>
+                <Weather />
                 <div className="news-container">
-                    <h1 className="news-title text-center">Happenings at Union West Apartments</h1>
-                    <Weather />
+                <h1 className="news-title text-center">Happenings at Union West Apartments</h1>
                     { this.state.posts.map((post) => {
                         return (
                             <NewsPost

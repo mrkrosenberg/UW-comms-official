@@ -2,13 +2,22 @@
 @import 'src/Styles/variables.scss';
 
 .nav-links {
-    position: relative;
     margin-bottom: 20vh;
 }
 
+.signout-button {
+    background: none;
+    border: 1px solid $accent-color;
+    color: $accent-color;
+    font-weight: inherit;
+}
+
 .dropdown-toggle.btn.btn-primary {
-    background-color: $secondary-color;
+    background: none;
     border: none;
+    &::before {
+        display: none;
+    }
     &::after {
         display: none;
     }
@@ -21,11 +30,16 @@
     width: 40px;
 }
 
-.user {
-    position: absolute;
-    right: auto;
+.dropdown-menu.show {
+    background-color: $primary-transparent;
+    padding-left: 20px;
 }
 
-.user-icon {
-    display: inline-block;
+li {
+    color: $accent-color;
+    font-weight: bold;
+}
+
+hr {
+    width: 50%;
 }

@@ -16,6 +16,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 // Images
 import hamburgerIcon from '../../Static/hamburgericon.png';
+import userIcon from '../../Static/usericon.png';
 
 function Header() {
 
@@ -26,10 +27,14 @@ function Header() {
     };
 
         return (
-            <nav className="nav-links">
-                <Dropdown>
+            <nav className="nav-links d-flex justify-content-between">
+                <Dropdown drop="right">
                     <Dropdown.Toggle>
-                        <img src={hamburgerIcon} alt="" className="dropdown-icon"/>
+                        <img 
+                            src={hamburgerIcon} 
+                            alt="Menu" 
+                            className="dropdown-icon"
+                        />
                     </Dropdown.Toggle> 
                     <Dropdown.Menu>
                         <ul className="navbar-nav">
@@ -51,16 +56,28 @@ function Header() {
                             <Link to="/pool">
                                 <li>Pool/Rec</li>
                             </Link> 
-                            <hr></hr>
-                            <Link to="/account">
-                                <li>Account Settings</li>
-                            </Link>
-                            <li>
-                                <button onClick={signOut} alt="Menu">Sign Out</button>
-                            </li>
                         </ul>
                     </Dropdown.Menu>
-                </Dropdown>   
+                </Dropdown>  
+                <Dropdown drop="left">
+                    <Dropdown.Toggle>
+                        <img src={userIcon} alt="User Menu" className="dropdown-icon align-right"/>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Link to="/account">
+                            <li>My Account</li>
+                        </Link>
+                        <hr />
+                        <li>
+                            <button
+                                className="signout-button" 
+                                onClick={signOut} 
+                                alt="Menu">
+                                    Sign Out
+                            </button>
+                        </li>
+                    </Dropdown.Menu>
+                </Dropdown> 
             </nav>
         );
 };

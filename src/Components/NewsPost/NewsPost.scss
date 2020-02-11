@@ -1,0 +1,8 @@
+// SCSS imports
+@import 'src/Styles/variables.scss';
+
+.event-post {
+    background-color: $tertiary-color;
+    border: 1px solid $accent-color;
+    margin-top: 5vh;
+}
