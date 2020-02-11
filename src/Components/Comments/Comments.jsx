@@ -32,7 +32,7 @@ export class Comments extends Component {
         this.unsubscribe = this.dbCollection.onSnapshot((snapshot) => {
             var commentsArray = snapshot.docs.map((doc) => {
                 return {
-                    // id: doc.data().postId,
+                    id: doc.id,
                     user: doc.data().user,
                     body: doc.data().body
                 }
@@ -50,7 +50,7 @@ export class Comments extends Component {
     };
 
     addComment = (comment) => {
-        console.log('comment: ', comment)
+        // console.log('comment: ', comment)
         this.db.add({
             body: comment.comment,
             user: this.currentUser,
@@ -60,24 +60,23 @@ export class Comments extends Component {
 
     render() {
         return (
-            <div>
-                <h6>Comment: </h6>
+            <div className="comments-container">
+                {/* <h6>Comment: </h6> */}
                 <CommentForm
                     addComment={this.addComment} 
                 />
-                { this.state.comments.map((comment) => {
-                    return (
-                        <div className="comment">
-                            <Comment 
-                                user={comment.user}
-                                body={comment.body}
-                            />
-                        </div>
-                        
-                    )
-                }) 
-                }
-                
+                <div className="comments justify-content-around">
+                    { this.state.comments.map((comment) => {
+                        return (
+                                <Comment
+                                    key={comment.id} 
+                                    user={comment.user}
+                                    body={comment.body}
+                                />                            
+                        )
+                    }) 
+                    }
+                </div>  
             </div>
         )
     }

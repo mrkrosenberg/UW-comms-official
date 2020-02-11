@@ -1,0 +1,21 @@
+// SCSS Imports
+@import '../../Styles/variables.scss';
+
+.entry-form-container {
+    width: 100%;
+    padding: 4vh;
+    background-color: $post-list-background;
+    border: 1px solid $accent-color;
+}
+
+.post-input {
+    display: block;
+    width: 100%;
+    margin-bottom: 3vh;
+}
+
+.post-submit-button {
+    background-color: $accent-color;
+    border: 1px solid $secondary-color;
+    color: $secondary-color
+}

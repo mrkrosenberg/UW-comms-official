@@ -37,21 +37,25 @@ export class Post extends Component {
         return (
             <div>
                 <article className="post" onClick={this.showModal}>
-                    <h3>{this.post.title}</h3>
+                    <h3>
+                        {this.post.title}
+                    </h3>
                     <p>
-                       {
-                        this.post.body.substring(0, 10)
-                       }... 
+                       {this.post.body.substring(0, 10)}... 
                     </p>
                 </article>
                 <Modal
                     show={this.state.showModal}
                     onHide={this.showModal}>
                     <Modal.Header closeButton>
-                        <h3>{this.post.title}</h3>
+                        <h3>
+                            {this.post.title}
+                        </h3>
                     </Modal.Header>
                     <Modal.Body>
-                        <p>{this.post.body}</p>
+                        <p>
+                            {this.post.body}
+                        </p>
                         <Comments postId={this.props.postId}/>
                     </Modal.Body>
                 </Modal>

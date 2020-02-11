@@ -9,7 +9,6 @@ import './PostList.scss'
 // Components
 import Post from '../Post/Post';
 import EntryForm1 from '../EntryForm/EntryForm1';
-// import Comments from '../Comments/Comments';
 import Button from '../Button/Button';
 
 // Bootstrap Imports
@@ -80,43 +79,46 @@ export class PostList extends Component {
     render() {
         return (
             <section className="view-body">
-                <div >
-                    <Container>
-                        <Row>
-                            <Col md={1}/>
-                            <Col className="posts-container" md={10}>
-                                { this.state.posts.map((post) => {
-                                    // console.log(post);
-                                    return(
-                                        <div className="post">
-                                            <Post 
-                                                key={post.id} 
-                                                postId={post.id} 
-                                                postTitle={post.title} 
-                                                postBody={post.body} 
-                                                postUser={post.user}
-                                                currentUser={this.currentUser} />
-                                                {/* move this into post component */}
-                                                { this.currentUser === post.user && <Button 
-                                                                                        postId={post.id}
-                                                                                        deletePost={this.deletePost}
-                                                                                    /> 
-                                                }
-                                                {/* <Comments /> */}
-                                        </div>
-                                    )
-                                    })
-                                }
-                            </Col>
-                            <Col md={1}/>
-                        </Row>
-                    </Container>
-                    
-                </div>
-                    
-                <div className="entry-form">
-                    <EntryForm1 addPost={this.addPost} />
-                </div>
+                <header className="view-title-container text-center">
+                    <h3>{this.collection} Message Board</h3>
+                </header>
+                <Container>
+                    <Row>
+                        <Col md={1}/>
+                        <Col className="posts-container" md={10}>
+                            { this.state.posts.map((post) => {
+                                return(
+                                    <div className="post">
+                                        <Post 
+                                            key={post.id} 
+                                            postId={post.id} 
+                                            postTitle={post.title} 
+                                            postBody={post.body} 
+                                            postUser={post.user}
+                                            currentUser={this.currentUser} />
+                                            {/* move this into post component */}
+                                            { this.currentUser === post.user && <Button 
+                                                                                    postId={post.id}
+                                                                                    deletePost={this.deletePost}
+                                                                                /> 
+                                            }
+                                    </div>
+                                )
+                                })
+                            }
+                        </Col>
+                        <Col md={1}/>
+                    </Row>
+                </Container>   
+                <Container>
+                    <Row>
+                        <Col  md={1} />
+                        <Col md={10}>
+                            <EntryForm1 addPost={this.addPost} />
+                        </Col>
+                        <Col md={1} />
+                    </Row>             
+                </Container>
             </section>
         )
     };

@@ -4,8 +4,8 @@ import useForm from 'react-hook-form';
 // Stylesheet
 import './EntryForm.scss';
 
-function EntryForm1 (props) {
-    
+
+function EntryForm1 (props) {    
 
     const { register, handleSubmit } = useForm();
     const [ title, setTitle ] = useState('');
@@ -19,30 +19,36 @@ function EntryForm1 (props) {
      };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <input
-                required 
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-                type="text" 
-                placeholder="Title" 
-                name="title" 
-                ref={register} 
-            />
-            <textarea 
-                required
-                value={body}
-                onChange={e => setBody(e.target.value)}
-                type="text"
-                placeholder="body"
-                name="body"
-                ref={register} 
-            />          
-            <input 
-                type="submit" 
-                value="Post" 
-            />
-        </form>
+
+        <div className="entry-form-container">
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <input
+                    className="post-input"
+                    required 
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                    type="text" 
+                    placeholder="Title" 
+                    name="title" 
+                    ref={register} 
+                />
+                <textarea
+                    className="post-input" 
+                    required
+                    value={body}
+                    onChange={e => setBody(e.target.value)}
+                    type="text"
+                    placeholder="body"
+                    name="body"
+                    ref={register} 
+                />          
+                <input
+                    className="post-submit-button" 
+                    type="submit" 
+                    value="Submit Post" 
+                />
+            </form>
+        </div>    
     );
 
 };

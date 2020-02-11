@@ -18,17 +18,19 @@ function CommentForm(props) {
         <div className="comment-form">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input
+                    className="comment-input"
                     required
                     value={comment}
                     onChange={e => setComment(e.target.value)} 
                     type="text"
-                    placeholder="enter comment"
+                    placeholder="add comment"
                     name="comment"
                     ref={register}
                 />
                 <input 
+                    className="comment-submit-button"
                     type="submit"
-                    value="Comment"
+                    value="Post Comment"
                 />
             </form>
         </div>

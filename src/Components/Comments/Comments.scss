@@ -1,0 +1,13 @@
+// SCSS Imports
+@import '../../Styles/variables.scss';
+
+
+.comments-container {
+    padding-top: 5vh;
+    border-top: 1px solid gray;
+}
+
+.comments {
+    height: 30vh;
+    overflow-y: scroll;
+}
