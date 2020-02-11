@@ -4,9 +4,12 @@ import React from 'react';
 import './Comment.scss';
 
 function Comment(props) {
+
+
     return (
         <div>
-           <p>here are some comments</p> 
+            <h6>user: {props.user}</h6>
+           <p>{props.body}</p> 
         </div>
     );
 }
