@@ -9,7 +9,6 @@ import './PostList.scss'
 // Components
 import Post from '../Post/Post';
 import EntryForm1 from '../EntryForm/EntryForm1';
-import Button from '../Button/Button';
 
 // Bootstrap Imports
 import Container from 'react-bootstrap/Container';
@@ -79,8 +78,8 @@ export class PostList extends Component {
     render() {
         return (
             <section className="view-body">
-                <header className="view-title-container text-center">
-                    <h3>{this.collection} Message Board</h3>
+                <header className="collection-title-container text-center">
+                    <h3 className="collection-title">{this.collection} Message Board</h3>
                 </header>
                 <Container>
                     <Row>
@@ -95,13 +94,9 @@ export class PostList extends Component {
                                             postTitle={post.title} 
                                             postBody={post.body} 
                                             postUser={post.user}
-                                            currentUser={this.currentUser} />
-                                            {/* move this into post component */}
-                                            { this.currentUser === post.user && <Button 
-                                                                                    postId={post.id}
-                                                                                    deletePost={this.deletePost}
-                                                                                /> 
-                                            }
+                                            currentUser={this.currentUser} 
+                                            deletePost={this.deletePost}
+                                        />
                                     </div>
                                 )
                                 })

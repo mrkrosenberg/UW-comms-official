@@ -10,9 +10,13 @@
     border: 1px solid $accent-color;
 }
 
-.view-title-container {
+.collection-title-container {
     // width: 100%;
     color: $accent-color;
+}
+
+.collection-title {
+    font-weight: bold;
 }
 
 .post {

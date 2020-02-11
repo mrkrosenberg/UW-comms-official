@@ -6,6 +6,7 @@ import './Post.scss';
 // Components
 import Comments from '../Comments/Comments';
 import Modal from 'react-bootstrap/Modal';
+import Button from '../Button/Button';
 
 export class Post extends Component {
 
@@ -21,6 +22,8 @@ export class Post extends Component {
             body: props.postBody
         };
 
+        // this.deletePost
+
         this.state = {
             showModal: false
         }
@@ -30,6 +33,10 @@ export class Post extends Component {
         this.setState({
             showModal: !this.state.showModal
         })
+    };
+
+    deletePost = () => {
+        this.props.deletePost(this.post.id)
     };
 
 
@@ -56,6 +63,10 @@ export class Post extends Component {
                         <p>
                             {this.post.body}
                         </p>
+                        { this.post.currentUser === this.post.postUser && <Button 
+                                                                            action={this.deletePost} 
+                                                                          /> 
+                        }
                         <Comments postId={this.props.postId}/>
                     </Modal.Body>
                 </Modal>

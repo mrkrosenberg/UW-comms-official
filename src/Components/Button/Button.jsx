@@ -5,15 +5,15 @@ import './Button.scss';
 
 export default function Button (props) {
 
-    let postId = props.postId;
+    // let postId = props.postId;
 
-    const deletePost = () => {
-        props.deletePost(postId);
+    const buttonAction = () => {
+        props.action();
     };
 
     return (
         <div>
-            <button onClick={deletePost}>Delete Post</button>
+            <button onClick={buttonAction}>Delete Post</button>
         </div>
     );
 };
