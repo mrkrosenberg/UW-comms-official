@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+// Stylesheet
+import './Post.scss';
+
+// Components
+import Comments from '../Comments/Comments';
 import Modal from 'react-bootstrap/Modal';
 
 export class Post extends Component {
@@ -47,6 +52,7 @@ export class Post extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <p>{this.post.body}</p>
+                        <Comments postId={this.props.postId}/>
                     </Modal.Body>
                 </Modal>
             </div>

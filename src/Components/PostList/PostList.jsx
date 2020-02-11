@@ -9,6 +9,7 @@ import './PostList.scss'
 // Components
 import Post from '../Post/Post';
 import EntryForm1 from '../EntryForm/EntryForm1';
+// import Comments from '../Comments/Comments';
 import Button from '../Button/Button';
 
 // Bootstrap Imports
@@ -99,7 +100,9 @@ export class PostList extends Component {
                                                 { this.currentUser === post.user && <Button 
                                                                                         postId={post.id}
                                                                                         deletePost={this.deletePost}
-                                                                                    /> }
+                                                                                    /> 
+                                                }
+                                                {/* <Comments /> */}
                                         </div>
                                     )
                                     })
