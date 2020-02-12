@@ -1,0 +1,10 @@
+// SCSS Imports
+@import '../../Styles/variables.scss';
+
+.action-button {
+    background-color: $accent-color;
+    border: 1px solid $secondary-color;
+    color: $secondary-color;
+    font-weight: inherit;
+    margin-bottom: 5vh;
+};

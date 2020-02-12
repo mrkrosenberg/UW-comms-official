@@ -7,12 +7,9 @@ import Firebase from '../../Config/Firebase';
 // Stylesheet
 import './Header.scss';
 
-// Bootstrap Components
-import Dropdown from 'react-bootstrap/Dropdown';
-
-
 // Components
-// import 
+import Dropdown from 'react-bootstrap/Dropdown';
+import Button from '../Button/Button';
 
 // Images
 import hamburgerIcon from '../../Static/hamburgericon.png';
@@ -21,6 +18,7 @@ import userIcon from '../../Static/usericon.png';
 function Header() {
 
     const app = Firebase;
+    const buttonText = 'Sign Out';
 
     const signOut = () => {
         app.auth().signOut();
@@ -71,11 +69,17 @@ function Header() {
                         <li>
                             <button
                                 className="signout-button" 
-                                onClick={signOut} 
-                                alt="Menu">
+                                onClick={signOut}>
                                     Sign Out
                             </button>
                         </li>
+                        {/* <li>
+                            <Button 
+                                className="signout-button"
+                                action={signOut}
+                                buttonText={buttonText}
+                            />
+                        </li> */}
                     </Dropdown.Menu>
                 </Dropdown> 
             </nav>

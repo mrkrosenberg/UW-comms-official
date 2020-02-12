@@ -13,16 +13,7 @@ export class Post extends Component {
     constructor(props) {
         super(props)
 
-        // put this into state
-        this.post = {
-            currentUser: props.currentUser,
-            id: props.postId,
-            postUser: props.postUser,
-            title: props.postTitle,
-            body: props.postBody
-        };
-
-
+        this.buttonText = 'Delete Post';
 
         this.state = {
             showModal: false,
@@ -33,7 +24,7 @@ export class Post extends Component {
                 title: '',
                 body: ''
             }
-        }
+        };
     };
 
     componentDidMount() {
@@ -83,7 +74,8 @@ export class Post extends Component {
                         <p>
                             {this.state.post.body}
                         </p>
-                        {this.state.post.currentUser === this.state.post.postUser && <Button 
+                        {this.state.post.currentUser === this.state.post.postUser && <Button
+                                                                                        buttonText={this.buttonText} 
                                                                                         action={this.deletePost} 
                                                                                      /> 
                         }

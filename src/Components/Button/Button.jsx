@@ -12,7 +12,11 @@ export default function Button (props) {
 
     return (
         <div>
-            <button onClick={buttonAction}>Delete Post</button>
+            <button 
+                className="action-button"
+                onClick={buttonAction}>
+                    {props.buttonText}
+        </button>
         </div>
     );
 };
