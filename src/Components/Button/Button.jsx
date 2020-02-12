@@ -5,7 +5,6 @@ import './Button.scss';
 
 export default function Button (props) {
 
-    // let postId = props.postId;
 
     const buttonAction = () => {
         props.action();

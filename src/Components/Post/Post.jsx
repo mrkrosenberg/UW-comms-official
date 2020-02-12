@@ -22,11 +22,31 @@ export class Post extends Component {
             body: props.postBody
         };
 
-        // this.deletePost
+
 
         this.state = {
-            showModal: false
+            showModal: false,
+            post: {
+                currentUser: '',
+                id: '',
+                postUser: '',
+                title: '',
+                body: ''
+            }
         }
+    };
+
+    componentDidMount() {
+        
+        this.setState({
+            post: {
+                currentUser: this.props.currentUser,
+                id: this.props.postId,
+                postUser: this.props.postUser,
+                title: this.props.postTitle,
+                body: this.props.postBody
+            }
+        })
     };
 
     showModal = () => {
@@ -45,10 +65,10 @@ export class Post extends Component {
             <div>
                 <article className="post" onClick={this.showModal}>
                     <h3>
-                        {this.post.title}
+                        {this.state.post.title}
                     </h3>
                     <p>
-                       {this.post.body.substring(0, 10)}... 
+                       {this.state.post.body.substring(0, 10)}...
                     </p>
                 </article>
                 <Modal
@@ -56,18 +76,18 @@ export class Post extends Component {
                     onHide={this.showModal}>
                     <Modal.Header closeButton>
                         <h3>
-                            {this.post.title}
+                            {this.state.post.title}
                         </h3>
                     </Modal.Header>
                     <Modal.Body>
                         <p>
-                            {this.post.body}
+                            {this.state.post.body}
                         </p>
-                        { this.post.currentUser === this.post.postUser && <Button 
-                                                                            action={this.deletePost} 
-                                                                          /> 
+                        {this.state.post.currentUser === this.state.post.postUser && <Button 
+                                                                                        action={this.deletePost} 
+                                                                                     /> 
                         }
-                        <Comments postId={this.props.postId}/>
+                        <Comments postId={this.state.post.id} />
                     </Modal.Body>
                 </Modal>
             </div>
