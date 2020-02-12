@@ -14,10 +14,15 @@ const SignUp = ({ history }) => {
 
     async event => {
       event.preventDefault();
-      const { email, password } = event.target.elements;
+      const { email, password, displayname } = event.target.elements;
+      console.log('email: ', email.value, 'password: ', password.value, 'display: ', displayname.value)
       try {
         await app.auth().createUserWithEmailAndPassword(email.value, password.value);
-        // const currentUser = app.auth().currentUser;
+        const currentUser = app.auth().currentUser;
+        console.log(currentUser)
+        await currentUser.updateProfile({
+          displayName: displayname.value
+        });
         history.push("/");
       } catch (error) {
         alert(error);
@@ -31,13 +36,36 @@ const SignUp = ({ history }) => {
       <form onSubmit={ handleSignUp }>
         <label className="auth-input-label" >
           Email
-          <input className="auth-input" name="email" type="email" placeholder="Email" />
+          <input 
+            className="auth-input" 
+            name="email" 
+            type="email" 
+            placeholder="Email" 
+          />
         </label>
         <label className="auth-input-label" >
           Password
-          <input className="auth-input" name="password" type="password" placeholder="Password" />
+          <input 
+            className="auth-input" 
+            name="password" 
+            type="password" 
+            placeholder="Password" 
+          />
         </label>
-        <button className="auth-submit" type="submit">Sign Up</button>
+        <label className="auth-input-label">
+          Display name
+          <input
+            className="auth-input"
+            name="displayname" 
+            type="text"
+            placeholder="Display Name"
+          />
+        </label>
+        <button 
+          className="auth-submit" 
+          type="submit">
+            Sign Up
+        </button>
       </form>
     </div>
   );
