@@ -1,8 +1,14 @@
 import React, { useCallback } from 'react';
+
+// Routing Stuff
 import { withRouter } from 'react-router';
+
+// Firebase Ref
 import Firebase from '../../Config/Firebase';
 
 const SignUp = ({ history }) => {
+
+  const app = Firebase;
 
   const handleSignUp = useCallback(
 
@@ -10,9 +16,8 @@ const SignUp = ({ history }) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
-        await Firebase
-          .auth()
-          .createUserWithEmailAndPassword(email.value, password.value);
+        await app.auth().createUserWithEmailAndPassword(email.value, password.value);
+        // const currentUser = app.auth().currentUser;
         history.push("/");
       } catch (error) {
         alert(error);

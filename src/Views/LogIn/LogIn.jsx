@@ -3,11 +3,15 @@ import React, { useCallback, useContext } from 'react';
 // Routing Stuff
 import { withRouter, Redirect } from 'react-router';
 
-// Auth Config
+// Firebase Ref
 import Firebase from '../../Config/Firebase';
+
+// Auth Config
 import { AuthContext } from '../../Authentication/Auth';
 
 const LogIn = ({ history }, props) => {
+
+  const app = Firebase;
   
   const handleLogin = useCallback(
 
@@ -15,9 +19,7 @@ const LogIn = ({ history }, props) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
-        await Firebase
-          .auth()
-          .signInWithEmailAndPassword(email.value, password.value);
+        await app.auth().signInWithEmailAndPassword(email.value, password.value);
         history.push("/");
       } catch (error) {
         alert(error);
@@ -34,7 +36,6 @@ const LogIn = ({ history }, props) => {
 
   return (
     <div className="auth-form">
-      {/* <button onClick={closeModal}>X</button> */}
       <h1 className="auth-title text-center">Log in</h1>
       <form onSubmit={ handleLogin }>
         <label 
