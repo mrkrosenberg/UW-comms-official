@@ -18,7 +18,7 @@ export class Comments extends Component {
         this.app = Firebase;
         this.db = this.app.firestore().collection('Comments');
         this.dbCollection = this.db.where('postId', '==', props.postId);
-        this.currentUser = this.app.auth().currentUser.email;
+        this.currentUser = this.app.auth().currentUser.displayName;
 
         this.state = {
             comments: [],
@@ -61,7 +61,6 @@ export class Comments extends Component {
     render() {
         return (
             <div className="comments-container">
-                {/* <h6>Comment: </h6> */}
                 <CommentForm
                     addComment={this.addComment} 
                 />
