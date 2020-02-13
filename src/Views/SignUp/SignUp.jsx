@@ -6,6 +6,9 @@ import { withRouter } from 'react-router';
 // Firebase Ref
 import Firebase from '../../Config/Firebase';
 
+// Components
+import UserAgreement from '../../Components/UserAgreement/UserAgreement';
+
 const SignUp = ({ history }) => {
 
   const app = Firebase;
@@ -67,6 +70,7 @@ const SignUp = ({ history }) => {
             Sign Up
         </button>
       </form>
+      <UserAgreement />
     </div>
   );
 };
