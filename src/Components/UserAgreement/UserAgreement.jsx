@@ -6,13 +6,13 @@ import Contract from './Contract';
 // Stylesheet
 import './UserAgreement.scss';
 
+// Components
+import Agreement from '../UserAgreement/Agreement';
+
 // pdfMake Config
 import Printer from 'pdfmake/build/pdfmake';
 import fontStyles from 'pdfmake/build/vfs_fonts';
 Printer.vfs = fontStyles.pdfMake.vfs;
-
-
-
 
 
 export class UserAgreement extends Component {
@@ -46,6 +46,7 @@ export class UserAgreement extends Component {
     render() {
         return (
             <div className="user-form-container">
+                <Agreement />
                 <h2>Sign User Agreement</h2>
                 <form onSubmit={this.handleAgreement}>
                     <label 
