@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+// Firebase Ref
+import Firebase from '../../Config/Firebase';
+
 // Contract Template
 import Contract from './Contract';
 
@@ -20,6 +23,9 @@ export class UserAgreement extends Component {
     constructor(props) {
         super(props);
 
+        this.app = Firebase;
+        this.storageRef = this.app.storage().ref();
+
         this.state = {
             user: {
                 firstName: '',
@@ -38,8 +44,18 @@ export class UserAgreement extends Component {
                 lastName: this.refs.lastName.value
             }
         }, () => {
-            let pdfDoc = Printer.createPdf(Contract(this.refs.firstName.value, this.refs.lastName.value));
-            pdfDoc.download();
+            let pdfDoc = Printer.createPdf(Contract(this.state.user.firstName, this.state.user.lastName));
+            // pdfDoc.download();
+            pdfDoc.getBuffer((data) => {
+                this.storageRef.child(`${this.state.user.firstName}` + ` ${this.state.user.lastName}` + '-user-agreement')
+                .put(data)
+                .then(function(snapshot) {
+                    console.log('agreement upload successful')
+                }).catch(function(error) {
+                    console.log(error)
+                })
+            })
+            
         })
     };
 
@@ -54,6 +70,7 @@ export class UserAgreement extends Component {
                         htmlFor="firsName">
                             First Name
                             <input 
+                                required
                                 type="text"
                                 ref="firstName"
                             />
@@ -63,6 +80,7 @@ export class UserAgreement extends Component {
                         htmlFor="lastName">
                             Last Name
                             <input 
+                                required
                                 type="text"
                                 ref="lastName"
                             />
@@ -74,6 +92,6 @@ export class UserAgreement extends Component {
             </div>
         )
     }
-}
+};
 
-export default UserAgreement
+export default UserAgreement;
