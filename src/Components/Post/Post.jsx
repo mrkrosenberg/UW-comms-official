@@ -74,10 +74,11 @@ export class Post extends Component {
                         <p>
                             {this.state.post.body}
                         </p>
-                        {this.state.post.currentUser === this.state.post.postUser && <Button
-                                                                                        buttonText={this.buttonText} 
-                                                                                        action={this.deletePost} 
-                                                                                     /> 
+                        {this.state.post.currentUser === this.state.post.postUser 
+                            && <Button
+                                    buttonText={this.buttonText} 
+                                    action={this.deletePost} 
+                                /> 
                         }
                         <Comments postId={this.state.post.id} />
                     </Modal.Body>

@@ -6,6 +6,7 @@ import './EntryForm.scss';
 
 // Components
 import Accordian from 'react-bootstrap/Accordion';
+import FileUploader from "react-firebase-file-uploader";
 
 function EntryForm1 (props) {    
 
@@ -49,7 +50,12 @@ function EntryForm1 (props) {
                         Click me!
                     </Accordion.Toggle>
                     <Accordian.Collapse eventKey="0">
-
+                        <FileUploader 
+                            accept="image/*"
+                            name="post-image"
+                            storageRef={props.imageStorage}
+                            multiple
+                        />
                     </Accordian.Collapse>
                 </Accordian>         
                 <input

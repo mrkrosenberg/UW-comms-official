@@ -25,6 +25,7 @@ export class PostList extends Component {
 
         this.app = Firebase;
         this.db = this.app.firestore().collection(this.collection);
+        this.imageStorage = this.app.storage().ref('images');
         this.currentUser = this.app.auth().currentUser.uid;
 
         this.state = {
@@ -109,7 +110,10 @@ export class PostList extends Component {
                     <Row>
                         <Col  md={1} />
                         <Col md={10}>
-                            <EntryForm1 addPost={this.addPost} />
+                            <EntryForm1 
+                                addPost={this.addPost} 
+                                imageStorage={this.imageStorage}
+                            />
                         </Col>
                         <Col md={1} />
                     </Row>             
