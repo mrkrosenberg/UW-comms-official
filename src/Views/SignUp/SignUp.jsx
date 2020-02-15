@@ -11,11 +11,12 @@ import UserAgreement from '../../Components/UserAgreement/UserAgreement';
 
 const SignUp = ({ history }) => {
 
-  const app = Firebase;
-
   const handleSignUp = useCallback(
 
     async event => {
+      
+      const app = Firebase;
+
       event.preventDefault();
       const { email, password, displayname } = event.target.elements;
       console.log('email: ', email.value, 'password: ', password.value, 'display: ', displayname.value)

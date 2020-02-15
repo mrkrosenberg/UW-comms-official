@@ -9,7 +9,7 @@ import './Header.scss';
 
 // Components
 import Dropdown from 'react-bootstrap/Dropdown';
-import Button from '../Button/Button';
+// import Button from '../Button/Button';
 
 // Images
 import hamburgerIcon from '../../Static/hamburgericon.png';
@@ -18,7 +18,7 @@ import userIcon from '../../Static/usericon.png';
 function Header() {
 
     const app = Firebase;
-    const buttonText = 'Sign Out';
+    // const buttonText = 'Sign Out';
 
     const signOut = () => {
         app.auth().signOut();

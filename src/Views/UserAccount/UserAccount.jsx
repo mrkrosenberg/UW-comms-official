@@ -100,7 +100,7 @@ export class UserAccount extends Component {
         return (
             <div className="view-body">
                 <Header />
-                <h1>user account settings</h1>
+                <h1 className="view-title text-center">user account settings</h1>
                 <PasswordResetForm 
                     reauthPassword={this.reauthPassword}
                 />

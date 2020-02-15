@@ -11,11 +11,14 @@ import { AuthContext } from '../../Authentication/Auth';
 
 const LogIn = ({ history }, props) => {
 
-  const app = Firebase;
+  // const app = Firebase;
   
   const handleLogin = useCallback(
 
     async event => {  
+
+      const app = Firebase;
+      
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {

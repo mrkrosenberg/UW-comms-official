@@ -4,6 +4,8 @@ import useForm from 'react-hook-form';
 // Stylesheet
 import './EntryForm.scss';
 
+// Components
+import Accordian from 'react-bootstrap/Accordion';
 
 function EntryForm1 (props) {    
 
@@ -41,7 +43,15 @@ function EntryForm1 (props) {
                     placeholder="body"
                     name="body"
                     ref={register} 
-                />          
+                /> 
+                <Accordian defaultActiveKey="0">
+                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                        Click me!
+                    </Accordion.Toggle>
+                    <Accordian.Collapse eventKey="0">
+
+                    </Accordian.Collapse>
+                </Accordian>         
                 <input
                     className="post-submit-button" 
                     type="submit" 

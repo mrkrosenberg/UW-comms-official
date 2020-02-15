@@ -45,9 +45,11 @@ export class UserAgreement extends Component {
             }
         }, () => {
             let pdfDoc = Printer.createPdf(Contract(this.state.user.firstName, this.state.user.lastName));
+            // let fileName = `${this.state.user.firstName, this.state.user.lastName}` + '-user-agreement';
+            // console.log(fileName)
             // pdfDoc.download();
             pdfDoc.getBuffer((data) => {
-                this.storageRef.child(`${this.state.user.firstName}` + ` ${this.state.user.lastName}` + '-user-agreement')
+                this.storageRef.child(`${this.state.user.firstName}` + ` ${this.state.user.lastName}` + `-user-agreement`)
                 .put(data)
                 .then(function(snapshot) {
                     console.log('agreement upload successful')

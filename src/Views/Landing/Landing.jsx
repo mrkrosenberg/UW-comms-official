@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // Components
 import LogIn from '../LogIn/LogIn';
 import SignUp from '../SignUp/SignUp';
-import UserAgreement from '../../Components/UserAgreement/UserAgreement';
+// import UserAgreement from '../../Components/UserAgreement/UserAgreement';
 import FeatureContainer from '../../Components/FeatureContainer/FeatureContainer';
 import Disclaimer from '../../Components/Disclaimer/Disclaimer';
 import Modal from 'react-bootstrap/Modal';
@@ -25,7 +25,6 @@ export class Landing extends Component {
             userStatus: '',
             showModal: false
         };
-
     };
 
 
