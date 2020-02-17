@@ -3,10 +3,18 @@
 
 .weather-container {
     width: 100%;
+    // padding: 5vh;
     background-color: $tertiary-color;
     border-top: 1px solid $accent-color;
     border-bottom: 1px solid $accent-color;
     color: $secondary-color;
+}
+
+.inner-weather-container {
+    height: 100%;
+    width: 100%;
+    padding: 5vh;
+    background-color: $accent-transparent;
 }
 
 .weather-icon {

@@ -59,31 +59,34 @@ export class Weather extends Component {
             //         <Col md={1} />
             //         <Col className="weather-container" md={10}>
             <div className="weather-container">
-                <header className="title-container text-center">
-                    <h1>Local Weather @ Union West</h1>
-                    <h6>Today is calling for {this.state.weatherData.description}</h6>
-                </header>
-                <Container>
-                    <Row>
-                        <Col md={6}>
-                            <div className="icon-container text-center">
-                                <img 
-                                    className="weather-icon" 
-                                    src={this.state.weatherData.icon} 
-                                    alt="weather-icon"
-                                />
-                            </div>
-                        </Col>
-                        <Col md={6}>
-                        <div className="data-container">
-                            <h6>It is currently {this.state.weatherData.currentTemp}</h6>
-                            <h6>and feels like {this.state.weatherData.feelsLike}</h6>
-                            <h6>With a high of {this.state.weatherData.highTemp}</h6>
-                            <h6>And a low of {this.state.weatherData.lowTemp}</h6>
-                        </div> 
-                        </Col>
-                    </Row>
-                </Container>                                           
+                <div className="inner-weather-container">
+                    <header className="title-container text-center">
+                        <h1>Local Weather @ Union West</h1>
+                        <h6>Today is calling for {this.state.weatherData.description}</h6>
+                    </header>
+                    <Container>
+                        <Row>
+                            <Col md={6}>
+                                <div className="icon-container text-center">
+                                    <img 
+                                        className="weather-icon" 
+                                        src={this.state.weatherData.icon} 
+                                        alt="weather-icon"
+                                    />
+                                </div>
+                            </Col>
+                            <Col md={6}>
+                            <div className="data-container text-center">
+                                <h6>It is currently {this.state.weatherData.currentTemp}</h6>
+                                <h6>and feels like {this.state.weatherData.feelsLike}</h6>
+                                <h6>With a high of {this.state.weatherData.highTemp}</h6>
+                                <h6>And a low of {this.state.weatherData.lowTemp}</h6>
+                            </div> 
+                            </Col>
+                        </Row>
+                    </Container> 
+                </div>
+                                                          
             </div>
             //         </Col>
             //         <Col md={1} />

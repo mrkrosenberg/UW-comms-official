@@ -56,14 +56,53 @@ export class PostList extends Component {
     componentWillUnmount() {
         this.unsubscribe();
     };
+
+    postWithImage = (post) => {
+        this.imageStorage.put(post.image)
+            .then((response) => {
+                let newPost = {
+                    user: this.currentUser,
+                    title: post.title,
+                    body: post.body,
+                    imageUrl: response.url
+                }
+                this.addPost(newPost)
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    };
     
 // CRUD Methods
-    addPost = (post) => {
-        this.db.add({
+    addPost = (newPost) => {
+        // this.db.add({
+        //     user: this.currentUser,
+        //     title: post.title,
+        //     body: post.body
+        // })
+
+        // new add post function to see if i can pass in a single object
+        let post = {
             user: this.currentUser,
-            title: post.title,
-            body: post.body
-        })
+            title: newPost.title,
+            body: newPost.body,
+        };
+
+        this.db.add(post);
+
+        // This is the function to run when adding image - deal with in a bit
+        // this.db.add({
+        //     newPost
+        // });
+    };
+
+    // upload image to firebase storage
+    addFullPost = (newPost) => {
+        if (newPost.image) {
+            this.postWithImage(newPost);
+        } else {
+            this.addPost(newPost);
+        }
     };
 
     deletePost = (post) => {
@@ -112,7 +151,7 @@ export class PostList extends Component {
                         <Col md={10}>
                             <EntryForm1 
                                 addPost={this.addPost} 
-                                imageStorage={this.imageStorage}
+                                // imageStorage={this.imageStorage}
                             />
                         </Col>
                         <Col md={1} />
