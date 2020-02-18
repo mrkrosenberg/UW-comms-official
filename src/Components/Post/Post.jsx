@@ -47,7 +47,7 @@ export class Post extends Component {
     };
 
     deletePost = () => {
-        this.props.deletePost(this.post.id)
+        this.props.deletePost(this.state.post.id)
     };
 
 

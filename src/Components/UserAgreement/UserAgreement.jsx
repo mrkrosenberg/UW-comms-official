@@ -24,7 +24,7 @@ export class UserAgreement extends Component {
         super(props);
 
         this.app = Firebase;
-        this.storageRef = this.app.storage().ref();
+        this.storageRef = this.app.storage().ref('user-agreements');
 
         this.state = {
             user: {

@@ -60,7 +60,7 @@ export class Home extends Component {
                 </div>
                 <Weather />
                 <div className="news-container">
-                <h1 className="news-title text-center">Happenings at Union West Apartments</h1>
+                <h1 className="news-title text-center">Events:</h1>
                     { this.state.posts.map((post) => {
                         return (
                             <NewsPost

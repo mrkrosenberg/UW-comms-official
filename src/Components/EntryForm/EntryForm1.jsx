@@ -15,9 +15,36 @@ function EntryForm1 (props) {
     const [ title, setTitle ] = useState('');
     const [ body, setBody ] = useState('');
 
+    // refactor as promise and move post ref to onSubmit
+    const checkFileType = (post, file) => {
+
+        const fileType = file["type"];
+        const validFileTypes = ["image/jpeg", "image/png"];
+
+        if (validFileTypes.includes(fileType)) {
+
+            console.log('this is an image')
+            // add post with image
+            props.addPostWithImage(post, file)
+        } else {
+
+            alert('please select a file that is either JPG or PNG')
+        }
+    };
 
     const onSubmit = (post) => {
-        props.addPost(post);
+        if (post.postImage.length > 0) {
+
+            const file = post.postImage[0];
+            console.log(post.postImage);
+            console.log(post.postImage[0]);
+            checkFileType(post, file);
+        } else {
+
+            console.log('no image attached')
+            // add post without image
+            props.addPostWithoutImage(post);
+        }
         setTitle('');
         setBody(''); 
      };
@@ -25,6 +52,7 @@ function EntryForm1 (props) {
     return (
 
         <div className="entry-form-container">
+            <h3 className="entry-form-title">Post to the Board</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input
                     className="post-input"
@@ -60,7 +88,7 @@ function EntryForm1 (props) {
                         <input 
                             className="post-input"
                             type="file"
-                            name="image"
+                            name="postImage"
                             ref={register}
                         />
                     </Accordian.Collapse>

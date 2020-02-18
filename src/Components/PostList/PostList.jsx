@@ -29,7 +29,8 @@ export class PostList extends Component {
         this.currentUser = this.app.auth().currentUser.uid;
 
         this.state = {
-            posts: []
+            posts: [],
+            newPost: {}
         };
     };
 
@@ -43,7 +44,8 @@ export class PostList extends Component {
                     id: doc.id,
                     user: doc.data().user,
                     title: doc.data().title,
-                    body: doc.data().body
+                    body: doc.data().body,
+                    imageUrl: doc.data().imageUrl
                 };
             });
 
@@ -57,53 +59,51 @@ export class PostList extends Component {
         this.unsubscribe();
     };
 
-    postWithImage = (post) => {
-        this.imageStorage.put(post.image)
+    addPostWithImage = (post, file) => {
+        
+            console.log('post with image: ', post)
+            console.log('here is the file: ', file)
+            this.imageStorage.child(file.name).put(post.postImage[0])
             .then((response) => {
-                let newPost = {
-                    user: this.currentUser,
-                    title: post.title,
-                    body: post.body,
-                    imageUrl: response.url
-                }
-                this.addPost(newPost)
+                // console.log(response.task.uploadUrl_)
+                this.imageStorage.child(file.name).getDownloadURL()
+                .then((url) => {
+                    // console.log(url)
+                    let newPost = {
+                        user: this.currentUser,
+                        title: post.title,
+                        body: post.body,
+                        imageUrl: url
+                    };
+                    this.setState({
+                        newPost: newPost
+                    })
+                    // this.addPost(newPost)
+                    this.db.add(newPost)
+
+                })
+               
+                // console.log('successfully posted with image: ', newPost)
             })
             .catch((error) => {
                 console.log(error)
-            });
+            });     
     };
     
 // CRUD Methods
-    addPost = (newPost) => {
-        // this.db.add({
-        //     user: this.currentUser,
-        //     title: post.title,
-        //     body: post.body
-        // })
-
-        // new add post function to see if i can pass in a single object
+    addPostWithoutImage = (newPost) => {
+       
         let post = {
             user: this.currentUser,
             title: newPost.title,
             body: newPost.body,
+            imageUrl: null
         };
+        console.log('post without image', post)
 
         this.db.add(post);
-
-        // This is the function to run when adding image - deal with in a bit
-        // this.db.add({
-        //     newPost
-        // });
     };
 
-    // upload image to firebase storage
-    addFullPost = (newPost) => {
-        if (newPost.image) {
-            this.postWithImage(newPost);
-        } else {
-            this.addPost(newPost);
-        }
-    };
 
     deletePost = (post) => {
         console.log(post);
@@ -134,6 +134,7 @@ export class PostList extends Component {
                                             postTitle={post.title} 
                                             postBody={post.body} 
                                             postUser={post.user}
+                                            imageUrl={post.imageUrl}
                                             currentUser={this.currentUser} 
                                             deletePost={this.deletePost}
                                         />
@@ -150,7 +151,8 @@ export class PostList extends Component {
                         <Col  md={1} />
                         <Col md={10}>
                             <EntryForm1 
-                                addPost={this.addPost} 
+                                addPost={this.addPostWithoutImage}
+                                addPostWithImage={this.addPostWithImage} 
                                 // imageStorage={this.imageStorage}
                             />
                         </Col>
