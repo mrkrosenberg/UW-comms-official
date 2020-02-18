@@ -59,16 +59,19 @@ export class PostList extends Component {
         this.unsubscribe();
     };
 
+    postToFirebase = (post) => {
+
+        this.db.add(post);
+    };
+
     addPostWithImage = (post, file) => {
         
             console.log('post with image: ', post)
             console.log('here is the file: ', file)
             this.imageStorage.child(file.name).put(post.postImage[0])
             .then((response) => {
-                // console.log(response.task.uploadUrl_)
                 this.imageStorage.child(file.name).getDownloadURL()
                 .then((url) => {
-                    // console.log(url)
                     let newPost = {
                         user: this.currentUser,
                         title: post.title,
@@ -78,12 +81,9 @@ export class PostList extends Component {
                     this.setState({
                         newPost: newPost
                     })
-                    // this.addPost(newPost)
-                    this.db.add(newPost)
-
+                    // this.db.add(newPost)
+                    this.postToFirebase(newPost)
                 })
-               
-                // console.log('successfully posted with image: ', newPost)
             })
             .catch((error) => {
                 console.log(error)
@@ -101,7 +101,8 @@ export class PostList extends Component {
         };
         console.log('post without image', post)
 
-        this.db.add(post);
+        // this.db.add(post);
+        this.postToFirebase(post)
     };
 
 

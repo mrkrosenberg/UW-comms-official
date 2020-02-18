@@ -19,11 +19,11 @@ const SignUp = ({ history }) => {
 
       event.preventDefault();
       const { email, password, displayname } = event.target.elements;
-      console.log('email: ', email.value, 'password: ', password.value, 'display: ', displayname.value)
+      // console.log('email: ', email.value, 'password: ', password.value, 'display: ', displayname.value)
       try {
         await app.auth().createUserWithEmailAndPassword(email.value, password.value);
         const currentUser = app.auth().currentUser;
-        console.log(currentUser)
+        // console.log(currentUser)
         await currentUser.updateProfile({
           displayName: displayname.value
         });

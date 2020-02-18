@@ -35,6 +35,7 @@ export class UserAgreement extends Component {
     };
 
     handleAgreement = (e) => {
+
         e.preventDefault();
         console.log('first: ', this.refs.firstName.value, 'last: ', this.refs.lastName.value)
 
@@ -45,14 +46,13 @@ export class UserAgreement extends Component {
             }
         }, () => {
             let pdfDoc = Printer.createPdf(Contract(this.state.user.firstName, this.state.user.lastName));
-            // let fileName = `${this.state.user.firstName, this.state.user.lastName}` + '-user-agreement';
-            // console.log(fileName)
+            
             // pdfDoc.download();
             pdfDoc.getBuffer((data) => {
                 this.storageRef.child(`${this.state.user.firstName}` + ` ${this.state.user.lastName}` + `-user-agreement`)
                 .put(data)
                 .then(function(snapshot) {
-                    console.log('agreement upload successful')
+                    // console.log('agreement upload successful')
                 }).catch(function(error) {
                     console.log(error)
                 })

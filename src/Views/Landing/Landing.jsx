@@ -81,6 +81,7 @@ export class Landing extends Component {
                             <Modal.Header closeButton>
                                 { this.state.userStatus === 'login' && <LogIn closeModal={this.showModal}/>}
                                 { this.state.userStatus === 'signup' && <SignUp closeModal={this.showModal}/>}
+                                {/* {  } */}
                             </Modal.Header>
                         
                     </Modal>
