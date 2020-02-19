@@ -7,7 +7,7 @@ import { withRouter } from 'react-router';
 import Firebase from '../../Config/Firebase';
 
 // Components
-import UserAgreement from '../../Components/UserAgreement/UserAgreement';
+// import UserAgreement from '../../Components/UserAgreement/UserAgreement';
 
 const SignUp = ({ history }) => {
 
@@ -32,6 +32,7 @@ const SignUp = ({ history }) => {
         alert(error);
       }
     }, [history]
+    
   );
 
   return (
@@ -71,7 +72,7 @@ const SignUp = ({ history }) => {
             Sign Up
         </button>
       </form>
-      <UserAgreement />
+      {/* <UserAgreement /> */}
     </div>
   );
 };

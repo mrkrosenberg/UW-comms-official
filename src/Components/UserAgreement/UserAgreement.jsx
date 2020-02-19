@@ -25,6 +25,7 @@ export class UserAgreement extends Component {
 
         this.app = Firebase;
         this.storageRef = this.app.storage().ref('user-agreements');
+        // this.showSignUpForm = this.props.showSignUpForm;
 
         this.state = {
             user: {
@@ -34,7 +35,17 @@ export class UserAgreement extends Component {
         }
     };
 
+    // showSignUpForm = () => {
+    //     this.props.showSignUpForm();
+    // }
+
+    showSignUpForm() {
+        this.props.showSignUpForm();
+    }
+
     handleAgreement = (e) => {
+
+        this.showSignUpForm();
 
         e.preventDefault();
         console.log('first: ', this.refs.firstName.value, 'last: ', this.refs.lastName.value)
@@ -52,12 +63,11 @@ export class UserAgreement extends Component {
                 this.storageRef.child(`${this.state.user.firstName}` + ` ${this.state.user.lastName}` + `-user-agreement`)
                 .put(data)
                 .then(function(snapshot) {
-                    // console.log('agreement upload successful')
+                    console.log('agreement upload successful')
                 }).catch(function(error) {
                     console.log(error)
                 })
-            })
-            
+            })   
         })
     };
 

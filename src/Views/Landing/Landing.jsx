@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // Components
 import LogIn from '../LogIn/LogIn';
 import SignUp from '../SignUp/SignUp';
-// import UserAgreement from '../../Components/UserAgreement/UserAgreement';
+import UserAgreement from '../../Components/UserAgreement/UserAgreement';
 import FeatureContainer from '../../Components/FeatureContainer/FeatureContainer';
 import Disclaimer from '../../Components/Disclaimer/Disclaimer';
 import Modal from 'react-bootstrap/Modal';
@@ -45,19 +45,25 @@ export class Landing extends Component {
 
     signUp = () => {
 
-        this.showModal();
+        // this.showModal();
         this.setState({
             userStatus: 'signup'
         });
     };
 
+    showAgreement = () => {
+        
+        this.showModal();
+        this.setState({
+            userStatus: 'signAgreement'
+        })
+    };
 
     componentWillUnmount() {
         
         this.setState({
             userStatus: ''
         })
-
     };
 
     render() {
@@ -68,7 +74,7 @@ export class Landing extends Component {
                     <header className="auth-header">
                         <div className="auth-options">
                             <button className="option-button" onClick={this.logIn}>Log In</button>
-                            <button className="option-button" onClick={this.signUp}>Sign Up</button>
+                            <button className="option-button" onClick={this.showAgreement}>Sign Up</button>
                         </div>
                     </header>
                     <Modal 
@@ -81,7 +87,7 @@ export class Landing extends Component {
                             <Modal.Header closeButton>
                                 { this.state.userStatus === 'login' && <LogIn closeModal={this.showModal}/>}
                                 { this.state.userStatus === 'signup' && <SignUp closeModal={this.showModal}/>}
-                                {/* {  } */}
+                                { this.state.userStatus === 'signAgreement' &&  <UserAgreement showSignUpForm={this.signUp} />}
                             </Modal.Header>
                         
                     </Modal>

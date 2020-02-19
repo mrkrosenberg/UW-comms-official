@@ -106,9 +106,9 @@ export class PostList extends Component {
     };
 
 
-    deletePost = (post) => {
-        console.log(post);
-        this.db.doc(post).delete()
+    deletePost = (postID) => {
+        // console.log(post);
+        this.db.doc(postID).delete()
             .then(function() {
                 alert('post deleted')
             }).catch(function(error) {
@@ -152,7 +152,7 @@ export class PostList extends Component {
                         <Col  md={1} />
                         <Col md={10}>
                             <EntryForm1 
-                                addPost={this.addPostWithoutImage}
+                                addPostWithoutImage={this.addPostWithoutImage}
                                 addPostWithImage={this.addPostWithImage} 
                                 // imageStorage={this.imageStorage}
                             />

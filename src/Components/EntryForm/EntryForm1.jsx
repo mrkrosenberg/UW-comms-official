@@ -7,7 +7,6 @@ import './EntryForm.scss';
 // Components
 import Accordian from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
-import FileUploader from "react-firebase-file-uploader";
 
 function EntryForm1 (props) {    
 
