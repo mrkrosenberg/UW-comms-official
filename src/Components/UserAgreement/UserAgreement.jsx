@@ -25,7 +25,7 @@ export class UserAgreement extends Component {
 
         this.app = Firebase;
         this.storageRef = this.app.storage().ref('user-agreements');
-        // this.showSignUpForm = this.props.showSignUpForm;
+        this.showSignUpForm = this.showSignUpForm.bind(this);
 
         this.state = {
             user: {
@@ -35,17 +35,17 @@ export class UserAgreement extends Component {
         }
     };
 
-    // showSignUpForm = () => {
-    //     this.props.showSignUpForm();
-    // }
-
-    showSignUpForm() {
+    showSignUpForm = () => {
         this.props.showSignUpForm();
     }
 
+    // showSignUpForm() {
+    //     this.props.showSignUpForm();
+    // }
+
     handleAgreement = (e) => {
 
-        this.showSignUpForm();
+        // this.showSignUpForm();
 
         e.preventDefault();
         console.log('first: ', this.refs.firstName.value, 'last: ', this.refs.lastName.value)
@@ -57,7 +57,6 @@ export class UserAgreement extends Component {
             }
         }, () => {
             let pdfDoc = Printer.createPdf(Contract(this.state.user.firstName, this.state.user.lastName));
-            
             // pdfDoc.download();
             pdfDoc.getBuffer((data) => {
                 this.storageRef.child(`${this.state.user.firstName}` + ` ${this.state.user.lastName}` + `-user-agreement`)
@@ -66,7 +65,9 @@ export class UserAgreement extends Component {
                     console.log('agreement upload successful')
                 }).catch(function(error) {
                     console.log(error)
-                })
+                }).finally(
+                    this.showSignUpForm()
+                )
             })   
         })
     };

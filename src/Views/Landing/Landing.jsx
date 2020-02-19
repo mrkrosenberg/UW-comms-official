@@ -35,7 +35,7 @@ export class Landing extends Component {
         })
     };
 
-    logIn = () => {
+    showlogIn = () => {
 
         this.showModal();
         this.setState({
@@ -43,9 +43,8 @@ export class Landing extends Component {
         });
     };
 
-    signUp = () => {
+    showSignUp = () => {
 
-        // this.showModal();
         this.setState({
             userStatus: 'signup'
         });
@@ -73,7 +72,7 @@ export class Landing extends Component {
                 <section className="top">
                     <header className="auth-header">
                         <div className="auth-options">
-                            <button className="option-button" onClick={this.logIn}>Log In</button>
+                            <button className="option-button" onClick={this.showlogIn}>Log In</button>
                             <button className="option-button" onClick={this.showAgreement}>Sign Up</button>
                         </div>
                     </header>
@@ -87,7 +86,7 @@ export class Landing extends Component {
                             <Modal.Header closeButton>
                                 { this.state.userStatus === 'login' && <LogIn closeModal={this.showModal}/>}
                                 { this.state.userStatus === 'signup' && <SignUp closeModal={this.showModal}/>}
-                                { this.state.userStatus === 'signAgreement' &&  <UserAgreement showSignUpForm={this.signUp} />}
+                                { this.state.userStatus === 'signAgreement' &&  <UserAgreement showSignUpForm={this.showSignUp} />}
                             </Modal.Header>
                         
                     </Modal>
