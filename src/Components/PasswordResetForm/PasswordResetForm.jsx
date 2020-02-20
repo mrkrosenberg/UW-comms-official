@@ -13,10 +13,8 @@ function PasswordResetForm(props) {
     const [ confirmPassword, setConfirmPassword ] = useState('');
 
     const onSubmit = (data) => {
-        console.log('password: ', password, 'new password: ', newPassword, 'confirm: ', confirmPassword);
-        console.log(data.password, data.newPassword, data.confirmPassword)
         if (data.newPassword === data.confirmPassword) {
-            console.log('passwords match')
+            // console.log('passwords match')
             props.reauthPassword(data)
         } else {
             alert('Passwords do not match. Please try again.')

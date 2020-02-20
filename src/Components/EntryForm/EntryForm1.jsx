@@ -21,7 +21,6 @@ function EntryForm1 (props) {
         const validFileTypes = ["image/jpeg", "image/png"];
 
         if (validFileTypes.includes(fileType)) {
-
             console.log('this is an image')
             // add post with image
             props.addPostWithImage(post, file)

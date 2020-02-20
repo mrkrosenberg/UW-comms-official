@@ -28,7 +28,6 @@ export class Comments extends Component {
     };
 
     componentDidMount() {
-
         this.unsubscribe = this.dbCollection.onSnapshot((snapshot) => {
             var commentsArray = snapshot.docs.map((doc) => {
                 return {

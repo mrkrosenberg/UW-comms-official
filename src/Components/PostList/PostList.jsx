@@ -36,7 +36,6 @@ export class PostList extends Component {
 
 // Lifecycle Methods
     componentDidMount() {
-
         this.unsubscribe = this.db.onSnapshot((snapshot) => {
             var postsArray = snapshot.docs.map((doc) => {
                 // console.log(doc.id)
@@ -60,14 +59,10 @@ export class PostList extends Component {
     };
 
     postToFirebase = (post) => {
-
         this.db.add(post);
     };
 
-    addPostWithImage = (post, file) => {
-        
-            console.log('post with image: ', post)
-            console.log('here is the file: ', file)
+    addPostWithImage = (post, file) => {      
             this.imageStorage.child(file.name).put(post.postImage[0])
             .then((response) => {
                 this.imageStorage.child(file.name).getDownloadURL()
@@ -81,7 +76,6 @@ export class PostList extends Component {
                     this.setState({
                         newPost: newPost
                     })
-                    // this.db.add(newPost)
                     this.postToFirebase(newPost)
                 })
             })
@@ -90,18 +84,15 @@ export class PostList extends Component {
             });     
     };
     
-// CRUD Methods
-    addPostWithoutImage = (newPost) => {
-       
+    addPostWithoutImage = (newPost) => {  
         let post = {
             user: this.currentUser,
             title: newPost.title,
             body: newPost.body,
             imageUrl: null
         };
-        console.log('post without image', post)
+        // console.log('post without image', post)
 
-        // this.db.add(post);
         this.postToFirebase(post)
     };
 

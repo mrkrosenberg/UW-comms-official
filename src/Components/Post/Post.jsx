@@ -28,8 +28,7 @@ export class Post extends Component {
         };
     };
 
-    componentDidMount() {
-        
+    componentDidMount() {     
         this.setState({
             post: {
                 currentUser: this.props.currentUser,
@@ -78,9 +77,13 @@ export class Post extends Component {
                         </p>
                         {this.state.post.imageUrl ? (
                             <div className="post-image-container">
-                                <img className="post-image" src={this.state.post.imageUrl} alt=""/>
+                                <img 
+                                    className="post-image" 
+                                    src={this.state.post.imageUrl} 
+                                    alt=""
+                                />
                             </div>
-                        ) : (console.log('no image to display'))}
+                        ) : {}}
                         
                         {this.state.post.currentUser === this.state.post.postUser 
                             && <Button

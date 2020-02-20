@@ -29,14 +29,12 @@ export class Landing extends Component {
 
 
     showModal = () => {
-
         this.setState({
             showModal: !this.state.showModal
         })
     };
 
     showlogIn = () => {
-
         this.showModal();
         this.setState({
             userStatus: 'login'
@@ -44,22 +42,19 @@ export class Landing extends Component {
     };
 
     showSignUp = () => {
-
         this.setState({
             userStatus: 'signup'
         });
     };
 
-    showAgreement = () => {
-        
+    showAgreement = () => {    
         this.showModal();
         this.setState({
             userStatus: 'signAgreement'
         })
     };
 
-    componentWillUnmount() {
-        
+    componentWillUnmount() {    
         this.setState({
             userStatus: ''
         })
