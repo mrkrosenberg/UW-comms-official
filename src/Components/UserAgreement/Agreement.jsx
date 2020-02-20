@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 // PDF Rendering Dependencies
 import { Document, Page, pdfjs } from "react-pdf";
 
+// Stylesheet
+import './UserAgreement.scss';
 
 export class Agreement extends Component {
 
@@ -40,24 +42,25 @@ export class Agreement extends Component {
 
         return (
             <div className="pdf-container">
-                <nav>
-                    <button onClick={this.goToPrevPage}>Prev</button>
-                    <button onClick={this.goToNextPage}>Next</button>
+                <nav className="pdf-page-button d-flex justify-content-between">
+                    <button className="agreement-button" onClick={this.goToPrevPage}>Prev</button>
+                    <button className="agreement-button" onClick={this.goToNextPage}>Next</button>
                 </nav>
+                <div className="page-number text-center">
+                    <p>
+                        Page {pageNumber} of {numPages}
+                    </p>
+                </div>
                 <Document
-                    file={require("../../Static/file copy.pdf")}
+                    className="user-agreement"
+                    file={require("../../Static/UWComm - Agreement.pdf")}
                     onLoadSuccess={this.onDocumentLoadSuccess}
                     onLoadError={console.error}>
                     <Page 
                         pageNumber={pageNumber}
                         width={400}
                     />
-                </Document>
-                <div className="page-number">
-                    <p>
-                        Page {pageNumber} of {numPages}
-                    </p>
-                </div>
+                </Document>  
             </div>
         )
     }

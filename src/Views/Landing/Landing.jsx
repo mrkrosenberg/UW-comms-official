@@ -79,11 +79,13 @@ export class Landing extends Component {
                         aria-labelledby="contained-modal-title-vcenter"
                         centered>
                             <Modal.Header closeButton>
+                                
+                            </Modal.Header>
+                            <Modal.Body>
                                 { this.state.userStatus === 'login' && <LogIn closeModal={this.showModal}/>}
                                 { this.state.userStatus === 'signup' && <SignUp closeModal={this.showModal}/>}
                                 { this.state.userStatus === 'signAgreement' &&  <UserAgreement showSignUpForm={this.showSignUp} />}
-                            </Modal.Header>
-                        
+                            </Modal.Body>
                     </Modal>
                     <div className="welcome-text">
                         <h3>Welcome</h3>

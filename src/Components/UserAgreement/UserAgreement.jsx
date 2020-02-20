@@ -51,7 +51,7 @@ export class UserAgreement extends Component {
             }
         }, () => {
             let pdfDoc = Printer.createPdf(Contract(this.state.user.firstName, this.state.user.lastName));
-            // pdfDoc.download();
+            pdfDoc.download();
             pdfDoc.getBuffer((data) => {
                 this.setState({
                     isLoading: true
@@ -73,36 +73,35 @@ export class UserAgreement extends Component {
 
     render() {
         return (
-            // write if statement to display on state of conditional isLoading
             <div className="user-form-container">
                 {this.state.isLoading ? (
                     <Spinner animation="border" />
                 ) : (
-                    <div>
+                    <div className="user-agreement-section text-center">
+                        <h6 >Please review our terms and conditions</h6>
                         <Agreement />
-                        <h2>Sign User Agreement</h2>
-                        <form onSubmit={this.handleAgreement}>
-                            <label 
-                                className="user-input"
-                                htmlFor="firsName">
-                                    First Name
-                                    <input 
-                                        required
-                                        type="text"
-                                        ref="firstName"
-                                    />
-                            </label>
-                            <label 
-                                className="user-input"
-                                htmlFor="lastName">
-                                    Last Name
-                                    <input 
-                                        required
-                                        type="text"
-                                        ref="lastName"
-                                    />
-                            </label>
-                            <input 
+                        <form
+                            className="user-agreement-form" 
+                            onSubmit={this.handleAgreement}>
+                            <h6 className="agreement-form-title">Sign user agreement</h6>
+                            <input
+                                className="agreement-input" 
+                                required
+                                type="text"
+                                ref="firstName"
+                                placeholder="First Name"
+                            />
+                            <br />
+                            <input
+                                className="agreement-input" 
+                                required
+                                type="text"
+                                ref="lastName"
+                                placeholder="Last Name"
+                            />
+                            <br />
+                            <input
+                                className="agreement-button submit-button" 
                                 type="submit"
                             />
                         </form>
