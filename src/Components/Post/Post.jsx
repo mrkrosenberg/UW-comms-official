@@ -109,10 +109,14 @@ export class Post extends Component {
                     className="image-modal"
                     show={this.state.showImageModal}
                     onHide={this.showImageModal}>
-                    <img 
-                        className="large-image"
-                        src={this.state.post.imageUrl} 
-                        alt="no image to display"/>
+                    {/* <div className="image-close-button"> */}
+                        {/* <p onClick={this.showImageModal}>x</p> */}
+                    {/* </div> */}
+                        <img 
+                            className="large-image"
+                            src={this.state.post.imageUrl} 
+                            alt="no image to display"
+                        />
                 </Modal>
             </div>
             
