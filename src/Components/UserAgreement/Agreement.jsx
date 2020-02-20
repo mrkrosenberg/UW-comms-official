@@ -27,14 +27,17 @@ export class Agreement extends Component {
         });
     };
 
-    goToPrevPage = () =>
+    goToPrevPage = () => {
         this.setState(state => ({ 
             pageNumber: state.pageNumber - 1 
         }));
-    goToNextPage = () =>
+    };
+
+    goToNextPage = () => {
         this.setState(state => ({ 
             pageNumber: state.pageNumber + 1 
         }));
+    };
 
     render() {
 

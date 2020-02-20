@@ -17,6 +17,7 @@ export class Post extends Component {
 
         this.state = {
             showModal: false,
+            showImageModal: false,
             post: {
                 currentUser: '',
                 id: '',
@@ -47,6 +48,13 @@ export class Post extends Component {
         })
     };
 
+    showImageModal = () => {
+        this.setState({
+            showImageModal: !this.state.showImageModal,
+            showModal: !this.state.showModal
+        })
+    };
+
     deletePost = () => {
         this.props.deletePost(this.state.post.id)
     };
@@ -55,7 +63,9 @@ export class Post extends Component {
     render() {
         return (
             <div>
-                <article className="post" onClick={this.showModal}>
+                <article 
+                    className="post" 
+                    onClick={this.showModal}>
                     <h3>
                         {this.state.post.title}
                     </h3>
@@ -79,11 +89,12 @@ export class Post extends Component {
                             <div className="post-image-container">
                                 <img 
                                     className="post-image" 
+                                    onClick={this.showImageModal}
                                     src={this.state.post.imageUrl} 
-                                    alt=""
+                                    alt="no image to display"
                                 />
                             </div>
-                        ) : {}}
+                        ) : (console.log('no image'))}
                         
                         {this.state.post.currentUser === this.state.post.postUser 
                             && <Button
@@ -93,6 +104,15 @@ export class Post extends Component {
                         }
                         <Comments postId={this.state.post.id} />
                     </Modal.Body>
+                </Modal>
+                <Modal
+                    className="image-modal"
+                    show={this.state.showImageModal}
+                    onHide={this.showImageModal}>
+                    <img 
+                        className="large-image"
+                        src={this.state.post.imageUrl} 
+                        alt="no image to display"/>
                 </Modal>
             </div>
             
