@@ -64,9 +64,9 @@ export class Weather extends Component {
                         <h1>Local Weather @ Union West</h1>
                         <h6>Today is calling for {this.state.weatherData.description}</h6>
                     </header>
-                    <Container>
+                    {/* <Container>
                         <Row>
-                            <Col md={6}>
+                            <Col md={6}> */}
                                 <div className="icon-container text-center">
                                     <img 
                                         className="weather-icon" 
@@ -74,17 +74,17 @@ export class Weather extends Component {
                                         alt="weather-icon"
                                     />
                                 </div>
-                            </Col>
-                            <Col md={6}>
+                            {/* </Col>
+                            <Col md={6}> */}
                             <div className="data-container text-center">
                                 <h6>It is currently {this.state.weatherData.currentTemp}</h6>
                                 <h6>and feels like {this.state.weatherData.feelsLike}</h6>
                                 <h6>With a high of {this.state.weatherData.highTemp}</h6>
                                 <h6>And a low of {this.state.weatherData.lowTemp}</h6>
                             </div> 
-                            </Col>
+                            {/* </Col>
                         </Row>
-                    </Container> 
+                    </Container>  */}
                 </div>
                                                           
             </div>
