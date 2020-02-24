@@ -18,7 +18,7 @@ import userIcon from '../../Static/usericon.png';
 function Header() {
 
     const app = Firebase;
-    // const buttonText = 'Sign Out';
+    const currentUser = app.auth().currentUser.displayName;
 
     const signOut = () => {
         app.auth().signOut();
@@ -64,6 +64,9 @@ function Header() {
                     <Dropdown.Menu>
                         <Link to="/account">
                             <li>My Account</li>
+                        </Link>
+                        <Link to="/usersposts">
+                            <li>My Posts</li>
                         </Link>
                         <hr />
                         <li>

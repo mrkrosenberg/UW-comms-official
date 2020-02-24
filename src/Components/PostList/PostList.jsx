@@ -36,10 +36,8 @@ export class PostList extends Component {
 
 // Lifecycle Methods
     componentDidMount() {
-        // console.log(this.posts)
         this.unsubscribe = this.posts.onSnapshot((snapshot) => {
             var postsArray = snapshot.docs.map((doc) => {
-                // console.log(doc.id)
                 return {
                     id: doc.id,
                     user: doc.data().user,

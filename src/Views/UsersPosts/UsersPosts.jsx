@@ -4,9 +4,10 @@ import React, { Component } from 'react';
 import Firebase from '../../Config/Firebase';
 
 // Stylesheet
-import 'UsersPosts.scss';
+import './UsersPosts.scss';
 
 // Components
+import Header from '../../Components/Header/Header';
 import Post from '../../Components/Post/Post';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -20,25 +21,84 @@ export class UsersPosts extends Component {
 
         this.app = Firebase;
         this.currentUser = this.app.auth().currentUser.uid;
-        this.db = this.app.firestore().collection('Comments').w;
-    }
+        this.db = this.app.firestore().collection('Posts');
+        this.posts = this.db.where('user', '==', this.currentUser);
+
+        this.state = {
+            posts: []
+        }
+    };
+
+    componentDidMount() {
+        console.log(this.posts);
+        this.unsubscribe = this.posts.onSnapshot((snapshot) => {
+            var postsArray = snapshot.docs.map((doc) => {
+                return {
+                    id: doc.id,
+                    user: doc.data().user,
+                    title: doc.data().title,
+                    body: doc.data().body,
+                    imageUrl: doc.data().imageUrl
+                };
+            });
+
+            this.setState({
+                posts: postsArray
+            });
+        });
+    };
+
+    componentWillUnmount() {
+        this.unsubscribe();
+    };
+
+    deletePost = (postID) => {
+        // console.log(post);
+        this.db.doc(postID).delete()
+            .then(function() {
+                alert('post deleted')
+            }).catch(function(error) {
+                alert('there was an error deleting your post: ', error)
+            });
+    };
 
     render() {
         return (
-            <div>
+            <div className="view-body">
+                <Header />
+                <header className="collection-title-container text-center">
+                    <h3 className="collection-title">My Posts</h3>
+                </header>
+                <Container>
+                    <Row>
+                        <Col md={1} />
+                        <Col className="posts-container" md={10}>
+                            { this.state.posts.map((post) => {
+                                return(
+                                    <div className="post">
+                                        <Post 
+                                            key={post.id} 
+                                            postId={post.id} 
+                                            postTitle={post.title} 
+                                            postBody={post.body} 
+                                            postUser={post.user}
+                                            imageUrl={post.imageUrl}
+                                            currentUser={this.currentUser} 
+                                            deletePost={this.deletePost}
+                                        />
+                                    </div>
+                                )
+                                })
+                            }
+                        </Col>
+                        <Col md={1} />
+                    </Row>
+                </Container>
                 
             </div>
+           
         )
     }
 };
 
 export default UsersPosts;
-
-
-
-// Bring in Firebase
-// Bring in current user id
-// Create ref to database collection and find all where user id = current user id
-// first find all posts that belong to that user
-// for each post belonging to the user, find all comments 
-// map each post to a post component
