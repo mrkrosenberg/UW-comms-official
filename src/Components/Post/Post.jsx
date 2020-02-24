@@ -82,7 +82,7 @@ export class Post extends Component {
                         </h3>
                     </Modal.Header>
                     <Modal.Body>
-                        <p>
+                        <p className="post-body-container">
                             {this.state.post.body}
                         </p>
                         {this.state.post.imageUrl ? (
@@ -95,7 +95,6 @@ export class Post extends Component {
                                 />
                             </div>
                         ) : (console.log('no image'))}
-                        
                         {this.state.post.currentUser === this.state.post.postUser 
                             && <Button
                                     buttonText={this.buttonText} 

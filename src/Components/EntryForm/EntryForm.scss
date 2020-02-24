@@ -19,8 +19,17 @@
     margin-bottom: 3vh;
 }
 
+.image-option {
+    color: $accent-color;
+}
+
+.image-select-button {
+    margin-bottom: 5vh;
+}
+
 .post-submit-button {
+    @extend .button-style;
     background-color: $accent-color;
-    border: 1px solid $secondary-color;
+    // border: 1px solid $secondary-color;
     color: $secondary-color
 }

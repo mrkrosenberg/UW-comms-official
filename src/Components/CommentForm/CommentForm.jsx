@@ -10,7 +10,7 @@ function CommentForm(props) {
     const [ comment, setComment ] = useState('');
 
     const onSubmit = (comment) => {
-        console.log('comment form submitted')
+        // console.log('comment form submitted')
         props.addComment(comment)
     };
 

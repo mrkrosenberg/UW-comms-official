@@ -2,8 +2,9 @@
 @import '../../Styles/variables.scss';
 
 .action-button {
-    background-color: $accent-color;
-    border: 1px solid $secondary-color;
+    @extend .button-style;
+    background-color: red;
+    border-color: $secondary-color;
     color: $secondary-color;
     font-weight: inherit;
     margin-bottom: 5vh;

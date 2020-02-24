@@ -29,6 +29,7 @@
 }
 
 .submit-button {
+    @extend .button-style;
     margin-top: 3vh;
 }
 

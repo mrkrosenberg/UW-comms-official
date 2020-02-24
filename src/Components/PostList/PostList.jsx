@@ -9,8 +9,6 @@ import './PostList.scss'
 // Components
 import Post from '../Post/Post';
 import EntryForm1 from '../EntryForm/EntryForm1';
-
-// Bootstrap Imports
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -24,7 +22,9 @@ export class PostList extends Component {
         // this.showEntryForm = props.showEntryForm;
 
         this.app = Firebase;
-        this.db = this.app.firestore().collection(this.collection);
+        // this.db = this.app.firestore().collection(this.collection);
+        this.db = this.app.firestore().collection('Posts');
+        this.posts = this.db.where('collection', '==', this.collection);
         this.imageStorage = this.app.storage().ref('images');
         this.currentUser = this.app.auth().currentUser.uid;
 
@@ -36,7 +36,8 @@ export class PostList extends Component {
 
 // Lifecycle Methods
     componentDidMount() {
-        this.unsubscribe = this.db.onSnapshot((snapshot) => {
+        // console.log(this.posts)
+        this.unsubscribe = this.posts.onSnapshot((snapshot) => {
             var postsArray = snapshot.docs.map((doc) => {
                 // console.log(doc.id)
                 return {
@@ -68,6 +69,7 @@ export class PostList extends Component {
                 this.imageStorage.child(file.name).getDownloadURL()
                 .then((url) => {
                     let newPost = {
+                        collection: this.collection,
                         user: this.currentUser,
                         title: post.title,
                         body: post.body,
@@ -86,6 +88,7 @@ export class PostList extends Component {
     
     addPostWithoutImage = (newPost) => {  
         let post = {
+            collection: this.collection,
             user: this.currentUser,
             title: newPost.title,
             body: newPost.body,

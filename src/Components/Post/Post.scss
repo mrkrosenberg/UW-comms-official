@@ -5,8 +5,18 @@
     margin-top: 3vh;
 }
 
-.post-image-container {
+.post-body-container {
+    background-color: white;
+    border: 1px solid $secondary-color;
+    padding: 2vh 0 3vh 1vh ;
 
+    &:hover {
+        background-color: white;
+    }
+}
+
+.post-image-container {
+    margin-bottom: 2vh;
 }
 
 .post-image {
@@ -16,6 +26,8 @@
 .image-modal {
     width: 90%;
 }
+
+.image-container
 
 .image-close-button {
     background: none;

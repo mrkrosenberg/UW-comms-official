@@ -74,21 +74,17 @@ function EntryForm1 (props) {
                 /> 
                 <Accordian defaultActiveKey="0">
                     <Accordian.Toggle as={Button} variant="link" eventKey="1">
-                        Attach Image?
+                        <p className="image-option">
+                            Attach Image?
+                        </p>
                     </Accordian.Toggle>
                     <Accordian.Collapse eventKey="1">
-                        {/* <FileUploader 
-                            accept="image/*"
-                            name="post-image"
-                            storageRef={props.imageStorage}
-                            multiple
-                        /> */}
-                        <input 
-                            className="post-input"
-                            type="file"
-                            name="postImage"
-                            ref={register}
-                        />
+                    <input 
+                        className="post-input image-select-button"
+                        type="file"
+                        name="postImage"
+                        ref={register}
+                    />
                     </Accordian.Collapse>
                 </Accordian>         
                 <input
