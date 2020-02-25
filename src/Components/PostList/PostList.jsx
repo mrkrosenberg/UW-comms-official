@@ -31,7 +31,8 @@ export class PostList extends Component {
 
         this.state = {
             posts: [],
-            newPost: {}
+            newPost: {},
+            uploadProgress: 0
         };
     };
 
@@ -63,27 +64,45 @@ export class PostList extends Component {
     };
 
     addPostWithImage = (post, file) => {      
-            this.imageStorage.child(file.name).put(post.postImage[0])
-            .then((response) => {
-                this.imageStorage.child(file.name).getDownloadURL()
-                .then((url) => {
-                    let newPost = {
-                        collection: this.collection,
-                        user: this.currentUser,
-                        title: post.title,
-                        body: post.body,
-                        imageUrl: url
-                    };
-                    this.setState({
-                        newPost: newPost
-                    })
-                    this.postToFirebase(newPost)
-                })
-            })
-            .catch((error) => {
+
+        const uploadTask = this.imageStorage.child(file.name).put(post.postImage[0]);
+
+        uploadTask.on('state_changed', 
+            (snapshot) => {
+                var progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                this.setState({
+                    uploadProgress: progress
+                });
+            },
+            (error) => {
                 console.log(error)
-            });     
-    };
+            },
+            () => {
+                this.imageStorage.child(file.name).put(post.postImage[0])
+                .then((response) => {
+                    this.imageStorage.child(file.name).getDownloadURL()
+                    .then((url) => {
+                        let newPost = {
+                            collection: this.collection,
+                            user: this.currentUser,
+                            title: post.title,
+                            body: post.body,
+                            imageUrl: url
+                        };
+                        this.setState({
+                            newPost: newPost
+                        })
+                        this.postToFirebase(newPost)
+                    })
+                })
+                .catch((error) => {
+                    console.log(error)
+                });  
+            });
+        };
+
+               
+    // };
     
     addPostWithoutImage = (newPost) => {  
         let post = {
@@ -151,6 +170,7 @@ export class PostList extends Component {
                                     <EntryForm1 
                                         addPostWithoutImage={this.addPostWithoutImage}
                                         addPostWithImage={this.addPostWithImage} 
+                                        uploadProgress={this.state.uploadProgress}
                                         // imageStorage={this.imageStorage}
                                     />
                                 </Col>

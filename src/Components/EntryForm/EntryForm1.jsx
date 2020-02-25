@@ -14,6 +14,8 @@ function EntryForm1 (props) {
     const [ title, setTitle ] = useState('');
     const [ body, setBody ] = useState('');
 
+    const uploadProgress = props.uploadProgress
+
     // refactor as promise and move post ref to onSubmit
     const checkFileType = (post, file) => {
 
@@ -79,14 +81,17 @@ function EntryForm1 (props) {
                         </p>
                     </Accordian.Toggle>
                     <Accordian.Collapse eventKey="1">
-                    <input 
-                        className="post-input image-select-button"
-                        type="file"
-                        name="postImage"
-                        ref={register}
-                    />
+                        <div className="image-input-container">
+                            <input 
+                                className="post-input image-select-button"
+                                type="file"
+                                name="postImage"
+                                ref={register}
+                            />
+                            <p>progress: {uploadProgress}% </p>
+                        </div>
                     </Accordian.Collapse>
-                </Accordian>         
+                </Accordian>        
                 <input
                     className="post-submit-button" 
                     type="submit" 
