@@ -34,8 +34,8 @@ function EntryForm1 (props) {
         if (post.postImage.length > 0) {
 
             const file = post.postImage[0];
-            console.log(post.postImage);
-            console.log(post.postImage[0]);
+            // console.log(post.postImage);
+            // console.log(post.postImage[0]);
             checkFileType(post, file);
         } else {
 

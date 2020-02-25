@@ -9,6 +9,7 @@ import './PostList.scss'
 // Components
 import Post from '../Post/Post';
 import EntryForm1 from '../EntryForm/EntryForm1';
+import EmptyPosts from '../EmptyPosts/EmptyPosts';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -114,44 +115,52 @@ export class PostList extends Component {
                 <header className="collection-title-container text-center">
                     <h3 className="collection-title">{this.collection} Message Board</h3>
                 </header>
-                <Container>
-                    <Row>
-                        <Col md={1}/>
-                        <Col className="posts-container" md={10}>
-                            { this.state.posts.map((post) => {
-                                return(
-                                    <div className="post">
-                                        <Post 
-                                            key={post.id} 
-                                            postId={post.id} 
-                                            postTitle={post.title} 
-                                            postBody={post.body} 
-                                            postUser={post.user}
-                                            imageUrl={post.imageUrl}
-                                            currentUser={this.currentUser} 
-                                            deletePost={this.deletePost}
-                                        />
-                                    </div>
-                                )
-                                })
-                            }
-                        </Col>
-                        <Col md={1}/>
-                    </Row>
-                </Container>   
-                <Container>
-                    <Row>
-                        <Col  md={1} />
-                        <Col md={10}>
-                            <EntryForm1 
-                                addPostWithoutImage={this.addPostWithoutImage}
-                                addPostWithImage={this.addPostWithImage} 
-                                // imageStorage={this.imageStorage}
-                            />
-                        </Col>
-                        <Col md={1} />
-                    </Row>             
-                </Container>
+                {!this.state.posts ? (
+                    <EmptyPosts />
+                ) : (
+                    <div>
+                        <Container>
+                            <Row>
+                                <Col md={1}/>
+                                <Col className="posts-container" md={10}>
+                                    { this.state.posts.map((post) => {
+                                        return(
+                                            <div className="post">
+                                                <Post 
+                                                    key={post.id} 
+                                                    postId={post.id} 
+                                                    postTitle={post.title} 
+                                                    postBody={post.body} 
+                                                    postUser={post.user}
+                                                    imageUrl={post.imageUrl}
+                                                    currentUser={this.currentUser} 
+                                                    deletePost={this.deletePost}
+                                                />
+                                            </div>
+                                        )
+                                        })
+                                    }
+                                </Col>
+                                <Col md={1}/>
+                            </Row>
+                        </Container>   
+                        <Container>
+                            <Row>
+                                <Col  md={1} />
+                                <Col md={10}>
+                                    <EntryForm1 
+                                        addPostWithoutImage={this.addPostWithoutImage}
+                                        addPostWithImage={this.addPostWithImage} 
+                                        // imageStorage={this.imageStorage}
+                                    />
+                                </Col>
+                                <Col md={1} />
+                            </Row>             
+                        </Container>
+                    </div>
+                    
+                )}
+                
             </section>
         )
     };
