@@ -79,7 +79,9 @@ export class Landing extends Component {
                         aria-labelledby="contained-modal-title-vcenter"
                         centered>
                             <Modal.Header closeButton>
-                                
+                                <div className="modal-title-container text-center">
+                                    <h2 className="modal-title">UW Community Board</h2>
+                                </div>
                             </Modal.Header>
                             <Modal.Body>
                                 { this.state.userStatus === 'login' && <LogIn closeModal={this.showModal}/>}

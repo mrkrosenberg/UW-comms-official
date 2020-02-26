@@ -51,7 +51,7 @@ export class UserAgreement extends Component {
             }
         }, () => {
             let pdfDoc = Printer.createPdf(Contract(this.state.user.firstName, this.state.user.lastName));
-            pdfDoc.download();
+            // pdfDoc.download();
             pdfDoc.getBuffer((data) => {
                 this.setState({
                     isLoading: true
@@ -75,7 +75,9 @@ export class UserAgreement extends Component {
         return (
             <div className="user-form-container">
                 {this.state.isLoading ? (
-                    <Spinner animation="border" />
+                    <Spinner animation="border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </Spinner>
                 ) : (
                     <div className="user-agreement-section text-center">
                         <h6 >Please review our terms and conditions</h6>
@@ -83,7 +85,6 @@ export class UserAgreement extends Component {
                         <form
                             className="user-agreement-form" 
                             onSubmit={this.handleAgreement}>
-                            <h6 className="agreement-form-title">Sign user agreement</h6>
                             <input
                                 className="agreement-input" 
                                 required
@@ -99,6 +100,7 @@ export class UserAgreement extends Component {
                                 ref="lastName"
                                 placeholder="Last Name"
                             />
+                            <p className="agreement-form-text">By signing, you agree to Terms and Conditions</p>
                             <br />
                             <input
                                 className="agreement-button submit-button" 

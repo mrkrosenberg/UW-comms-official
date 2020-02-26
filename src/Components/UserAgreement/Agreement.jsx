@@ -46,8 +46,16 @@ export class Agreement extends Component {
         return (
             <div className="pdf-container">
                 <nav className="pdf-page-button d-flex justify-content-between">
-                    <button className="agreement-button" onClick={this.goToPrevPage}>Prev</button>
-                    <button className="agreement-button" onClick={this.goToNextPage}>Next</button>
+                    <button 
+                        className="agreement-button" 
+                        onClick={this.goToPrevPage}>
+                            Prev
+                    </button>
+                    <button 
+                        className="agreement-button" 
+                        onClick={this.goToNextPage}>
+                            Next
+                    </button>
                 </nav>
                 <div className="page-number text-center">
                     <p>

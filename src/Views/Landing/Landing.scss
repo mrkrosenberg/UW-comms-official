@@ -68,7 +68,16 @@
 
 .modal-header {
     background-color: $accent-color;
-    border: none
+    border: none;
+}
+
+.modal-title-container {
+    width: 100%;
+}
+
+.modal-title {
+    font-weight: bold;
+    color: $secondary-color;
 }
 
 .modal-body {

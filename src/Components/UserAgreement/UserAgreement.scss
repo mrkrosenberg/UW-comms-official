@@ -2,13 +2,17 @@
 @import 'src/Styles/variables.scss';
 
 .user-agreement-form {
-    // padding: 10vh;
+    margin-top: .5vh;
+    margin-bottom: 1vh;
+    padding: 3vh;
+    background-color: white;
 }
 
 .agreement-button {
-    background-color: $accent-color;
-    border: 2px solid $secondary-color;
-    color: $secondary-color;
+    @extend .button-style;
+    background-color: $secondary-color;
+    border: 2px solid $primary-color;
+    color: $accent-color;
     display: inline-block;
 }
 
@@ -19,21 +23,13 @@
     background-color: white;
 }
 
-.agreement-form-title {
-    margin-top: 5vh;
+.agreement-form-text {
+    margin-top: 2vh;
+    font-size: small;
 }
 
 .agreement-input {
     margin-top: 1vh;
     width: 50%;
 }
-
-.submit-button {
-    @extend .button-style;
-    margin-top: 3vh;
-}
-
-
-
-
 
