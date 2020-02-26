@@ -27,6 +27,14 @@
     margin-bottom: 5vh;
 }
 
+.spinner-container {
+    display: block;
+}
+
+.progress-tracker {
+    color: $accent-color;
+}
+
 .post-submit-button {
     @extend .button-style;
     background-color: $accent-color;

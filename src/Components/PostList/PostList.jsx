@@ -32,7 +32,8 @@ export class PostList extends Component {
         this.state = {
             posts: [],
             newPost: {},
-            uploadProgress: 0
+            uploadProgress: 0,
+            isLoading: false
         };
     };
 
@@ -67,6 +68,10 @@ export class PostList extends Component {
 
         const uploadTask = this.imageStorage.child(file.name).put(post.postImage[0]);
 
+        this.setState({
+            isLoading: true
+        });
+
         uploadTask.on('state_changed', 
             (snapshot) => {
                 var progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
@@ -93,6 +98,9 @@ export class PostList extends Component {
                             newPost: newPost
                         })
                         this.postToFirebase(newPost)
+                        this.setState({
+                            isLoading: false
+                        })
                     })
                 })
                 .catch((error) => {
@@ -171,7 +179,7 @@ export class PostList extends Component {
                                         addPostWithoutImage={this.addPostWithoutImage}
                                         addPostWithImage={this.addPostWithImage} 
                                         uploadProgress={this.state.uploadProgress}
-                                        // imageStorage={this.imageStorage}
+                                        isLoading={this.state.isLoading}
                                     />
                                 </Col>
                                 <Col md={1} />

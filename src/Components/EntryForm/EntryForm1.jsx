@@ -7,14 +7,17 @@ import './EntryForm.scss';
 // Components
 import Accordian from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 function EntryForm1 (props) {    
 
     const { register, handleSubmit } = useForm();
     const [ title, setTitle ] = useState('');
     const [ body, setBody ] = useState('');
+    // const [ isLoading, setIsLoading ] = useState(false);
 
-    const uploadProgress = props.uploadProgress
+    const uploadProgress = props.uploadProgress;
+    const isLoading = props.isLoading;
 
     // refactor as promise and move post ref to onSubmit
     const checkFileType = (post, file) => {
@@ -80,17 +83,25 @@ function EntryForm1 (props) {
                             Attach Image?
                         </p>
                     </Accordian.Toggle>
-                    <Accordian.Collapse eventKey="1">
-                        <div className="image-input-container">
-                            <input 
-                                className="post-input image-select-button"
-                                type="file"
-                                name="postImage"
-                                ref={register}
-                            />
-                            <p>progress: {uploadProgress}% </p>
+                    {isLoading ? (
+                        <div className="spinner-container">
+                            <Spinner animation="border" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </Spinner>
+                            <p className="progress-tracker">progress: {uploadProgress}% </p>
                         </div>
-                    </Accordian.Collapse>
+                    ) : (
+                        <Accordian.Collapse eventKey="1">
+                            <div className="image-input-container">
+                                <input 
+                                    className="post-input image-select-button"
+                                    type="file"
+                                    name="postImage"
+                                    ref={register}
+                                />
+                            </div>
+                        </Accordian.Collapse>
+                    )}   
                 </Accordian>        
                 <input
                     className="post-submit-button" 
