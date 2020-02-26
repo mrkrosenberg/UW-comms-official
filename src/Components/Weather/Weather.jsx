@@ -39,10 +39,10 @@ export class Weather extends Component {
                     main: response.data.weather[0].main,
                     description: response.data.weather[0].description,
                     icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-                    currentTemp: response.data.main.temp,
-                    lowTemp: response.data.main.temp_min,
-                    highTemp: response.data.main.temp_max,
-                    feelsLike: response.data.main.feels_like
+                    currentTemp: Math.round(response.data.main.temp),
+                    lowTemp: Math.round(response.data.main.temp_min),
+                    highTemp: Math.round(response.data.main.temp_max),
+                    feelsLike: Math.round(response.data.main.feels_like)
                 }
             })
     };
