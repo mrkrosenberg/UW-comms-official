@@ -20,10 +20,8 @@ export class PostList extends Component {
         super(props);
 
         this.collection = props.collection;
-        // this.showEntryForm = props.showEntryForm;
 
         this.app = Firebase;
-        // this.db = this.app.firestore().collection(this.collection);
         this.db = this.app.firestore().collection('Posts');
         this.posts = this.db.where('collection', '==', this.collection);
         this.imageStorage = this.app.storage().ref('images');
@@ -108,9 +106,6 @@ export class PostList extends Component {
                 });  
             });
         };
-
-               
-    // };
     
     addPostWithoutImage = (newPost) => {  
         let post = {
@@ -120,14 +115,12 @@ export class PostList extends Component {
             body: newPost.body,
             imageUrl: null
         };
-        // console.log('post without image', post)
 
         this.postToFirebase(post)
     };
 
 
     deletePost = (postID) => {
-        // console.log(post);
         this.db.doc(postID).delete()
             .then(function() {
                 alert('post deleted')
@@ -142,31 +135,34 @@ export class PostList extends Component {
                 <header className="collection-title-container text-center">
                     <h3 className="collection-title">{this.collection} Message Board</h3>
                 </header>
-                {!this.state.posts ? (
+                {/* {!this.state.posts ? (
                     <EmptyPosts />
-                ) : (
+                ) : ( */}
                     <div>
                         <Container>
                             <Row>
                                 <Col md={1}/>
                                 <Col className="posts-container" md={10}>
-                                    { this.state.posts.map((post) => {
-                                        return(
-                                            <div className="post">
-                                                <Post 
-                                                    key={post.id} 
-                                                    postId={post.id} 
-                                                    postTitle={post.title} 
-                                                    postBody={post.body} 
-                                                    postUser={post.user}
-                                                    imageUrl={post.imageUrl}
-                                                    currentUser={this.currentUser} 
-                                                    deletePost={this.deletePost}
-                                                />
-                                            </div>
-                                        )
+                                    {!this.state.posts ? (
+                                        <EmptyPosts />
+                                    ) : (
+                                        this.state.posts.map((post) => {
+                                            return(
+                                                <div className="post">
+                                                    <Post 
+                                                        key={post.id} 
+                                                        postId={post.id} 
+                                                        postTitle={post.title} 
+                                                        postBody={post.body} 
+                                                        postUser={post.user}
+                                                        imageUrl={post.imageUrl}
+                                                        currentUser={this.currentUser} 
+                                                        deletePost={this.deletePost}
+                                                    />
+                                                </div>
+                                            )
                                         })
-                                    }
+                                    )}  
                                 </Col>
                                 <Col md={1}/>
                             </Row>
@@ -187,7 +183,7 @@ export class PostList extends Component {
                         </Container>
                     </div>
                     
-                )}
+                {/* )} */}
                 
             </section>
         )

@@ -91,7 +91,7 @@ export class Post extends Component {
                                     className="post-image" 
                                     onClick={this.showImageModal}
                                     src={this.state.post.imageUrl} 
-                                    alt="no image to display"
+                                    alt=""
                                 />
                             </div>
                         ) : (console.log('no image'))}
@@ -114,7 +114,7 @@ export class Post extends Component {
                         <img 
                             className="large-image"
                             src={this.state.post.imageUrl} 
-                            alt="no image to display"
+                            alt=""
                         />
                 </Modal>
             </div>
