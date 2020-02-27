@@ -9,7 +9,7 @@
 .comment-submit-button {
     @extend .button-style;
     display: block;
-    background-color: $accent-color;
-    color: $secondary-color;
-    border-color: $secondary-color;
+    background-color: $secondary-color;
+    color: $accent-color;
+    border-color: $primary-color;
 }
