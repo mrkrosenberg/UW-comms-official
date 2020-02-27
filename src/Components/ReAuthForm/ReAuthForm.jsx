@@ -41,7 +41,7 @@ function ReAuthForm(props) {
                         <input 
                             className="account-delete-button"
                             type="submit"
-                            value="Delete Account"
+                            value="Confirm"
                         />
                     </form>
                 </div>

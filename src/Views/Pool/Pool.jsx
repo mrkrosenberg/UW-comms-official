@@ -20,10 +20,14 @@ export class Pool extends Component {
 
     render() {
         return (
-            <div className="view-body">
-                <Header />
-                <PostList collection={this.collection} />
-                <Footer />
+            <div>
+                <div className="view-body">
+                    <Header />
+                    <PostList collection={this.collection} />
+                </div>
+                <div className="footer-container">
+                    <Footer />
+                </div>
             </div>
 
         )

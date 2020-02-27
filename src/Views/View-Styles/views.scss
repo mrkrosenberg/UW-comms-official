@@ -2,9 +2,10 @@
 @import 'src/Styles/variables.scss';
 
 .view-body {
-    height: 130vh;
-    margin-bottom: 3vh;
+    // height: 130vh;
+    // margin-bottom: 3vh;
     background-color: $secondary-color;
+    margin-bottom: 5vh;
 }
 
 .view-title {
@@ -75,11 +76,9 @@
     background-color: white;
 }
 
-// .delete-container-color {
-//     height: 100%;
-//     width: 100%;
-//     // background-color: $secondary-transparent;
-// }
+.delete-warning {
+    font-size: small;
+}
 
 .delete-button {
     @extend .button-style;
@@ -88,6 +87,6 @@
 }
 
 .footer-container {
-    margin-top: 10vh;
+    // margin-top: 10vh;
 }
 

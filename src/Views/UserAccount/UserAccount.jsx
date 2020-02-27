@@ -127,7 +127,7 @@ export class UserAccount extends Component {
                                             onClick={this.showModal}>
                                                 Delete Account
                                         </button>
-                                        <p>warning: this can't be undone</p>
+                                        <p className="delete-warning">warning: this can't be undone</p>
                                     </div>
                             </Col> 
                             <Col md={1} />

@@ -99,10 +99,10 @@ export class UsersPosts extends Component {
                                 <Col md={1} />
                             </Row>
                         </Container>
-                    )}
-                    <div className="footer-container">
-                        <Footer />
-                    </div>
+                    )} 
+                </div>
+                <div className="footer-container">
+                    <Footer />
                 </div>
             </div>
         )
