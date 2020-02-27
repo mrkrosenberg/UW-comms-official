@@ -31,10 +31,10 @@ export class NewsPost extends Component {
                     <Col md={1} />
                     <Col className="news-container" md={10}>
                         <article className="event-post">
-                            <h3>{this.post.title}</h3>
-                            <p>Date: {this.post.date}</p>
-                            <p>From: {this.post.time}</p>
-                            <p>{this.post.body}</p>
+                            <h3 className="event-title">{this.post.title}</h3>
+                            <p className="event-info">Date: {this.post.date}</p>
+                            <p className="event-info">From: {this.post.time}</p>
+                            <p className="event-details">{this.post.body}</p>
                         </article>
                     </Col>
                     <Col md={1} />

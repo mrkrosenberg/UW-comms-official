@@ -2,7 +2,23 @@
 @import 'src/Styles/variables.scss';
 
 .event-post {
-    background-color: $tertiary-color;
-    border: 1px solid $accent-color;
     margin-bottom: 1vh;
+    padding: 3rem;
+    background-color: white;
+    border: 1px solid $accent-color;
+}
+
+.event-title {
+    border-bottom: 1px solid $tertiary-color;
+}
+
+.event-info {
+    display: inline;
+    margin-right: 2rem;
+    padding-bottom: 2vh;
+    border-bottom: 1px solid $tertiary-color;
+}
+
+.event-details {
+    margin-top: 3vh;
 }
