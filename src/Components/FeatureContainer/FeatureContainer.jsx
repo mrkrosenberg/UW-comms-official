@@ -25,9 +25,9 @@ function FeatureContainer() {
                                 <img className="feature-icon" src={connectIcon} alt=""></img>
                             </div>
                             <div className="container feature-text">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Debitis, velit maiores! Tempore vero consequuntur ipsum 
-                                    culpa illo minus blanditiis qui!
+                                <p>
+                                    Connect with your neighbors and increase communication
+                                    in our building
                                 </p>
                             </div>
                         </div>
@@ -40,9 +40,9 @@ function FeatureContainer() {
                                 <img className="feature-icon" src={noteIcon} alt=""></img>
                             </div>
                             <div className="container feature-text">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Debitis, velit maiores! Tempore vero consequuntur ipsum 
-                                    culpa illo minus blanditiis qui!
+                                <p>
+                                    Post and view announcements, news, messages, classifies, etc..., all
+                                    from your neighbors and all in real time
                                 </p>
                             </div>
                         </div>
@@ -54,9 +54,8 @@ function FeatureContainer() {
                             </div>
                             <div className="container feature-text">
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Debitis, velit maiores! Tempore vero consequuntur ipsum 
-                                    culpa illo minus blanditiis qui!
+                                    Stay up-to-date on official news and announcments form Union West
+                                    and Inland Residential
                                 </p>
                             </div>
                         </div>
@@ -68,9 +67,8 @@ function FeatureContainer() {
                             </div>
                             <div className="container feature-text">
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Debitis, velit maiores! Tempore vero consequuntur ipsum 
-                                    culpa illo minus blanditiis qui!
+                                    Responsive design and progressive features make for a seamless experience
+                                    on any device
                                 </p>
                             </div>
                         </div>

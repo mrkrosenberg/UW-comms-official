@@ -90,8 +90,12 @@ export class Landing extends Component {
                             </Modal.Body>
                     </Modal>
                     <div className="welcome-text">
-                        <h2>UW Community Board</h2>
-                        <p>The unofficial communication board for residents of Union West Apartments</p>
+                        <h2>
+                            UW Community Board
+                        </h2>
+                        <p>
+                            The unofficial communication board for residents of Union West Apartments
+                        </p>
                     </div>
                 </section>
                 <section className="middle">
