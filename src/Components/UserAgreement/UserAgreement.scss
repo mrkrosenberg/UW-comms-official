@@ -4,8 +4,15 @@
 .user-agreement-form {
     margin-top: .5vh;
     margin-bottom: 1vh;
-    padding: 3vh;
+    // padding: 3vh;
     background-color: white;
+}
+
+.user-form-color {
+    background-color: $secondary-transparent;
+    height: 100%;
+    width: 100%;
+    padding: 3vh;
 }
 
 .agreement-button {

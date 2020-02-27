@@ -29,6 +29,14 @@
 
 .auth-form {
     background-color: white;
+    padding: 0;
+}
+
+.auth-form-color {
+    height: 100%;
+    width: 100%;
+    padding: 10vh;
+    background-color: $secondary-transparent;
 }
 
 .auth-title {

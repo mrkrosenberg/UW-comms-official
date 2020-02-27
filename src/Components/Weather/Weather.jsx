@@ -28,7 +28,7 @@ export class Weather extends Component {
             await Axios.get("https://api.openweathermap.org/data/2.5/weather?zip=80228,us&units=imperial&appid=ed1fb3710e0261cc11a496c703e2ab17")
             // await Axios.get("http://api.openweathermap.org/data/2.5/forecast/daily?zip=80228&cnt=3&appid=dcbb56db50fbdd17a0b5395f8108969a")
 
-            console.log(response.data)
+            // console.log(response.data)
             this.setState({
                 weatherData: {
                     main: response.data.weather[0].main,

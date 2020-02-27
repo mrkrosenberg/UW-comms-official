@@ -80,32 +80,39 @@ export class UserAgreement extends Component {
                     </Spinner>
                 ) : (
                     <div className="user-agreement-section text-center">
-                        <h6 >Please review our terms and conditions</h6>
+                        <h6 >
+                            Please review our terms and conditions
+                        </h6>
                         <Agreement />
                         <form
                             className="user-agreement-form" 
                             onSubmit={this.handleAgreement}>
-                            <input
-                                className="agreement-input" 
-                                required
-                                type="text"
-                                ref="firstName"
-                                placeholder="First Name"
-                            />
-                            <br />
-                            <input
-                                className="agreement-input" 
-                                required
-                                type="text"
-                                ref="lastName"
-                                placeholder="Last Name"
-                            />
-                            <p className="agreement-form-text">By signing, you agree to Terms and Conditions</p>
-                            <br />
-                            <input
-                                className="agreement-button submit-button" 
-                                type="submit"
-                            />
+                                <div className="user-form-color">
+                                    <input
+                                        className="agreement-input" 
+                                        required
+                                        type="text"
+                                        ref="firstName"
+                                        placeholder="First Name"
+                                    />
+                                    <br />
+                                    <input
+                                        className="agreement-input" 
+                                        required
+                                        type="text"
+                                        ref="lastName"
+                                        placeholder="Last Name"
+                                    />
+                                    <p className="agreement-form-text">
+                                        By signing, you agree to Terms and Conditions
+                                    </p>
+                                    <br />
+                                    <input
+                                        className="agreement-button submit-button" 
+                                        type="submit"
+                                    />
+                                </div>
+                            
                         </form>
                     </div>
                     

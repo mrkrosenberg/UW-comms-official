@@ -39,25 +39,26 @@ const LogIn = ({ history }, props) => {
 
   return (
     <div className="auth-form">
-      <h1 className="auth-title text-center">Log in</h1>
-      <form onSubmit={ handleLogin }>
-        <input 
-          className="auth-input" 
-          name="email" 
-          type="email" 
-          placeholder="Email" />
-        <input 
-          className="auth-input" 
-          name="password" 
-          type="password" 
-          placeholder="Password" />
-        <button 
-          className="auth-submit" 
-          type="submit">
-            Log in
-          </button>
-      </form>
-      
+      <div className="auth-form-color">
+        <h1 className="auth-title text-center">Log in</h1>
+        <form onSubmit={ handleLogin }>
+          <input 
+            className="auth-input" 
+            name="email" 
+            type="email" 
+            placeholder="Email" />
+          <input 
+            className="auth-input" 
+            name="password" 
+            type="password" 
+            placeholder="Password" />
+          <button 
+            className="auth-submit" 
+            type="submit">
+              Log in
+            </button>
+        </form>
+      </div>   
     </div>
   );
 };
