@@ -7,6 +7,7 @@ import Firebase from '../../Config/Firebase';
 import Header from '../../Components/Header/Header';
 import NewsPost from '../../Components/NewsPost/NewsPost';
 import Weather from '../../Components/Weather/Weather';
+import Footer from '../../Components/Footer/Footer';
 
 
 export class Home extends Component {
@@ -73,6 +74,7 @@ export class Home extends Component {
                         )
                     })}
                 </div>
+                <Footer />
             </div>
         )
     };

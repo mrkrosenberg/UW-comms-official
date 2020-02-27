@@ -17,30 +17,35 @@ function ReAuthForm(props) {
     };
 
     return (
-        <div className="form-container">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                {/* <input
-                    value={userEmail}
-                    onChange={e => setUserEmail(e.target.value)}
-                    type="email"
-                    placeholder="re-enter email"
-                    name="userEmail"
-                    ref={register}/> */}
-                <input
-                    required
-                    value={password} 
-                    onChange={e => setPassword(e.target.value)}
-                    type="password"
-                    placeholder="re-enter password"
-                    name="password"
-                    ref={register}
-                />
-                <input 
-                    className="account-delete-button"
-                    type="submit"
-                    value="Delete Account"
-                />
-            </form>
+        <div className="delete-form-container">
+                <div className="delete-form-color">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <p>Enter password to confirm</p>
+                        {/* <input
+                            value={userEmail}
+                            onChange={e => setUserEmail(e.target.value)}
+                            type="email"
+                            placeholder="re-enter email"
+                            name="userEmail"
+                            ref={register}/> */}
+                        <input
+                            className="password-input"
+                            required
+                            value={password} 
+                            onChange={e => setPassword(e.target.value)}
+                            type="password"
+                            placeholder="password"
+                            name="password"
+                            ref={register}
+                        />
+                        <input 
+                            className="account-delete-button"
+                            type="submit"
+                            value="Delete Account"
+                        />
+                    </form>
+                </div>
+                
             
         </div>
     );

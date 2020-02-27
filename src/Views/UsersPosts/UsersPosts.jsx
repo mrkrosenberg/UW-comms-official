@@ -13,7 +13,7 @@ import EmptyPosts from '../../Components/EmptyPosts/EmptyPosts';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import Footer from '../../Components/Footer/Footer';
 
 export class UsersPosts extends Component {
 
@@ -31,7 +31,7 @@ export class UsersPosts extends Component {
     };
 
     componentDidMount() {
-        console.log(this.posts);
+        // console.log(this.posts);
         this.unsubscribe = this.posts.onSnapshot((snapshot) => {
             var postsArray = snapshot.docs.map((doc) => {
                 return {
@@ -65,42 +65,46 @@ export class UsersPosts extends Component {
 
     render() {
         return (
-            <div className="view-body">
-                <Header />
-                <header className="collection-title-container text-center">
-                    <h3 className="collection-title">My Posts</h3>
-                </header>
-                {!this.state.posts ? (
-                    <EmptyPosts />
-                ) : (
-                    <Container>
-                        <Row>
-                            <Col md={1} />
-                            <Col className="posts-container" md={10}>
-                                { this.state.posts.map((post) => {
-                                    return(
-                                        <div className="post">
-                                            <Post 
-                                                key={post.id} 
-                                                postId={post.id} 
-                                                postTitle={post.title} 
-                                                postBody={post.body} 
-                                                postUser={post.user}
-                                                imageUrl={post.imageUrl}
-                                                currentUser={this.currentUser} 
-                                                deletePost={this.deletePost}
-                                            />
-                                        </div>
-                                    )
-                                    })
-                                }
-                            </Col>
-                            <Col md={1} />
-                        </Row>
-                    </Container>
-                )}
+            <div>
+                <div className="view-body">
+                    <Header />
+                    <header className="collection-title-container text-center">
+                        <h3 className="collection-title">My Posts</h3>
+                    </header>
+                    {!this.state.posts ? (
+                        <EmptyPosts />
+                    ) : (
+                        <Container>
+                            <Row>
+                                <Col md={1} />
+                                <Col className="posts-container" md={10}>
+                                    { this.state.posts.map((post) => {
+                                        return(
+                                            <div className="post">
+                                                <Post 
+                                                    key={post.id} 
+                                                    postId={post.id} 
+                                                    postTitle={post.title} 
+                                                    postBody={post.body} 
+                                                    postUser={post.user}
+                                                    imageUrl={post.imageUrl}
+                                                    currentUser={this.currentUser} 
+                                                    deletePost={this.deletePost}
+                                                />
+                                            </div>
+                                        )
+                                        })
+                                    }
+                                </Col>
+                                <Col md={1} />
+                            </Row>
+                        </Container>
+                    )}
+                    <div className="footer-container">
+                        <Footer />
+                    </div>
+                </div>
             </div>
-           
         )
     }
 };

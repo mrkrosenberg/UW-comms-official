@@ -6,6 +6,7 @@ import '../View-Styles/views.scss';
 // Componenents
 import Header from '../../Components/Header/Header';
 import PostList from '../../Components/PostList/PostList';
+import Footer from '../../Components/Footer/Footer';
 
 export class Gym extends Component {
 
@@ -13,19 +14,21 @@ export class Gym extends Component {
         super();
 
         this.collection = 'Gym';
-        this.showEntryForm = true;
 
     };
 
 
     render() {
         return (
-            <div className="view-body">
-                <Header />
-                <PostList collection={this.collection}
-                        showEntryForm={this.showEntryForm} />
+            <div>
+                <div className="view-body">
+                    <Header />
+                    <PostList collection={this.collection} />
+                </div>
+                <div className="footer-container">
+                    <Footer />
+                </div>
             </div>
-
         )
     };
 };

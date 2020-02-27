@@ -6,6 +6,7 @@ import '../View-Styles/views.scss';
 // Componenents
 import Header from '../../Components/Header/Header';
 import PostList from '../../Components/PostList/PostList';
+import Footer from '../../Components/Footer/Footer';
 
 export class Maintenance extends Component {
 
@@ -22,6 +23,7 @@ export class Maintenance extends Component {
             <div className="view-body">
                 <Header />
                 <PostList collection={this.collection} />
+                <Footer />
             </div>
 
         )

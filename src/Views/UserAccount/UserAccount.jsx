@@ -12,6 +12,10 @@ import Header from '../../Components/Header/Header';
 import ReAuthForm from '../../Components/ReAuthForm/ReAuthForm';
 import PasswordResetForm from '../../Components/PasswordResetForm/PasswordResetForm';
 import Modal from 'react-bootstrap/Modal';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Footer from '../../Components/Footer/Footer';
 
 export class UserAccount extends Component {
 
@@ -21,6 +25,7 @@ export class UserAccount extends Component {
         this.app = Firebase;
         this.auth = this.app.auth();
         this.currentUser = this.app.auth().currentUser;
+        this.displayName = this.currentUser.displayName;
         this.deleteAccount = this.deleteAccount.bind(this);
 
         this.state = {
@@ -40,30 +45,33 @@ export class UserAccount extends Component {
     deleteAccount = () => {
         this.currentUser.delete()
             .then(function() {
-                alert('user has been deleted')
+                alert('User has been deleted')
             }).catch(function(error) {
-                alert('There has been an error deleting your account. Please sign out and sign back in to delete account')
-                console.log('error: ', error)
+                alert('error:', error.message)
+                // console.log('error: ', error)
             });
     };
 
     resetPassword = () => {
         this.currentUser.updatePassword(this.state.resetPassword)
             .then(function() {
-                console.log('password reset successful')
+                // console.log('password reset successful')
+                alert('Your password has been reset')
             }).catch(function(error) {
-                console.log('reset error: ', error)
+                alert('error: ', error.message)
+                // console.log('reset error: ', error.message)
             });
     };
 
-    sendResetEmail = () => {
-        this.auth.sendPasswordResetEmail(this.state.userEmail)
-            .then(function() {
-                console.log('email sent')
-            }).catch(function(error) {
-                alert('email error: ', error)
-            })
-    }
+    // sendResetEmail = () => {
+    //     this.auth.sendPasswordResetEmail(this.state.userEmail)
+    //         .then(function() {
+    //             console.log('email sent')
+    //             alert('email has been sent')
+    //         }).catch(function(error) {
+    //             alert('email error: ', error.message)
+    //         })
+    // }
 
     reauthDelete = (data) => {
         // console.log('email: ', data.userEmail, 'password: ', data.password);
@@ -74,7 +82,8 @@ export class UserAccount extends Component {
         this.currentUser.reauthenticateWithCredential(userCredential)
             .then(this.deleteAccount)
             .catch(function(error) {
-                console.log('reauth error: ', error)
+                // console.log('reauth error: ', error)
+                alert(error.message)
             });
     };
 
@@ -93,34 +102,60 @@ export class UserAccount extends Component {
             .catch(function(error) {
                 console.log('reauth error: ', error)
             })
-            .finally(this.sendResetEmail);
+            // .finally(this.sendResetEmail);
     };
 
     render() {
         return (
-            <div className="view-body">
-                <Header />
-                <h1 className="view-title text-center">user account settings</h1>
-                <PasswordResetForm 
-                    reauthPassword={this.reauthPassword}
-                />
-                <button onClick={this.showModal}>Delete Account</button>
-                <Modal
-                    show={this.state.showModal}
-                    onHide={this.showModal}
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered>
-                        <Modal.Header closeButton>
-                            <h3>
-                                Please Re-enter Password
-                            </h3>
-                            <ReAuthForm 
-                                reauthDelete={this.reauthDelete}
-                                firebase={this.app}
-                            />
-                        </Modal.Header>     
-                </Modal>
+            <div>
+                <div className="view-body">
+                    <Header />
+                    <h1 className="view-title text-center">Settings</h1>
+                    <PasswordResetForm 
+                        reauthPassword={this.reauthPassword}
+                    />
+                    <Container className="delete-bootstrap-container">
+                        <Row>
+                            <Col md={1} />
+                            <Col
+                                className="delete-button-container" 
+                                md={10}>
+                                    <div className="delete-container-color">
+                                        <h6>Delete Account:</h6>
+                                        <button 
+                                            className="delete-button"
+                                            onClick={this.showModal}>
+                                                Delete Account
+                                        </button>
+                                        <p>warning: this can't be undone</p>
+                                    </div>
+                            </Col> 
+                            <Col md={1} />
+                        </Row>
+                    </Container>
+                    <Modal
+                        show={this.state.showModal}
+                        onHide={this.showModal}
+                        size="lg"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered>
+                            <Modal.Header closeButton>
+                                <h3 className="account-delete-header">
+                                    Are you sure?
+                                </h3>
+                                
+                            </Modal.Header> 
+                            <Modal.Body>
+                                <ReAuthForm 
+                                    reauthDelete={this.reauthDelete}
+                                    firebase={this.app}
+                                />
+                            </Modal.Body>    
+                    </Modal>
+                </div>
+                <div className="footer-container">
+                    <Footer />
+                </div>
             </div>
         )
     }

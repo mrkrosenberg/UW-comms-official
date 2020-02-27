@@ -1,8 +1,20 @@
 // SCSS Imports
 @import '../../Styles/variables.scss';
 
-.form-container {
-    height: 40vh;
+.delete-form-container {
+    background-color: white;
+}
+
+.delete-form-color {
+    height: 100%;
+    width: 100%;
+    padding: 3vh;
+    background-color: $secondary-transparent;
+}
+
+.password-input {
+    display: block;
+    margin-bottom: 2vh;
 }
 
 .account-delete-button {
