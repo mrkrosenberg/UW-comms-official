@@ -6,8 +6,8 @@
 }
 
 .signout-button {
-    background: none;
-    border: 1px solid $accent-color;
+    background: $secondary-color;
+    border: 1px solid $primary-color;
     color: $accent-color;
     font-weight: inherit;
 }
@@ -31,12 +31,22 @@
 }
 
 .dropdown-menu.show {
-    background-color: $primary-transparent;
+    background-color: $accent-color;
     padding-left: 20px;
 }
 
-li {
+.display-name-container {
+    display: inline;
+    margin-right: 2rem;
+}
+
+.display-name {
+    display: inline;
     color: $accent-color;
+}
+
+li {
+    color: $secondary-color;
     font-weight: bold;
 }
 

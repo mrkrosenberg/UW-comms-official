@@ -58,6 +58,11 @@ function Header() {
                     </Dropdown.Menu>
                 </Dropdown>  
                 <Dropdown drop="left">
+                    <div className="display-name-container">
+                        <h6 className="display-name">
+                            Welcome {currentUser}
+                        </h6>
+                    </div>
                     <Dropdown.Toggle>
                         <img src={userIcon} alt="User Menu" className="dropdown-icon align-right"/>
                     </Dropdown.Toggle>
